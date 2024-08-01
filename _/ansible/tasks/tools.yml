@@ -1,0 +1,8 @@
+- name: Install packages
+  become: true
+  dnf:
+    name: [ "tmux", "fzf", "xclip", "tldr", "ripgrep" ]
+    state: latest
+  tags:
+    - install
+    - productivity

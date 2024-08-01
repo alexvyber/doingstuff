@@ -1,0 +1,57 @@
+- name: Install nodejs and npm
+  become: true
+  dnf:
+    name: ["nodejs", "npm"]
+  tags:
+    - install
+    - node
+
+- name: npmjs prefix
+  shell: mkdir -p ~/.local/.npm-global
+  tags:
+  - install
+  - node
+
+- name: add npmjs to path
+  shell: PATH=~/.local/.npm-global/bin:$PATH
+  tags:
+  - install
+  - node
+
+- name: npmjs global settings
+  shell: npm config set prefix '~/.local/.npm-global'
+  tags:
+  - install
+  - node
+
+- name: npmjs global settings export path in case I don't have dotfiles installed
+  shell: export PATH=~/.local/.npm-global/bin:$PATH
+  tags:
+  - install
+  - node
+  - npm-path
+
+- name: nvm
+  shell: >
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+  args:
+    creates: "~/.nvm/nvm.sh"
+
+- name: source
+  shell: source ~/.bashrc 
+  tags:
+  - node
+
+- name: Install node v14
+  shell: nvm install 14
+  tags:
+  - install
+  - node
+  - npm-path
+
+- name: Use node v14
+  shell: nvm use 14
+  tags:
+  - install
+  - node
+  - npm-path

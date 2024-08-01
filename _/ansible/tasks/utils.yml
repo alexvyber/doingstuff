@@ -1,0 +1,17 @@
+- name: Install System Packages 1 
+  become: true
+  dnf:
+    name: [ "lua5.1", "unzip" , "cmake" ]
+    state: latest
+  tags:
+    - install
+    - core
+
+- name: Install System Packages 2
+  become: true
+  dnf:
+    name: [ "curl", "htop", "pavucontrol", "moreutils", "stow" ]
+    state: latest
+  tags:
+    - install
+    - core

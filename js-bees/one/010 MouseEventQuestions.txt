@@ -1,0 +1,4 @@
+Q.1) How will you disable right click on an element?
+Q.2) How can you check whether a special key is pressed or not while an event is generated?
+Q.3) How do you check mouse button value while an event is generated?
+Q.4) For ctrl key and cmd on mac - how will you right the condition to check the key press.

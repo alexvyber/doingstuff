@@ -1,0 +1,7 @@
+Q.1) Explain the difference between querySelector() & querySelectorAll().
+Q.2) How can you search elements using pseudo classes?
+Q.3) Between getElementBy methods and querySelector methods which is better to use?
+
+
+
+

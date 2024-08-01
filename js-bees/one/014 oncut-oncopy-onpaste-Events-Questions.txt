@@ -1,0 +1,2 @@
+Q.1) Explain about cut,copy and paste events
+Q.2) How can you stop an event of cut, copy or paste for an element ?

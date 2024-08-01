@@ -1,0 +1,4 @@
+Q.1) Explain the fetch API functionality
+Q.2) How will you make a DELETE request with fetch API?
+
+

@@ -1,0 +1,3 @@
+Q.1) What is the difference between Map and Set ?
+Q.2) How will you remove specific values from Set ?
+Q.3) What will entries() method with Set will return ?

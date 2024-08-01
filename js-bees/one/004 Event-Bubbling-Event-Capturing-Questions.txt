@@ -1,0 +1,5 @@
+Q.1) Which is the default propagation path ?
+Q.2) How can you stop the event propagation ? 
+Q.3) How can you change the default propagation path ?
+Q.4) How can you get the reference of element on which event is fired ?
+Q.5) There can be a practical question similar to code sample and one can ask what will be the output and why ?

@@ -1,0 +1,19 @@
+Q.1) How will you configure a process which should be executed at the end of promise resolve or reject ?
+Q.2) What is chaining the promise ? Explain the syntax.
+Q.3) What will be the output of the given code?
+	const pr = new Promise((resolve,reject)=>{
+    	resolve("Over");
+    	setTimeout(()=>{
+        	resolve("Again");
+    	},2000)
+         })
+ 
+	pr.then((msg)=>{
+   	console.log(msg);
+   	return pr;
+         }).then((msg)=>{
+    	console.log(msg);
+         })
+Q.4) What is the status of promise by default ?
+Q.5) What will be the status of promise when resolved or rejected ?
+

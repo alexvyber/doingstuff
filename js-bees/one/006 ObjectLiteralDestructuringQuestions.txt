@@ -1,0 +1,4 @@
+Q.1) Explain a practical scenario of object literal destructuring ?
+Q.2) Explain the output of this code
+        =>  const { a=90, b } = {  };
+              console.log(a,b);

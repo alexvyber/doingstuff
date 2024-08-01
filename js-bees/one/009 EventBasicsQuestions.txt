@@ -1,0 +1,3 @@
+Q.1) Explain various ways to configure an event with HTML elements.
+Q.2) Explain syntax of addEventListener() method.
+Q.3) What is an event object ?

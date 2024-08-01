@@ -1,0 +1,13 @@
+Q.1) What will be the output of this code if you run in the browser and why?
+function test(){
+   console.log(this);
+}
+test();
+Q.2) What is the context of “this” inside arrow function? Or what will be the output of this code?
+let obj={
+ 
+    test:()=>{
+       console.log(this);
+    }
+}
+obj.test();

@@ -1,0 +1,2 @@
+Q.1) Explain difference between Map and WeakMap ?
+Q.2) Explain difference between Set and WeakSet ?

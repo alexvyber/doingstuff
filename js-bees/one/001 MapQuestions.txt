@@ -1,0 +1,8 @@
+Q.1) What are the advantages of using Map over objects?
+Q.2) How will you iterate through Map ?
+Q.3) Can you assign key/values with this syntax?
+map[‘key’]=value
+Explain the reason for the answer.
+Q.4) How can you convert simple objects to Map?
+Q.5) How can you convert a Map into simple objects?
+Q.6) How will you remove an item or all items from Map?

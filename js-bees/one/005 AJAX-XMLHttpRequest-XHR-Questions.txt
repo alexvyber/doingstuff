@@ -1,0 +1,21 @@
+Q.1) What is AJAX?
+Q.2) How will you set a timeout with an XHR request?
+Q.3) How can you set the data format for response?
+Q.4) Explain “readyState” property of XHR.
+Q.5) Explain the “onreadystatechange” event.
+Q.6) How can you force the XHR request to stop the execution?
+Q.7) When is the “load” method called?
+Q.8) How will you set HTTP headers? Explain the sequence.
+Q.9) Explain different ways of getting response header values?
+
+
+
+
+
+
+
+
+
+
+
+

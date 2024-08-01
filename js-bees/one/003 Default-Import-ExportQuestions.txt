@@ -1,0 +1,2 @@
+Q.1) What is default export/import & the difference between named & default export/import ?
+Q.2) Explain various ways of implementing default export/import ?

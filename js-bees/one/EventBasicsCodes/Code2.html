@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>     
+    <style>
+        button{
+            padding:20px;
+            margin-top: 100px;
+            margin-right: 20px;
+            margin-left: 20px;
+            background-color: blue;
+            color: white;
+            font-size: 30px;
+        }
+    </style>        
+    </head>
+    <body>
+        <button onclick="showMsg(event)">Common way</button> 
+    <script>
+      function showMsg(obj){
+          console.log(obj);
+          console.log(obj.type);
+          console.log(obj.target);
+      }
+    </script>    
+    </body>
+</html>

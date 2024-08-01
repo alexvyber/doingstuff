@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Web Component</title>
+       <style>
+           h1{
+               color: blue;
+           }
+           button{
+               display: inline-block;
+               height: 30px;
+           }
+           .container{
+               padding: 2px 16px;
+           }
+           #p-container{
+               padding-left: 50px;
+           }
+       </style>
+   </head>
+   <body>
+       <div>
+           <h1> Header Section </h1>
+       </div>
+       <div id="p-container">
+       <product-card
+           pName="Apple"
+           price="$40"
+           pImg="https://www.freepnglogos.com/uploads/apple-png/vector-graphic-apple-fruit-nature-red-juicy-36.png"
+           status="Not Sold">
+           <h1 slot="ptitle">Apple Component</h1>
+       </product-card>
+       <product-card
+           pName="Orange"
+           price="$30"
+           pImg="https://www.freepnglogos.com/uploads/lime-png/vector-graphic-lime-fruit-food-acidic-citrus-image-pixabay-21.png"
+           status="Not Sold">
+           <h1 slot="ptitle">Orange Component</h1>
+       </product-card>
+       <product-card
+           pName="Grape"
+           price="$20"
+           pImg="https://www.freepnglogos.com/uploads/grapes-png/illustration-grapes-vine-vineyard-wine-29.png"
+           status="Not Sold">
+           <h1 slot="ptitle">Grape Component</h1>
+       </product-card>
+       <product-card
+           pName="Banana"
+           price="$23"
+           pImg="./b.png"
+           status="Not Sold">
+           <h1 slot="ptitle">Banana Component</h1>
+       </product-card>
+       </div>
+ 
+       <script src="./productCard.js"></script>
+   </body>
+</html>
+ 
+

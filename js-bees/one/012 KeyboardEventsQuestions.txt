@@ -1,0 +1,3 @@
+Q.1) How can you check if control and Z  is pressed or not ?
+Q.2) What does event.code return ?
+Q.3) Explain the difference between event.code and event.key ?

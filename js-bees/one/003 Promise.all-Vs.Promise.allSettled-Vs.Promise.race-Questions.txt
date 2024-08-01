@@ -1,0 +1,27 @@
+Q.1) What will be the output if the iterable is not a promise inside all() method arguments,e.g  as shown below where “p2” is not a promise ?
+     const p1 = new Promise((resolve,reject)=>{
+     setTimeout(()=>{
+         resolve("Promise1");
+     },2000)
+ })
+     const p2 = "Normal string";
+     const p3 = new Promise((resolve,reject)=>{
+     setTimeout(()=>{
+         resolve("Promise3");
+     },2000)
+ }) 
+     Promise.all([p1, p2,p3]).then((prMsgs) => {
+     console.log(prMsgs);
+ }).catch((err)=>{
+     console.log(err);
+ })
+
+Q.2) How will you handle rejected multiple promises in the most efficient way ?
+Q.3)  Explain the purpose of Promise.race() method.
+Q.4) What will be the output of empty iterable if given as a parameter inside the race() method as shown in this code ?
+        const obj = Promise.race([]);
+        console.log(obj);
+        setTimeout(()=>{
+                 console.log(obj);
+        },2000);
+

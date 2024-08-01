@@ -1,0 +1,3 @@
+Q.1) Get Character month ?
+Q.2) Find the date before 50 days of the given date.
+Q.3) What will be the output if you add 35 as date in Date() constructor.

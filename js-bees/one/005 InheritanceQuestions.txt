@@ -1,0 +1,5 @@
+Q.1) How can you inherit a class?
+Q.2) What is subclassing?
+Q.3) What is the purpose of super keyword?
+Q.4) How will you override a method?
+Q.5) How can you extend a built-in class? 

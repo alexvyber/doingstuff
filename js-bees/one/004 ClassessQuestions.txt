@@ -1,0 +1,6 @@
+Q.1) How can you create a class?
+Q.2) When does constructor() called?
+Q.3) Can we have dynamic property or method names in a class?
+Q.4) What is a class expression?
+Q.5) What are static members in a class? What is the purpose of defining them as static?
+Q.6) How can you call another static method from a class?

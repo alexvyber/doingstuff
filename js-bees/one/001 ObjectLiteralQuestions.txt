@@ -1,0 +1,11 @@
+Q.1) Can you have dynamic keys with object literal?
+Q.2) How can you add read-only properties to an object?
+Q.3) What is property value short hand with object literal?
+Q.4) What will be the output of this code?
+let obj={a:'First'};
+let obj1 = obj;
+obj1.a="Second";
+console.log(obj.a);
+Explain the reason why?
+Q.5) How can we create a clone or separate copy of an object literal?
+

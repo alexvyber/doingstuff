@@ -1,0 +1,2 @@
+Q.1)What is an Asynchronous process ?
+Q.2)What is the meaning of callback hell or pyramid of doom ?

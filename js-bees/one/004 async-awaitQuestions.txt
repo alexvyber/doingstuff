@@ -1,0 +1,5 @@
+Q.1) Can you write await without async ?
+Q.2) Do you need to return a promise from an async function ?
+Q.3) Can you have an async IIFE ?
+Q.4) Which is the best way to handle errors with await ?
+Q.5) Explain the syntax of Promise.all() with async/await ?

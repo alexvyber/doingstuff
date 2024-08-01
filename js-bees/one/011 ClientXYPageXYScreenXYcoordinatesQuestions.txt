@@ -1,0 +1,2 @@
+Q.1) Explain the difference between clientX/Y and pageX/Y.
+Q.2) Explain the difference between clientX/Y and screenX/Y.

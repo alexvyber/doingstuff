@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DOM Navigation</title>
+        <style>
+            div{
+                width:300px;
+                height: 300px;
+                border: 1px solid darkslategray;
+                text-align: center;
+                padding:5px;
+                margin: 10px;
+                display: inline-block;
+                
+            }
+        </style>
+    </head>
+    <body>
+        <div id="div1"> 
+            <h1>First division</h1>
+            <ul>
+                <li>First Item</li>
+                <li>Second Item</li>
+            </ul>
+        </div>
+        <div>
+            <h1>Second division</h1>
+            <input type="text"/><br/>
+            <button onclick="btnClick()">Click Me!</button>
+        </div>
+        <script>
+            function btnClick(){
+                console.log(document.documentElement);
+                console.log(document.head);
+                console.log(document.body);
+            }
+        </script>
+    </body>
+</html>

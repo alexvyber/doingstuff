@@ -1,0 +1,6 @@
+Q.1) What is a named export and import ?
+Q.2) Can you avoid {} while importing a named module ?
+Q.3) How can you import all named modules from a file ?
+Q.4) Is it a good practice to import all modules together ?
+Q.5) Do the modules hoist ?
+Q.6) Do you need the same name while importing a named module or you can change ?

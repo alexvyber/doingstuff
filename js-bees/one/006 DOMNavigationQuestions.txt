@@ -1,0 +1,6 @@
+Q.1) What is a node in DOM tree ? Explain different types of nodes ?
+Q.2) How can you access next same level element for a given node element ?
+Q.3) What is the difference between childeNodes and children property ?
+Q.4) How can you check whether an element has child nodes or not ?
+Q.5)  What is the purpose of DOM navigation ?
+Q.6)  What will be the output of below given statement  - element.lastChild.nextSibling ?

@@ -1,0 +1,3 @@
+Q.1) Can you use document.getElementById() & element.getElementById() ?
+Q.2) What does the getElementsByTagName() return ?
+Q.3) What is the difference between getElementsByClassName() & getElementsByName() ?

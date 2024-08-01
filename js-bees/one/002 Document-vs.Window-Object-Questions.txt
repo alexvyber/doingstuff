@@ -1,0 +1,7 @@
+Question 1 What is the difference between window and document ?
+Question 2 What is DOM [Document Object Model] or  DOM API ?
+Question 3 What is BOM [Browser Object Model] ?
+Question 4 Explain the difference between DOM and BOM ?
+Question 5 Which is the global object in browser ?
+Question 6 How will we check the innerWidth and innerHeight of window ?
+Question 7 How will you get hostname or value typed in address bar ?

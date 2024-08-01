@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>        
+    <style>
+        div{
+            width: 500px;
+            height: 300px;
+            display: inline-block;
+            padding:20px;
+            background-color: blue;
+            color: white;
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>        
+    </head>
+    <body> 
+        <div id="divE">
+            <h1 id="msg">No events</h1>
+            <input type="text" 
+            onkeydown="eHandler()"/>
+        </div>
+    <script>
+     function eHandler(){
+         let msg=event.code + '<br/>' + event.key;
+       document.getElementById("msg").innerHTML = msg;
+     }
+    </script>    
+    </body>
+</html>

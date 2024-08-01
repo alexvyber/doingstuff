@@ -1,0 +1,2 @@
+Q.1) Calculate the date difference in days ?
+Q.2) How can you change hours or minutes in time ?

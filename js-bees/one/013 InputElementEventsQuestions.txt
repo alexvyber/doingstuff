@@ -1,0 +1,11 @@
+Q.1) What is the difference between onblur and onchange event?
+Q.2) How will you handle events of checkbox and radio buttons?
+Q.3) Differentiate onkeypress/onkeyup and oninput event.
+Q.4) Which event you prefer with select [i.e. drop down list]?
+Q.5) How will you get the text value of selected item from a select element i.e. a drop down list?
+
+
+
+
+
+

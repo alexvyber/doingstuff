@@ -1,0 +1,9 @@
+Q.1) What is the difference between call, apply and bind()?
+Q.2) What will be the output of this code? Or can you assign value to “this” object with assignment operator i.e. “=”?
+const obj={
+      a:6
+}
+function test(){
+      this=obj;
+}
+test();

@@ -1,0 +1,182 @@
+import { ArticleLayout } from "@/layouts/article-layout"
+
+export const meta = {
+  author: "Alex Vyber",
+  date: "2023-01-10",
+  title: "How to export a Type in TypeScript",
+  description: "We can use a named and default export to export a type in TypeScript.",
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+We can use a named and default export to export a type in TypeScript.
+
+```TypeScript
+export type Some = { ... }
+
+type More = { ... }
+export default More
+```
+
+We import types like this:
+
+```TypeScript
+import DefaultType, {Some} from './types-file.ts'
+```
+
+## Named Export
+
+Here is an example of exporting a type. We can export type on the same line it was declared:
+
+```TypeScript
+// types-1.ts
+
+// 👇 named export
+export type Some = {
+  one: string
+  two: number
+}
+```
+
+{/* Note that using export on the same line as the type's definition is the same as exporting the type as an object after it has been declared. */}
+
+We can export type after it has been declared:
+
+```TypeScript
+// types-2.ts
+
+type Other = {
+  three: string
+  four: number
+}
+
+// 👇 named export
+export { Other }
+```
+
+Here is how we would import the types:
+
+```TypeScript
+// using-type-1.ts
+
+// 👇 named import
+import { Some } from "./types-1"
+import { Other } from "./types-2"
+
+const some: Some = {
+  one: "string",
+  two: 2
+}
+
+const other: Other = {
+  three: "string",
+  four: 4
+}
+```
+
+Make sure that all paths are right. The example above assumes that all files are located in the same
+directory.
+
+## Default Export
+
+{/* For example, if you were importing from one directory up, you would do `import {Person} from '../another-file'`. */}
+
+{/* We wrapped the name of the type in curly braces when importing it - this is called a named import. */}
+TypeScript uses modules, in the same way that JavaScript does.
+
+You can only import a type from a different file, if it has been exporting using named or default
+export.
+
+You can have **as many named exports as you want** per file, but **only one default export** per
+file.
+
+If you try to use multiple default exports in a file, you will get an error.
+
+```TypeScript
+// types-3.ts
+
+type Some = {
+  one: string
+  two: number
+}
+
+//👇 default export
+export default Some
+```
+
+```TypeScript
+// types-4.ts
+
+type Some = {
+  one: string
+  two: number
+}
+
+type More = {
+  one: string
+  two: number
+}
+
+//👇 default export
+
+// ⛔️ Error:
+// A module cannot have multiple default exports.ts(2528)
+export default Some
+export default More
+```
+
+{/* ❗ IMPORTANT: */}
+{/* If you are exporting a type, or a variable (or an arrow function) as a default export, */}
+{/* you have to declare it on one line and export it on another. */}
+{/* You can't declare and default export a variable on the same line. */}
+
+{/* Let's look at an example that exports types and uses both - default and named exports. */}
+
+## Using both: Default and Named export
+
+Declaring types and exporting them as both: default and named export
+
+```TypeScript
+// types-5.ts
+
+type Some = {how-to-export-impot-type-in-typescript
+  one: string
+  two: number
+}
+
+type More = {
+  one: string
+  two: number
+}
+
+//👇 default and named export in one line
+export { Some as default, More }
+```
+
+Importing types:
+
+```TypeScript
+// using-type-3.ts
+
+//👇 default and named import in one line
+import DefaultType, { More } from "./types-5"
+
+const some: DefaultType = {
+  one: "string",
+  two: 2
+}
+
+const other: More = {
+  one: "string",
+  two: 2
+}
+```
+
+❗Notice: we didn't wrap the default import in curly braces.
+
+{/* We used a default import to import the Employee type and a named import to import the Person type. */}
+
+{/* You can only have a single default export per file, but you can have as many named exports as necessary. */}
+
+{/* In my experience, most real world codebases exclusively use named exports and imports, because they make it easier to leverage your IDE for autocompletion and auto-imports. */}
+{/* You also don't have to think about which members are exported with a default or named export. */}

@@ -1,0 +1,29 @@
+{
+  "name": "portfolio-v2",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbo",
+    "build": "next build",
+    "start": "next start",
+    "lint": "biome lint --write .",
+    "format": "biome format --write .",
+    "lint:unsafe": "biome lint --write --unsafe ."
+  },
+  "dependencies": {
+    "cvax": "^0.7.0",
+    "next": "15.0.0-rc.0",
+    "react": "19.0.0-rc-f994737d14-20240522",
+    "react-dom": "19.0.0-rc-f994737d14-20240522",
+    "tailwind-merge": "^2.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.2",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "postcss": "^8.4.40",
+    "tailwindcss": "^3.4.7",
+    "typescript": "^5.5.4"
+  },
+  "packageManager": "pnpm@8.15.1+sha1.8adba2d20330c02d3856e18c4eb3819d1d3ca6aa"
+}

@@ -1,0 +1,35 @@
+.StripeGrid {
+  --stripe-height: 48px;
+  --content-columns: 10;
+  --gutter-columns: 5;
+}
+
+@media (min-width: 640px) {
+  .StripeGrid {
+    --stripe-height: 64px;
+  }
+}
+
+.gridy {
+  --content-column-width: minmax(0, calc(1024px / var(--content-columns)));
+  --gutter-column-width: 1fr;
+
+  grid-template-rows: repeat(auto-fill, var(--stripe-height));
+  grid-template-columns:
+    [viewport-start] 1fr [left-gutter-start] repeat(
+      var(--gutter-columns),
+      var(--gutter-column-width)
+    )
+    [left-gutter-end content-start] repeat(var(--content-columns), var(--content-column-width))
+    [content-end right-gutter-start] repeat(var(--gutter-columns), var(--gutter-column-width))
+    [right-gutter-end] 1fr [viewport-end];
+}
+
+@media (min-width: 1024px) {
+  .gridy {
+    --gutter-column-width: var(--content-column-width);
+    min-width: calc(
+      1024px / var(--content-columns) * (var(--gutter-columns) * 2 + var(--content-columns))
+    );
+  }
+}

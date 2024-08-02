@@ -1,0 +1,35 @@
+{
+  "commit": false,
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "vim-usds",
+      "name": "Vim",
+      "avatar_url": "https://avatars.githubusercontent.com/u/86254807?v=4",
+      "profile": "https://github.com/vim-usds",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "janosorcsik",
+      "name": "János Orcsik",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4984853?v=4",
+      "profile": "https://github.com/janosorcsik",
+      "contributions": [
+        "doc"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "projectName": "linting-typescript-in-2023",
+  "projectOwner": "JoshuaKGoldberg",
+  "repoHost": "https://github.com",
+  "repoType": "github",
+  "skipCi": true,
+  "commitType": "docs"
+}

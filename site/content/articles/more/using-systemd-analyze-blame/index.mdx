@@ -1,0 +1,60 @@
+import Image from "next/image"
+
+import { ArticleLayout } from "@/layouts/article-layout"
+
+import image from "./image.png"
+
+export const meta = {
+  author: "Alex Vyber",
+  date: "2023-02-10",
+  title: "Diagnosing Slow Startups",
+  description: "Diagnosing Slow Startups",
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+systemd promises faster startups, but your system starts up slowly, and you want to find out why.
+
+You want systemd-analyze blame. Run it with no options to see a list of system processes and how
+long they took to start:
+
+```shell
+systemd-analyze blame
+
+# output:
+6.749s NetworkManager-wait-online.service
+3.908s sys-module-fuse.device
+3.878s dev-ttyS0.device
+3.878s sys-devices-platform-serial8250-tty-ttyS0.device
+3.877s dev-ttyS10.device
+3.877s sys-devices-platform-serial8250-tty-ttyS10.device
+3.877s dev-ttyS11.device
+# ...
+```
+
+Analyze only user processes:
+
+```shell
+systemd-analyze blame --user
+
+# output:
+2.250s docker.service
+313ms xdg-desktop-portal.service
+194ms tracker-miner-fs-3.service
+105ms xdg-desktop-portal-gnome.service
+# ...
+```
+
+It is useful to review everything that starts at boot and perhaps find services you don’t want
+starting at boot. My favorite to disable is Bluetooth because I don’t use it on my servers or PCs,
+but many Linux distros enable it by default.
+
+We can vizualize startup like this:
+
+```shell
+sudo systemd-analyze plot > plot.svg
+```
+
+Then we'll need to open generated svg or send it somewhere somehow🙂
+
+<Image src={image} alt="" className="shadow-lg" />

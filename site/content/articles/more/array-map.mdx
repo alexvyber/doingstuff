@@ -1,0 +1,190 @@
+import { ArticleLayout } from "@/layouts/article-layout"
+
+export const meta = {
+  author: "Alex Vyber",
+  date: "2023-02-02",
+  title: "Array Map",
+  description:
+    "I want to share a small tip regarding the block scope. Specifically when we want to create it on purpose.",
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+### Array Map
+
+What is Array Map?
+
+Array Map is a method that exists on the Array.prototype that was introduced in ECMAScript 5 (ES5)
+and is supported in all modern browsers.
+
+Array Map allows us to loop our array, access each value and return a new value for each iteration
+
+- which in turn creates a new array. Think of Array Map as: "I want a new array containing new
+  copies, or changes, of each array element" You could, for example, use Map to return a specific
+  property from an object, which would result in an array of just those properties in the order your
+  looped them. Here's the syntax for Array Map:
+  `const returnValue = array.map((value, index, array) => {...}, thisArg);`
+
+  Our return value will contain our new array of, potentially new, return values. Array Map syntax
+  deconstructed: Map's first argument is a callback function that exposes these parameters: value
+  (the current element)
+
+- index (the element's index - sometimes used with Map)
+- array (the array we are looping - rarely used)
+- Inside the body of the function we need to return a value, this could be your array element, a
+  modified version of it, or a completely new calculated value, this will then tell Map what to
+  return after completing the loop Map's second argument' thisArg allows the this context' to be
+  changed See the
+  [ECMAScript Array Map specification](https://tc39.es/ecma262/#sec-array.prototype.map)!
+
+In its simplest form, here is how Map behaves:
+
+```TypeScript
+1 const mapped = [1, 2, 3, 4, 5].map((x) = x \* 2);
+2
+// [2, 4, 6, 8, 10]
+3
+console.log(mapped);
+```
+
+I'm using x to identify whatever the value is and simply multiplying it by 2, giving us a new array
+of exactly each number doubled from the previous array. The original array would remain untouched
+and still accessible. It's common to deal with all kinds of data with Map, as Arrays allow any value
+type, from primitive values through to Objects - giving us great programming flexibility. So that's
+the basics of Map, let's take a look at a more real-world scenario where we've tasked with mapping
+an Array of Objects. Using Array Map Here's our data structure that we'll be using Array Map with:
+
+```TypeScript
+1 const items =
+name: 'Super Burger', price: 399 },
+2
+{ id:
+3
+{ id:
+name:
+'Jumbo Fries', price: 199 },
+4
+{ id:
+1
+name:
+'Big Slurp', price: 299 }
+5
+];
+
+```
+
+Let's assume we've just applied a coupon which applies HALF OFF our 'Jumbo Fries'. We'd need to loop
+through our data and update that specific object. Here's how we could solve that via Map by
+conditionally returning a new representation of the item object, with an updated price, otherwise we
+just return the item:
+
+```TypeScript
+1
+2
+if (item.id ===
+3
+4
+5
+const halfOffFries = items.map(item => {
+return {
+...item,
+') {
+price: item.price / 2
+6
+};
+7
+}
+8
+return item;
+9
+});
+10
+11
+12
+// log the return value
+console.log(halfOffFries);
+
+```
+
+Using Array Map is an immutable pattern as it creates a new array from an existing array. We are
+also using the ... spread operator to return a new object instead of mutating the existing one. Both
+operations do not mutate existing data structures and are considered immutable ways of achieving
+state change. This would then give us some half price fries (which can only be good news):
+
+```TypeScript
+1
+[
+2
+{ id:
+3
+{ id:
+4
+{id: ''
+5
+
+
+name:
+'Super Burger', price: 399 }, 'Jumbo Fries', price: 99.5 }, name: 'Big Slurp', price: 299 }
+
+name:
+
+```
+
+Interestingly, our original items array remains unmodified, and we have a new collection to deal
+with now in our halfOffFries variable. This practice is called an immutable operation as we don't
+mutate the initial array. Give the live Array Map demo11 a try. Bonus: Map-ing without Map Let's
+check out a for...in loop example that mimics the behaviour of Array Map:
+
+```TypeScript
+1
+const halfOffFries = [];
+2
+for (let i = 0; i < items.length; i++) {
+const item = items[i];
+if (item. id === 8') {
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+} }
+halfOffFries.push({
+...item,
+price: item.price / 2
+});
+} else {
+halfOffFries.push(item);
+
+```
+
+First we declare halfOffFries as an empty array. Inside the loop we use pretty much the same logic,
+but instead of a return statement we use the Array.prototype. push method which adds each item to
+the new halfOffFries array. Once the loop as finished, you're free to work with your new
+halfOffFries array. This also demonstrates us the power and flexibility of using Map and other array
+prototype methods. The code is far smaller, promotes better practices, is easier to read and far
+more contained. Summary You've now learned how to use Array Map to map your array to a new set of
+values. Map is the next best place to begin after getting started with array ForEach. Moving from a
+traditional for... in loop, the Map method can be introduced to bring a more functional approach and
+style to your programming. If you are serious about your JavaScript skills, your next step is to
+take a look at my JavaScript courses12, they will teach you the full language, the DOM, the advanced
+stuff and much more! Further tips and tricks:
+
+- Use Map to create a new collection with changed values of your initial collection
+- Don't forget to return or your values will be undefined
+- Map will shallow copy your object references into the new array
+- Don't encourage bad habits by using.map() over .forEach() just because it can have the same effect
+  and is 'shorter' - use the right tool for the right job or you will confuse people!
+- You can access the array you're looping in the third argument of the callback
+- You can change the this context via a second argument to .map(callback, thisArg) so that any
+  references to this inside your callback point to your object
+- You can use arrow functions with Map but remember that this will be incorrect if you also supply a
+  thisArg due to arrow functions not having a this context
+- Like ForEach and friends, you cannot Map in reverse or break a Map, use for... in or for ...of
+  Using Map will skip empty array slots
+- You shouldn't need to in this day and age of evergreen browsers, but use a polyfill for older
+  browsers if necessary

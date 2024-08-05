@@ -1,43 +1,43 @@
-export {};
+export {}
 
 type Product = {
-  name: string;
-  info: ProductInfo | undefined;
-};
+  name: string
+  info: ProductInfo | undefined
+}
 
 type ProductInfo = {
-  level: string;
-  noOfStudents: number | undefined;
-};
+  level: string
+  noOfStudents: number | undefined
+}
 
 const courses: Product[] = [
   {
-    name: "JS",
+    name: 'JS',
     info: {
-      level: "Beginner",
+      level: 'Beginner',
       noOfStudents: 2000,
     },
   },
   {
-    name: "TS",
+    name: 'TS',
     info: {
-      level: "Beginner",
+      level: 'Beginner',
       noOfStudents: undefined,
     },
   },
   {
-    name: "Tailwind CSS",
+    name: 'Tailwind CSS',
     info: undefined,
   },
-];
+]
 
-console.log(courses.map((course) => course.info.noOfStudents));
+console.log(courses.map((course) => course.info.noOfStudents))
 
 const courseInfo = courses.map((course) => {
-  if (course.info) return course.info.noOfStudents;
-  return undefined;
-});
+  if (course.info) return course.info.noOfStudents
+  return undefined
+})
 
-const courseInfo_ = courses.map((course) => (course.info ? course.info.noOfStudents : undefined));
+const courseInfo_ = courses.map((course) => (course.info ? course.info.noOfStudents : undefined))
 
-console.log(courses.map((course) => course.info?.noOfStudents));
+console.log(courses.map((course) => course.info?.noOfStudents))

@@ -1,8 +1,8 @@
 interface CsvBuffer {
-  toString(encoding: string): string;
+  toString(encoding: string): string
 }
 function parseCSV(contents: string | CsvBuffer): { [column: string]: string }[] {
   // COMPRESS
-  return [];
+  return []
   // END
 }

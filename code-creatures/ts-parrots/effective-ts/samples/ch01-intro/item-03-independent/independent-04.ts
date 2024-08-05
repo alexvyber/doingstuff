@@ -4,19 +4,19 @@ class Square {
 class Rectangle extends Square {
   constructor(
     public width: number,
-    public height: number
+    public height: number,
   ) {
-    super(width);
+    super(width)
   }
 }
-type Shape = Square | Rectangle;
+type Shape = Square | Rectangle
 
 function calculateArea(shape: Shape) {
   if (shape instanceof Rectangle) {
-    shape; // Type is Rectangle
-    return shape.width * shape.height;
+    shape // Type is Rectangle
+    return shape.width * shape.height
   } else {
-    shape; // Type is Square
-    return shape.width * shape.width; // OK
+    shape // Type is Square
+    return shape.width * shape.width // OK
   }
 }

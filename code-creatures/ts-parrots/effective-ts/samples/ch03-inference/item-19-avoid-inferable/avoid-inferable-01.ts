@@ -1,1 +1,1 @@
-let x: number = 12;
+let x: number = 12

@@ -3,8 +3,8 @@ Based on the below array of search history of a user, return “Would you like t
 */
 
 let searchHistory: string[] = [
-  "how to make money online",
-  "benefits of eating garlic",
-  "html css tutorial",
-  "calisthenics",
-];
+  'how to make money online',
+  'benefits of eating garlic',
+  'html css tutorial',
+  'calisthenics',
+]

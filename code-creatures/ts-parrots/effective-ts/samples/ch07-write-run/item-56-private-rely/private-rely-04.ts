@@ -1,1 +1,1 @@
-declare function hash(text: string): number;
+declare function hash(text: string): number

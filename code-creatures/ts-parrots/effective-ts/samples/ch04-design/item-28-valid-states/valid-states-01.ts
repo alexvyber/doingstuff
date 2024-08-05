@@ -1,5 +1,5 @@
 interface State {
-  pageText: string;
-  isLoading: boolean;
-  error?: string;
+  pageText: string
+  isLoading: boolean
+  error?: string
 }

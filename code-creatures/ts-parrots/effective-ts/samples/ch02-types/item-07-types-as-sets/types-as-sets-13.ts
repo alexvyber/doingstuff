@@ -1,12 +1,12 @@
 interface Vector1D {
-  x: number;
+  x: number
 }
 interface Vector2D {
-  x: number;
-  y: number;
+  x: number
+  y: number
 }
 interface Vector3D {
-  x: number;
-  y: number;
-  z: number;
+  x: number
+  y: number
+  z: number
 }

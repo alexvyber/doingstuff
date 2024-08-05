@@ -2,5 +2,5 @@
 import { value } from './target'
 
 export function CJS() {
-  return value;
+  return value
 }

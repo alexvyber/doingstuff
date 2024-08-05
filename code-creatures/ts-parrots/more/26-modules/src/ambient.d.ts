@@ -1,3 +1,3 @@
-declare module "ambient" {
-  export function addition(a: number, b: number): number;
+declare module 'ambient' {
+  export function addition(a: number, b: number): number
 }

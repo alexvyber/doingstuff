@@ -1,7 +1,7 @@
 interface RequestInit {
-  body?: BodyInit | null;
-  cache?: RequestCache;
-  credentials?: RequestCredentials;
-  headers?: HeadersInit;
+  body?: BodyInit | null
+  cache?: RequestCache
+  credentials?: RequestCredentials
+  headers?: HeadersInit
   // ...
 }

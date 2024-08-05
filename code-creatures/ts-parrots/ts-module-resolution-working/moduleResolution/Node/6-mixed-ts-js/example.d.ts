@@ -1,1 +1,1 @@
-export declare function Mixed(): "ts";
+export declare function Mixed(): 'ts'

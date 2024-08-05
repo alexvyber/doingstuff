@@ -1,1 +1,1 @@
-export declare const value: "index";
+export declare const value: 'index'

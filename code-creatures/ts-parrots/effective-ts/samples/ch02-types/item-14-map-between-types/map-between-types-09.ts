@@ -1,11 +1,11 @@
 interface State {
-  userId: string;
-  pageTitle: string;
-  recentFiles: string[];
-  pageContents: string;
+  userId: string
+  pageTitle: string
+  recentFiles: string[]
+  pageContents: string
 }
 interface TopNavState {
-  userId: string;
-  pageTitle: string;
-  recentFiles: string[];
+  userId: string
+  pageTitle: string
+  recentFiles: string[]
 }

@@ -1,5 +1,5 @@
 interface ABC {
-  a: string;
-  b: string;
-  c: number;
+  a: string
+  b: string
+  c: number
 }

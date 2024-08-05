@@ -2,5 +2,5 @@
 import { value } from './target.mjs'
 
 export function ESM() {
-  return value;
+  return value
 }

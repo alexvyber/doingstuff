@@ -1,31 +1,31 @@
 type MagazineInfo = {
-  name: string;
-  author: string;
-  sales: number;
-  international: boolean;
-  price: number;
-  publicationYear: number;
-};
+  name: string
+  author: string
+  sales: number
+  international: boolean
+  price: number
+  publicationYear: number
+}
 
 let magazine: MagazineInfo = {
-  name: "Health unleashed",
-  author: "Muslim Helalee",
+  name: 'Health unleashed',
+  author: 'Muslim Helalee',
   sales: 1111,
   international: true,
   price: 10.99,
   publicationYear: 3123,
-};
+}
 
-console.log(magazine);
+console.log(magazine)
 
-console.log(magazine.author);
-console.log(magazine.name);
+console.log(magazine.author)
+console.log(magazine.name)
 
 type MagazineName = {
-  name: string;
-};
+  name: string
+}
 
-let magazineName: MagazineName = magazine;
-console.log(magazineName);
-console.log(magazineName.name);
-console.log(magazineName.author);
+let magazineName: MagazineName = magazine
+console.log(magazineName)
+console.log(magazineName.name)
+console.log(magazineName.author)

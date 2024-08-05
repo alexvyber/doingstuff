@@ -6,9 +6,9 @@
  * @param {number} num
  */
 function double(num) {
-  return 2 * num;
+  return 2 * num
 }
 
-double("trouble");
+double('trouble')
 // ~~~~~~~~~ Argument of type '"trouble"' is not assignable to
 //           parameter of type 'number'

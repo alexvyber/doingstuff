@@ -1,14 +1,14 @@
-export {};
+export {}
 
 const groupBy = (arr: Record<string, unknown>[], key: string) => {
-  const result = {};
+  const result = {}
   arr.forEach((item) => {
-    const resultKey = item[key];
+    const resultKey = item[key]
     if (result[resultKey]) {
-      result[resultKey].push(item);
+      result[resultKey].push(item)
     } else {
-      result[resultKey] = [item];
+      result[resultKey] = [item]
     }
-  });
-  return result;
-};
+  })
+  return result
+}

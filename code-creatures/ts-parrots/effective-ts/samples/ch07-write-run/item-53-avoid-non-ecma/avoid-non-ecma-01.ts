@@ -4,7 +4,7 @@ enum Flavor {
   STRAWBERRY = 2,
 }
 
-let flavor = Flavor.CHOCOLATE; // Type is Flavor
+let flavor = Flavor.CHOCOLATE // Type is Flavor
 
-Flavor; // Autocomplete shows: VANILLA, CHOCOLATE, STRAWBERRY
-Flavor[0]; // Value is "VANILLA"
+Flavor // Autocomplete shows: VANILLA, CHOCOLATE, STRAWBERRY
+Flavor[0] // Value is "VANILLA"

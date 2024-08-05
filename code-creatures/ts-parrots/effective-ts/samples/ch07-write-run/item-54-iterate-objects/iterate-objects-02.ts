@@ -1,6 +1,6 @@
 const obj = {
   /* ... */
-};
+}
 // const obj: {
 //     one: string;
 //     two: string;

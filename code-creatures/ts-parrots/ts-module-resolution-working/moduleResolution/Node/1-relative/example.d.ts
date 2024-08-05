@@ -1,1 +1,1 @@
-export declare function Relative(): "relative";
+export declare function Relative(): 'relative'

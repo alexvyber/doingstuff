@@ -1,3 +1,3 @@
-declare module "js-pkg" {
-  const value: "js-pkg-types";
+declare module 'js-pkg' {
+  const value: 'js-pkg-types'
 }

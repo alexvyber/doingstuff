@@ -1,11 +1,11 @@
-import "./style.css";
+import './style.css'
 
 const Loader = () => {
   return (
     <div className="loader">
       <p>Loading…</p>
     </div>
-  );
-};
+  )
+}
 
-export default Loader;
+export default Loader

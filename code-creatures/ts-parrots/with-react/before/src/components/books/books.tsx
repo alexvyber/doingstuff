@@ -1,15 +1,18 @@
-import "./books.css";
+import './books.css'
 
 export const Books = ({ children, count, onSubmit, onChange }: any) => {
   return (
     <section className="book-list gap-8">
       <form
         onSubmit={(e) => {
-          e.preventDefault();
-          onChange(e);
+          e.preventDefault()
+          onChange(e)
         }}
       >
-        <label htmlFor="number-of-books-to-load" className="book-form-label">
+        <label
+          htmlFor="number-of-books-to-load"
+          className="book-form-label"
+        >
           Number of Books to Load
         </label>
         <div className="flex">
@@ -22,14 +25,17 @@ export const Books = ({ children, count, onSubmit, onChange }: any) => {
             value={count}
             onChange={onChange}
           />
-          <button type="submit" className="book-button">
+          <button
+            type="submit"
+            className="book-button"
+          >
             Load Books
           </button>
         </div>
       </form>
       <div className="book-grid">{children}</div>
     </section>
-  );
-};
+  )
+}
 
-export default Books;
+export default Books

@@ -1,23 +1,30 @@
-import { MouseEventHandler, useCallback, useState } from "react";
-import { getPosition } from "../get-pos";
-import { DisplayMousePositionProps } from "./displayMousePosition";
+import { MouseEventHandler, useCallback, useState } from 'react'
+import { getPosition } from '../get-pos'
+import { DisplayMousePositionProps } from './displayMousePosition'
 
-const initialState = { x: 0, y: 0 };
+const initialState = { x: 0, y: 0 }
 
 const withMouseMove =
   <T extends {}>(Component: React.ComponentType<DisplayMousePositionProps>) =>
   (props: Omit<T, keyof DisplayMousePositionProps>) => {
-    const [{ x, y }, setPosition] = useState(initialState);
+    const [{ x, y }, setPosition] = useState(initialState)
 
     const updatePosition = useCallback<MouseEventHandler>(
       (event) => {
-        const { x, y } = getPosition(event);
-        setPosition({ x, y });
+        const { x, y } = getPosition(event)
+        setPosition({ x, y })
       },
-      [setPosition]
-    );
+      [setPosition],
+    )
 
-    return <Component {...(props as T)} x={x} y={y} onMouseMove={updatePosition} />;
-  };
+    return (
+      <Component
+        {...(props as T)}
+        x={x}
+        y={y}
+        onMouseMove={updatePosition}
+      />
+    )
+  }
 
-export default withMouseMove;
+export default withMouseMove

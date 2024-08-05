@@ -1,10 +1,10 @@
 interface Name {
-  name: string;
+  name: string
 }
 
 interface PersonWithBirth extends Name {
-  placeOfBirth: string;
-  dateOfBirth: Date;
+  placeOfBirth: string
+  dateOfBirth: Date
 }
 
-type Person = Name | PersonWithBirth;
+type Person = Name | PersonWithBirth

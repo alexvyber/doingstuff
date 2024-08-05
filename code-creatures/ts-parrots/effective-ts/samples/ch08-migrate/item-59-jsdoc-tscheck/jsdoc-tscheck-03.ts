@@ -1,5 +1,5 @@
 interface UserData {
-  firstName: string;
-  lastName: string;
+  firstName: string
+  lastName: string
 }
-declare let user: UserData;
+declare let user: UserData

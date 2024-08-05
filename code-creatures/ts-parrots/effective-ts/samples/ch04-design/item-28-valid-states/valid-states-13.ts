@@ -1,29 +1,29 @@
 interface RequestPending {
-  state: "pending";
+  state: 'pending'
 }
 interface RequestError {
-  state: "error";
-  error: string;
+  state: 'error'
+  error: string
 }
 interface RequestSuccess {
-  state: "ok";
-  pageText: string;
+  state: 'ok'
+  pageText: string
 }
-type RequestState = RequestPending | RequestError | RequestSuccess;
+type RequestState = RequestPending | RequestError | RequestSuccess
 
 interface State {
-  currentPage: string;
-  requests: { [page: string]: RequestState };
+  currentPage: string
+  requests: { [page: string]: RequestState }
 }
 function getUrlForPage(p: string) {
-  return "";
+  return ''
 }
 interface CockpitControls {
   /** Angle of the left side stick in degrees, 0 = neutral, + = forward */
-  leftSideStick: number;
+  leftSideStick: number
   /** Angle of the right side stick in degrees, 0 = neutral, + = forward */
-  rightSideStick: number;
+  rightSideStick: number
 }
 function getStickSetting(controls: CockpitControls) {
-  return (controls.leftSideStick + controls.rightSideStick) / 2;
+  return (controls.leftSideStick + controls.rightSideStick) / 2
 }

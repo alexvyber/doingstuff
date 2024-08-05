@@ -1,1 +1,1 @@
-export declare const value: "relative";
+export declare const value: 'relative'

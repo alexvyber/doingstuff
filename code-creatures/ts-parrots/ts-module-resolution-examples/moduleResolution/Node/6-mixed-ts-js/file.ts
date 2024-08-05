@@ -1,1 +1,1 @@
-export const value = "ts" as const;
+export const value = 'ts' as const

@@ -1,1 +1,1 @@
-export declare const value: "target-cjs";
+export declare const value: 'target-cjs'

@@ -1,1 +1,1 @@
-export declare function CJS(): "target-cjs";
+export declare function CJS(): 'target-cjs'

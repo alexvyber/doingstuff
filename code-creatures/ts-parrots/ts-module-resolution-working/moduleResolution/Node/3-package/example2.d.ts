@@ -1,1 +1,1 @@
-export declare function Package2(): ".ts";
+export declare function Package2(): '.ts'

@@ -1,32 +1,35 @@
-import { MouseEventHandler, useCallback, useReducer } from "react";
-import { getPosition } from "./get-pos";
-import "./style.css";
+import { MouseEventHandler, useCallback, useReducer } from 'react'
+import { getPosition } from './get-pos'
+import './style.css'
 
-const initialState = { x: 0, y: 0 };
+const initialState = { x: 0, y: 0 }
 
 type UpdatePositionAction = {
-  type: "updatePosition";
-  payload: Partial<typeof initialState>;
-};
+  type: 'updatePosition'
+  payload: Partial<typeof initialState>
+}
 
 const reducer = (state = { x: 0, y: 0 }, action: UpdatePositionAction) => {
-  if (action.type === "updatePosition") {
-    return { ...state, ...action.payload };
+  if (action.type === 'updatePosition') {
+    return { ...state, ...action.payload }
   }
 
-  return state;
-};
+  return state
+}
 
 const MousePosition = () => {
-  const [{ x, y }, dispatch] = useReducer(reducer, initialState);
+  const [{ x, y }, dispatch] = useReducer(reducer, initialState)
 
   const updatePosition = useCallback<MouseEventHandler>(
-    (event) => dispatch({ type: "updatePosition", payload: getPosition(event) }),
-    [dispatch]
-  );
+    (event) => dispatch({ type: 'updatePosition', payload: getPosition(event) }),
+    [dispatch],
+  )
 
   return (
-    <div className="relative-container" onMouseMove={updatePosition}>
+    <div
+      className="relative-container"
+      onMouseMove={updatePosition}
+    >
       <section className="absolute-section">
         <p className="paragraph">
           <span className="bold-span">X</span>: {x}
@@ -36,7 +39,7 @@ const MousePosition = () => {
         </p>
       </section>
     </div>
-  );
-};
+  )
+}
 
-export default MousePosition;
+export default MousePosition

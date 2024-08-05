@@ -1,4 +1,4 @@
-const xs = [1, 2, 3];
+const xs = [1, 2, 3]
 for (const x of xs) {
-  x; // Type is number
+  x // Type is number
 }

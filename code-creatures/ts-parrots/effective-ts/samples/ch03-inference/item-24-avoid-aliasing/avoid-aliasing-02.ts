@@ -1,15 +1,15 @@
 interface Coordinate {
-  x: number;
-  y: number;
+  x: number
+  y: number
 }
 
 interface BoundingBox {
-  x: [number, number];
-  y: [number, number];
+  x: [number, number]
+  y: [number, number]
 }
 
 interface Polygon {
-  exterior: Coordinate[];
-  holes: Coordinate[][];
-  bbox?: BoundingBox;
+  exterior: Coordinate[]
+  holes: Coordinate[][]
+  bbox?: BoundingBox
 }

@@ -1,25 +1,25 @@
 interface Foo {
-  foo: string;
+  foo: string
 }
 interface Bar {
-  bar: string;
+  bar: string
 }
-declare function expressionReturningFoo(): Foo;
+declare function expressionReturningFoo(): Foo
 function processBar(b: Bar) {
   /* ... */
 }
 interface Config {
-  a: number;
-  b: number;
+  a: number
+  b: number
   c: {
-    key: Foo;
-  };
+    key: Foo
+  }
 }
-declare const value: Bar;
+declare const value: Bar
 const config: Config = {
   a: 1,
   b: 2,
   c: {
     key: value,
   },
-} as any; // Don't do this!
+} as any // Don't do this!

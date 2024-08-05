@@ -1,6 +1,6 @@
 interface MonkeyDocument extends Document {
   /** Genus or species of monkey patch */
-  monkey: string;
+  monkey: string
 }
 
-(document as MonkeyDocument).monkey = "Macaque";
+;(document as MonkeyDocument).monkey = 'Macaque'

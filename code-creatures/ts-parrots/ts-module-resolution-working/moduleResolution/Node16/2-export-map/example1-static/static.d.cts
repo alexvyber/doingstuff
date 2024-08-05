@@ -1,1 +1,1 @@
-export declare function Static(): "cjs";
+export declare function Static(): 'cjs'

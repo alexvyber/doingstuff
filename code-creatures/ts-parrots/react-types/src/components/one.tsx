@@ -1,7 +1,7 @@
-import * as React from "react";
+import * as React from 'react'
 
-type Props = React.PropsWithChildren;
-type PropsTwo = React.ComponentProps<"div">;
+type Props = React.PropsWithChildren
+type PropsTwo = React.ComponentProps<'div'>
 
 // Primitive types
 // ReactNode
@@ -18,11 +18,11 @@ type ImportantTypes = [
   React.ReactFragment,
   React.ReactPortal,
   JSX.Element,
-  React.ComponentProps<"button">,
-];
+  React.ComponentProps<'button'>,
+]
 
-export const One = (props: Props) => <div>{props.children}</div>;
-export const Two = ({ children, ...props }: PropsTwo) => <div {...props}>{children}</div>;
+export const One = (props: Props) => <div>{props.children}</div>
+export const Two = ({ children, ...props }: PropsTwo) => <div {...props}>{children}</div>
 
 const ReactNodeDiv = (): React.ReactNode => {
   // return 12
@@ -41,19 +41,19 @@ const ReactNodeDiv = (): React.ReactNode => {
   // return JSXElementDiv()
 
   return {
-    type: "div",
+    type: 'div',
     props: {},
     children: [],
     key: null,
-  };
-};
+  }
+}
 
 const ReactNodeDivObj: React.ReactNode = {
-  type: "div",
+  type: 'div',
   props: {},
   children: [],
   key: null,
-};
+}
 
 const JSXElementDiv = (): JSX.Element => {
   // return 12 // Not assignable
@@ -63,45 +63,45 @@ const JSXElementDiv = (): JSX.Element => {
   // return undefined // Not assignable
 
   return {
-    type: "div",
+    type: 'div',
     props: { children: [<div>asdfasdfasdf</div>] },
     key: null,
-  };
-};
+  }
+}
 
-const asdf: JSX.Element = <></>;
+const asdf: JSX.Element = <></>
 
 const Three = (props: { node: React.ReactNode }): JSX.Element | null => {
-  return Math.random() > 0.5 ? <div>{props.node}</div> : null;
-};
+  return Math.random() > 0.5 ? <div>{props.node}</div> : null
+}
 
 const Four = (props: React.PropsWithChildren): React.ReactElement | null => {
-  return Math.random() > 0.5 ? <div>{props.children}</div> : null;
-};
+  return Math.random() > 0.5 ? <div>{props.children}</div> : null
+}
 
 const Five = (): JSX.Element | null => {
-  return Math.random() > 0.5 ? Math.random() > 0.5 ? <React.Fragment></React.Fragment> : <></> : null;
-};
+  return Math.random() > 0.5 ? Math.random() > 0.5 ? <React.Fragment></React.Fragment> : <></> : null
+}
 
-const NotCallableReactNode = (() => <></>) as () => React.ReactNode;
-const CallableJSXElement = (() => <></>) as () => JSX.Element;
+const NotCallableReactNode = (() => <></>) as () => React.ReactNode
+const CallableJSXElement = (() => <></>) as () => JSX.Element
 
-const slot: React.ReactNode = {} as JSX.Element;
-const slot1: React.ReactNode = {} as React.ReactElement;
-const slot2: React.ReactElement = {} as JSX.Element;
-const slot3: React.ReactElement = {} as React.ReactPortal;
+const slot: React.ReactNode = {} as JSX.Element
+const slot1: React.ReactNode = {} as React.ReactElement
+const slot2: React.ReactElement = {} as JSX.Element
+const slot3: React.ReactElement = {} as React.ReactPortal
 
 // @ts-expect-error
-const slot4: React.ReactElement = {} as React.ReactFragment;
-const slot5: React.ReactNode = {} as React.ReactFragment;
-const slot6: React.ReactNode = [];
-const slot7: React.ReactNode = [] as Array<React.ReactNode | React.ReactElement | JSX.Element>;
+const slot4: React.ReactElement = {} as React.ReactFragment
+const slot5: React.ReactNode = {} as React.ReactFragment
+const slot6: React.ReactNode = []
+const slot7: React.ReactNode = [] as Array<React.ReactNode | React.ReactElement | JSX.Element>
 
 export const Parent = () => (
   <div>
     <One />
     <Two />
-    {React.createElement(One, { children: "some" }, [<React.Fragment key="asdf">asdfasdf</React.Fragment>])}
+    {React.createElement(One, { children: 'some' }, [<React.Fragment key="asdf">asdfasdf</React.Fragment>])}
     {/* @ts-expect-error */}
     <NotCallableReactNode />
 
@@ -120,4 +120,4 @@ export const Parent = () => (
     {/* {React.createElement("div", {}, [ReactNodeDiv])} */}
     {/* <div>{[ReactNodeDivObj]}</div> */}
   </div>
-);
+)

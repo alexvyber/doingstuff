@@ -1,17 +1,17 @@
 interface RequestPending {
-  state: "pending";
+  state: 'pending'
 }
 interface RequestError {
-  state: "error";
-  error: string;
+  state: 'error'
+  error: string
 }
 interface RequestSuccess {
-  state: "ok";
-  pageText: string;
+  state: 'ok'
+  pageText: string
 }
-type RequestState = RequestPending | RequestError | RequestSuccess;
+type RequestState = RequestPending | RequestError | RequestSuccess
 
 interface State {
-  currentPage: string;
-  requests: { [page: string]: RequestState };
+  currentPage: string
+  requests: { [page: string]: RequestState }
 }

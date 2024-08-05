@@ -1,5 +1,5 @@
-import { value } from 'js-pkg';
+import { value } from 'js-pkg'
 
 export function TypeRoots() {
-  return value;
+  return value
 }

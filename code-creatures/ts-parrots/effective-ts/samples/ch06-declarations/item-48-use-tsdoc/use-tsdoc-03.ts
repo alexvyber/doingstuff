@@ -5,5 +5,5 @@
  * @returns A greeting formatted for human consumption.
  */
 function greetFullTSDoc(name: string, title: string) {
-  return `Hello ${title} ${name}`;
+  return `Hello ${title} ${name}`
 }

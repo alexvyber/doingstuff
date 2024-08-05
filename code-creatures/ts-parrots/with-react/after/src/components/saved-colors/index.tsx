@@ -1,28 +1,28 @@
-import { useState } from "react"; // Importing useState from React
-import id from "lodash.uniqueid"; // Importing the lodash.uniqueid function to generate unique IDs
-import AddSavedColor from "./add-saved-color"; // Importing the AddSavedColor component
-import SavedColor from "./saved-color"; // Importing the SavedColor component
+import { useState } from 'react' // Importing useState from React
+import id from 'lodash.uniqueid' // Importing the lodash.uniqueid function to generate unique IDs
+import AddSavedColor from './add-saved-color' // Importing the AddSavedColor component
+import SavedColor from './saved-color' // Importing the SavedColor component
 
 // Inline CSS styles for the container element
 const containerStyle: React.CSSProperties = {
-  display: "flex",
-  flexDirection: "column",
-  width: "100%",
-  gap: "1rem",
-};
+  display: 'flex',
+  flexDirection: 'column',
+  width: '100%',
+  gap: '1rem',
+}
 
 type SavedColorsProps = {
-  hexColor: string;
-};
+  hexColor: string
+}
 
 // Initial saved colors data
 const saved_colors = [
-  { id: id(), name: "Rosy Brown", hexColor: "#BC8F8F" },
-  { id: id(), name: "Royal Blue", hexColor: "#4169E1" },
-];
+  { id: id(), name: 'Rosy Brown', hexColor: '#BC8F8F' },
+  { id: id(), name: 'Royal Blue', hexColor: '#4169E1' },
+]
 
 const SavedColors = ({ hexColor }: SavedColorsProps) => {
-  const [savedColors, setSavedColors] = useState(saved_colors);
+  const [savedColors, setSavedColors] = useState(saved_colors)
 
   return (
     <section style={containerStyle}>
@@ -39,10 +39,10 @@ const SavedColors = ({ hexColor }: SavedColorsProps) => {
             hexColor={hexColor}
             onRemove={() => setSavedColors((colors) => colors.filter((color) => color.id !== id))}
           />
-        );
+        )
       })}
     </section>
-  );
-};
+  )
+}
 
-export default SavedColors;
+export default SavedColors

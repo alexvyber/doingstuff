@@ -1,15 +1,18 @@
-import "../style.css";
-import { MouseEventHandler } from "react";
+import '../style.css'
+import { MouseEventHandler } from 'react'
 
 export type DisplayMousePositionProps = {
-  x: number;
-  y: number;
-  onMouseMove: MouseEventHandler;
-};
+  x: number
+  y: number
+  onMouseMove: MouseEventHandler
+}
 
 export const DisplayMousePosition = ({ x, y, onMouseMove }: DisplayMousePositionProps) => {
   return (
-    <div className="relative-container" onMouseMove={onMouseMove}>
+    <div
+      className="relative-container"
+      onMouseMove={onMouseMove}
+    >
       <section className="absolute-section">
         <p>
           <span className="bold-span">X</span>: {x}
@@ -19,5 +22,5 @@ export const DisplayMousePosition = ({ x, y, onMouseMove }: DisplayMousePosition
         </p>
       </section>
     </div>
-  );
-};
+  )
+}

@@ -1,8 +1,8 @@
 interface Person {
-  firstName: string;
-  lastName: string;
+  firstName: string
+  lastName: string
 }
 
 interface PersonWithBirthDate extends Person {
-  birth: Date;
+  birth: Date
 }

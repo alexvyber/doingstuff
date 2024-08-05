@@ -1,9 +1,9 @@
 interface State {
-  pageText: string;
-  isLoading: boolean;
-  error?: string;
+  pageText: string
+  isLoading: boolean
+  error?: string
 }
-declare let currentPage: string;
+declare let currentPage: string
 function getUrlForPage(p: string) {
-  return "";
+  return ''
 }

@@ -1,15 +1,15 @@
 function arraySum(arr: number[]) {
   let sum = 0,
-    num;
+    num
   while ((num = arr.pop()) !== undefined) {
-    sum += num;
+    sum += num
   }
-  return sum;
+  return sum
 }
 function printTriangles(n: number) {
-  const nums = [];
+  const nums = []
   for (let i = 0; i < n; i++) {
-    nums.push(i);
-    console.log(arraySum(nums));
+    nums.push(i)
+    console.log(arraySum(nums))
   }
 }

@@ -1,4 +1,4 @@
-type Language = "JavaScript" | "TypeScript" | "Python";
+type Language = 'JavaScript' | 'TypeScript' | 'Python'
 function setLanguage(language: Language) {
   /* ... */
 }
@@ -6,5 +6,5 @@ function setLanguage(language: Language) {
 function panTo(where: [number, number]) {
   /* ... */
 }
-const loc: [number, number] = [10, 20];
-panTo(loc); // OK
+const loc: [number, number] = [10, 20]
+panTo(loc) // OK

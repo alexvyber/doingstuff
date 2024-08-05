@@ -1,4 +1,4 @@
 interface Person {
-  first: string;
-  last: string;
+  first: string
+  last: string
 }

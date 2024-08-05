@@ -1,20 +1,20 @@
 interface Coordinate {
-  x: number;
-  y: number;
+  x: number
+  y: number
 }
 
 interface BoundingBox {
-  x: [number, number];
-  y: [number, number];
+  x: [number, number]
+  y: [number, number]
 }
 
 interface Polygon {
-  exterior: Coordinate[];
-  holes: Coordinate[][];
-  bbox?: BoundingBox;
+  exterior: Coordinate[]
+  holes: Coordinate[][]
+  bbox?: BoundingBox
 }
 function isPointInPolygon(polygon: Polygon, pt: Coordinate) {
-  const box = polygon.bbox;
+  const box = polygon.bbox
   if (polygon.bbox) {
     if (
       pt.x < box.x[0] ||
@@ -24,7 +24,7 @@ function isPointInPolygon(polygon: Polygon, pt: Coordinate) {
       pt.y > box.y[1]
     ) {
       //     ~~~                ~~~  Object is possibly 'undefined'
-      return false;
+      return false
     }
   }
   // ...

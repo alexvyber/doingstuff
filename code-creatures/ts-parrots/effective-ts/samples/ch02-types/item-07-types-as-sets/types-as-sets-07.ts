@@ -1,3 +1,3 @@
 interface Identified {
-  id: string;
+  id: string
 }

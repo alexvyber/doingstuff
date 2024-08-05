@@ -1,10 +1,10 @@
 module.exports = {
   semi: false,
-  arrowParens: "avoid",
+  arrowParens: 'avoid',
   tabWidth: 2,
   useTabs: false,
-  trailingComma: "all",
+  trailingComma: 'all',
   bracketSameLine: true,
-  ...require("@theguild/prettier-config"),
+  ...require('@theguild/prettier-config'),
   singleQuote: false,
-};
+}

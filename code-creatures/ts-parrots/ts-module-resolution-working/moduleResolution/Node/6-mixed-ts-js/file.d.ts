@@ -1,1 +1,1 @@
-export declare const value: "ts";
+export declare const value: 'ts'

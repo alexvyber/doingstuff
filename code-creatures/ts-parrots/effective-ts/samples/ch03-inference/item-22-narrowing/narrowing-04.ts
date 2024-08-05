@@ -1,14 +1,14 @@
 interface A {
-  a: number;
+  a: number
 }
 interface B {
-  b: number;
+  b: number
 }
 function pickAB(ab: A | B) {
-  if ("a" in ab) {
-    ab; // Type is A
+  if ('a' in ab) {
+    ab // Type is A
   } else {
-    ab; // Type is B
+    ab // Type is B
   }
-  ab; // Type is A | B
+  ab // Type is A | B
 }

@@ -1,7 +1,7 @@
-declare function makeButton(props: { text: string; onClick: () => void }): void;
+declare function makeButton(props: { text: string; onClick: () => void }): void
 function addKeyListener(el: HTMLElement, fn: (this: HTMLElement, e: KeyboardEvent) => void) {
-  el.addEventListener("keydown", (e) => {
-    fn(el, e);
+  el.addEventListener('keydown', (e) => {
+    fn(el, e)
     // ~ Expected 1 arguments, but got 2
-  });
+  })
 }

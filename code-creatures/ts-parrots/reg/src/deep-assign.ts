@@ -1,24 +1,24 @@
 let a = {
-  msg: "hello",
+  msg: 'hello',
   list: [
-    "apple",
-    "oranage",
-    "banana",
+    'apple',
+    'oranage',
+    'banana',
     {
       car: {
-        city: ["London", "Newcastle"],
+        city: ['London', 'Newcastle'],
       },
     },
   ], // []
   test() {
-    console.log("TEST FUNC");
+    console.log('TEST FUNC')
   },
   empty: null,
-};
+}
 
-let b = { name: "obj. B" };
+let b = { name: 'obj. B' }
 
-type SomeObj = { [key: string]: any };
+type SomeObj = { [key: string]: any }
 
 function deepAssign(target: SomeObj, source: SomeObj) {
   // JS checks
@@ -28,25 +28,25 @@ function deepAssign(target: SomeObj, source: SomeObj) {
   //   throw "illegal 2nd arg. value"
 
   for (const key in source) {
-    if (!(source[key] != null && typeof source[key] === "object")) {
-      target[key] = source[key];
+    if (!(source[key] != null && typeof source[key] === 'object')) {
+      target[key] = source[key]
     }
 
     if (Array.isArray(source[key])) {
-      target[key] = [];
+      target[key] = []
     } else {
-      target[key] = {};
+      target[key] = {}
     }
 
-    deepAssign(target[key], source[key]);
+    deepAssign(target[key], source[key])
   }
 
-  return target;
+  return target
 }
 
-deepAssign({}, {});
+deepAssign({}, {})
 
-deepAssign(b, a);
+deepAssign(b, a)
 
-console.log("🚀 ~ a", a);
-console.log("🚀 ~ b", b);
+console.log('🚀 ~ a', a)
+console.log('🚀 ~ b', b)

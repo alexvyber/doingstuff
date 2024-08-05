@@ -1,54 +1,54 @@
-export {};
+export {}
 
 interface Product {
-  name: string;
-  price: number;
+  name: string
+  price: number
 }
 
 interface Product {
-  rating: number;
-  sales: number;
+  rating: number
+  sales: number
 }
 
 const course: Product = {
-  name: "TS",
+  name: 'TS',
   price: 10.99,
   rating: 4.6,
   sales: 1111,
-};
+}
 
 interface Product {
-  name: string;
-  price: number;
+  name: string
+  price: number
 }
 
 interface Product {
   // price: string
 
-  rating: number;
-  sales: number;
+  rating: number
+  sales: number
 }
 
 const course_: Product = {
-  name: "TS",
+  name: 'TS',
   price: 10.99,
   rating: 4.6,
   sales: 1111,
-};
+}
 
 interface Product {
-  name: string;
-  price: number;
+  name: string
+  price: number
 }
 
 const course__: Product = {
-  name: "TS",
+  name: 'TS',
   price: 10.99,
   rating: 4.6,
   sales: 1111,
-};
+}
 
 interface Product {
-  rating: number;
-  sales: number;
+  rating: number
+  sales: number
 }

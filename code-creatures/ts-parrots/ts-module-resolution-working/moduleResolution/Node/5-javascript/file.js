@@ -1,4 +1,4 @@
 /**
  * @type {string | boolean}
  */
-export const value = "js";
+export const value = 'js'

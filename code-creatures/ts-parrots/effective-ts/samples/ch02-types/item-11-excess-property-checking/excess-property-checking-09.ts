@@ -1,5 +1,5 @@
 interface Options {
-  darkMode?: boolean;
-  [otherOptions: string]: unknown;
+  darkMode?: boolean
+  [otherOptions: string]: unknown
 }
-const o: Options = { darkmode: true }; // OK
+const o: Options = { darkmode: true } // OK

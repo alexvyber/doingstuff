@@ -1,1 +1,1 @@
-export const value = "relative" as const;
+export const value = 'relative' as const

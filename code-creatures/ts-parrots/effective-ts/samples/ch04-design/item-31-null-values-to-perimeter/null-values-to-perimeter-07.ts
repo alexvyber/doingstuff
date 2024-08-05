@@ -1,8 +1,8 @@
 interface UserInfo {
-  name: string;
+  name: string
 }
 interface Post {
-  post: string;
+  post: string
 }
-declare function fetchUser(userId: string): Promise<UserInfo>;
-declare function fetchPostsForUser(userId: string): Promise<Post[]>;
+declare function fetchUser(userId: string): Promise<UserInfo>
+declare function fetchPostsForUser(userId: string): Promise<Post[]>

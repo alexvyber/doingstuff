@@ -1,1 +1,1 @@
-export declare function Dynamic(): Promise<"esm">;
+export declare function Dynamic(): Promise<'esm'>

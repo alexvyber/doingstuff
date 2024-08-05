@@ -1,7 +1,7 @@
 interface Person {
-  name: string;
+  name: string
 }
 interface PersonSpan extends Person {
-  birth: Date;
-  death?: Date;
+  birth: Date
+  death?: Date
 }

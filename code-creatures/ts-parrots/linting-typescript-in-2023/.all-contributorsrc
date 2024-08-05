@@ -7,24 +7,18 @@
       "name": "Vim",
       "avatar_url": "https://avatars.githubusercontent.com/u/86254807?v=4",
       "profile": "https://github.com/vim-usds",
-      "contributions": [
-        "doc"
-      ]
+      "contributions": ["doc"]
     },
     {
       "login": "janosorcsik",
       "name": "János Orcsik",
       "avatar_url": "https://avatars.githubusercontent.com/u/4984853?v=4",
       "profile": "https://github.com/janosorcsik",
-      "contributions": [
-        "doc"
-      ]
+      "contributions": ["doc"]
     }
   ],
   "contributorsPerLine": 7,
-  "files": [
-    "README.md"
-  ],
+  "files": ["README.md"],
   "imageSize": 100,
   "projectName": "linting-typescript-in-2023",
   "projectOwner": "JoshuaKGoldberg",

@@ -8,19 +8,19 @@ var data = {
     two: {
       three: {
         four: {
-          str: "some",
+          str: 'some',
           num: 1,
         },
       },
     },
   },
-};
+}
 
-var one = data.one;
+var one = data.one
 
 // const {
 //   one: { two },
 // }: Partial<typeof data> = data;
 
-var three = data.one.two.three;
-var strAlias = data.one.two.three.four.str;
+var three = data.one.two.three
+var strAlias = data.one.two.three.four.str

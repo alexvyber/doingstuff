@@ -1,6 +1,6 @@
 class Diary {
-  private secret = "cheated on my English test";
+  private secret = 'cheated on my English test'
 }
 
-const diary = new Diary();
-(diary as any).secret; // OK
+const diary = new Diary()
+;(diary as any).secret // OK

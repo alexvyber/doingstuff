@@ -1,9 +1,9 @@
 interface Vector1D {
-  x: number;
+  x: number
 }
 interface Vector2D extends Vector1D {
-  y: number;
+  y: number
 }
 interface Vector3D extends Vector2D {
-  z: number;
+  z: number
 }

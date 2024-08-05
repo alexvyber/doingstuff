@@ -1,9 +1,9 @@
-let val; // Type is any
+let val // Type is any
 if (Math.random() < 0.5) {
-  val = /hello/;
-  val; // Type is RegExp
+  val = /hello/
+  val // Type is RegExp
 } else {
-  val = 12;
-  val; // Type is number
+  val = 12
+  val // Type is number
 }
-val; // Type is number | RegExp
+val // Type is number | RegExp

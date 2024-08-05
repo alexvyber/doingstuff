@@ -1,10 +1,10 @@
 function somethingDangerous() {}
-let val = null; // Type is any
+let val = null // Type is any
 try {
-  somethingDangerous();
-  val = 12;
-  val; // Type is number
+  somethingDangerous()
+  val = 12
+  val // Type is number
 } catch (e) {
-  console.warn("alas!");
+  console.warn('alas!')
 }
-val; // Type is number | null
+val // Type is number | null

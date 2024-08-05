@@ -1,3 +1,3 @@
 // @ts-check
-console.log(user.firstName);
+console.log(user.firstName)
 // ~~~~ Cannot find name 'user'

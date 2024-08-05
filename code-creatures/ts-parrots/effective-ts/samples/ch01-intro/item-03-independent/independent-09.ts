@@ -3,20 +3,20 @@ function turnLightOff() {}
 function setLightSwitch(value: boolean) {
   switch (value) {
     case true:
-      turnLightOn();
-      break;
+      turnLightOn()
+      break
     case false:
-      turnLightOff();
-      break;
+      turnLightOff()
+      break
     default:
-      console.log(`I'm afraid I can't do that.`);
+      console.log(`I'm afraid I can't do that.`)
   }
 }
 interface LightApiResponse {
-  lightSwitchValue: boolean;
+  lightSwitchValue: boolean
 }
 async function setLight() {
-  const response = await fetch("/light");
-  const result: LightApiResponse = await response.json();
-  setLightSwitch(result.lightSwitchValue);
+  const response = await fetch('/light')
+  const result: LightApiResponse = await response.json()
+  setLightSwitch(result.lightSwitchValue)
 }

@@ -1,2 +1,2 @@
-declare let obj: { props: { a: string; b: number } };
-const { a = "default" } = obj.props;
+declare let obj: { props: { a: string; b: number } }
+const { a = 'default' } = obj.props

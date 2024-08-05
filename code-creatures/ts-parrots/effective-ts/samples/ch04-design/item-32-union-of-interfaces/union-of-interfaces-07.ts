@@ -1,6 +1,6 @@
 interface Person {
-  name: string;
+  name: string
   // These will either both be present or not be present
-  placeOfBirth?: string;
-  dateOfBirth?: Date;
+  placeOfBirth?: string
+  dateOfBirth?: Date
 }

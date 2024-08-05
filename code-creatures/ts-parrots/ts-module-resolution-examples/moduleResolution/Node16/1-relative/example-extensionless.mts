@@ -2,5 +2,5 @@
 import { value } from './target'
 
 export function Extensionless() {
-  return value;
+  return value
 }

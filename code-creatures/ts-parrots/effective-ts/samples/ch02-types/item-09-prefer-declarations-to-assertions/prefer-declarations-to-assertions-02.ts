@@ -1,7 +1,7 @@
 interface Person {
-  name: string;
+  name: string
 }
-const alice: Person = {};
+const alice: Person = {}
 // ~~~~~ Property 'name' is missing in type '{}'
 //       but required in type 'Person'
-const bob = {} as Person; // No error
+const bob = {} as Person // No error

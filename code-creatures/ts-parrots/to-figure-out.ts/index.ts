@@ -1,85 +1,85 @@
 type Period = {
-  label: string;
-  dateTime: number;
-};
+  label: string
+  dateTime: number
+}
 
 type Some = {
-  start: string | Period;
-  end: string | Period;
-};
+  start: string | Period
+  end: string | Period
+}
 
 type Role = Prettify<
   {
-    company: string;
-    title: string;
-    logo: any;
+    company: string
+    title: string
+    logo: any
   } & Some
->;
+>
 
 const role: Role = {
-  company: "Gate Express",
-  title: "CEO",
-  logo: "logoPlanetaria",
-  start: "September 2022",
+  company: 'Gate Express',
+  title: 'CEO',
+  logo: 'logoPlanetaria',
+  start: 'September 2022',
   end: {
-    label: "May 2023",
+    label: 'May 2023',
     dateTime: new Date().getFullYear(),
   },
-};
+}
 
 const role2: Role = {
-  company: "Gate Express",
-  title: "CEO",
-  logo: "logoPlanetaria",
+  company: 'Gate Express',
+  title: 'CEO',
+  logo: 'logoPlanetaria',
   start: {
-    label: "May 2023",
+    label: 'May 2023',
     dateTime: new Date().getFullYear(),
   },
-  end: "September 2022",
-};
+  end: 'September 2022',
+}
 
-if (isRoleWithExtendedPeriod(role, "start")) {
-  role.start;
+if (isRoleWithExtendedPeriod(role, 'start')) {
+  role.start
   // role.end
 }
 
-if (isRoleWithExtendedPeriod(role2, "start")) {
-  role2.start;
+if (isRoleWithExtendedPeriod(role2, 'start')) {
+  role2.start
   // role2.end
 }
 
-if (isRoleWithExtendedPeriod(role, "end")) {
+if (isRoleWithExtendedPeriod(role, 'end')) {
   // role.start
-  role.end;
+  role.end
 }
 
-if (isRoleWithExtendedPeriod(role2, "end")) {
+if (isRoleWithExtendedPeriod(role2, 'end')) {
   // role2.start
-  role2.end;
+  role2.end
 }
 
 type Obj = {
-  some: "str";
-  ohter: 123;
-};
+  some: 'str'
+  ohter: 123
+}
 
-type Res = ReplaceKeyTypes<Role, "start", Period>;
+type Res = ReplaceKeyTypes<Role, 'start', Period>
 // ReplaceKeyTypes<R, Field, Period>
 
 function isRoleWithExtendedPeriod<R extends Role, Field extends keyof Some & keyof R>(
   role: R,
-  field: Field
+  field: Field,
 ): role is Prettify<
   R & {
-    company: string;
-    title: string;
-    logo: any;
+    company: string
+    title: string
+    logo: any
   } & {
-    [key in Field]: Period; // string
+    [key in Field]: Period // string
     // end: string | Period
   }
 > {
-  return typeof role[field] === "object";
+  return typeof role[field] === 'object'
 }
 
 // <ol className="mt-6 space-y-4">

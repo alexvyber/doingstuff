@@ -1,14 +1,14 @@
-import withMouseMove from "./components/hoc/withPosition";
-import "./App.css";
-import { DisplayMousePosition } from "./components/hoc/displayMousePosition";
+import withMouseMove from './components/hoc/withPosition'
+import './App.css'
+import { DisplayMousePosition } from './components/hoc/displayMousePosition'
 
 function App() {
-  const Wrapper = withMouseMove(DisplayMousePosition);
+  const Wrapper = withMouseMove(DisplayMousePosition)
   return (
     <div className="container">
       <Wrapper />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

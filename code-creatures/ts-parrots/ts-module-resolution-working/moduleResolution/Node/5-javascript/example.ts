@@ -1,5 +1,5 @@
-import { value } from "./file";
+import { value } from './file'
 
 export function JavaScriptImport() {
-  return value;
+  return value
 }

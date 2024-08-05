@@ -1,4 +1,4 @@
-import { Worker, isMainThread, parentPort, workerData } from "node:worker_threads";
+import { Worker, isMainThread, parentPort, workerData } from 'node:worker_threads'
 // console.time("time");
 // let output: string = "";
 // for (let i = 0; i < 1000_000; i++) {
@@ -9,51 +9,51 @@ import { Worker, isMainThread, parentPort, workerData } from "node:worker_thread
 // console.log(output);
 // console.timeEnd("time");
 
-const THREAD_COUNT = 16;
-const numberOfLines = 100;
+const THREAD_COUNT = 16
+const numberOfLines = 100
 
-const linesPerWorker = Math.floor(numberOfLines / THREAD_COUNT);
+const linesPerWorker = Math.floor(numberOfLines / THREAD_COUNT)
 
 type Msg = {
-  type: "done" | "data";
-  data: any;
-  workerID: number;
-};
+  type: 'done' | 'data'
+  data: any
+  workerID: number
+}
 
-let workerID = 0;
+let workerID = 0
 
 if (isMainThread) {
-  const strArr: string[] = new Array(16);
-  let inFlight = THREAD_COUNT;
-  let count = 0;
+  const strArr: string[] = new Array(16)
+  let inFlight = THREAD_COUNT
+  let count = 0
 
   for (let i = 0; i < THREAD_COUNT; i++) {
     const worker = new Worker(__filename, {
       workerData: { start: linesPerWorker * workerID, workerID: ++workerID },
-    });
+    })
 
-    worker.on("message", (msg: Msg) => {
-      if (msg.type === "done") {
-        console.log(msg.data);
+    worker.on('message', (msg: Msg) => {
+      if (msg.type === 'done') {
+        console.log(msg.data)
       }
-    });
+    })
   }
 } else {
-  let str = "";
+  let str = ''
   for (let i = workerData.start; i < workerData.start + linesPerWorker; i++) {
-    str += i + "\n";
+    str += i + '\n'
   }
 
   // @ts-ignore
   parentPort.postMessage({
-    type: "done",
+    type: 'done',
     data: str,
     workerID: workerData.workerID,
-  } satisfies Msg);
+  } satisfies Msg)
 }
 
 function assertParentPort(
-  port: import("worker_threads").MessagePort | null
-): asserts port is import("worker_threads").MessagePort {
-  if (port === null) throw new Error("aaaaaaaa");
+  port: import('worker_threads').MessagePort | null,
+): asserts port is import('worker_threads').MessagePort {
+  if (port === null) throw new Error('aaaaaaaa')
 }

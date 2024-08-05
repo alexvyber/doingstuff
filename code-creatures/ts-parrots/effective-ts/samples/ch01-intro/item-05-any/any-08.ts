@@ -1,3 +1,3 @@
 interface ComponentProps {
-  onSelectItem: (id: number) => void;
+  onSelectItem: (id: number) => void
 }

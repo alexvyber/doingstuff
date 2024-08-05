@@ -1,1 +1,1 @@
-export declare function Static(): "esm";
+export declare function Static(): 'esm'

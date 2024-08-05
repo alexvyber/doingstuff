@@ -1,1 +1,1 @@
-export declare function Extensionless(): any;
+export declare function Extensionless(): any

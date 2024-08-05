@@ -1,1 +1,1 @@
-export const value = "index" as const;
+export const value = 'index' as const

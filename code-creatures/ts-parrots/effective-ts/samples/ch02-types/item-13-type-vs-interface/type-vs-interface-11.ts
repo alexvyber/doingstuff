@@ -1,9 +1,9 @@
 type Input = {
   /* ... */
-};
+}
 type Output = {
   /* ... */
-};
+}
 interface VariableMap {
-  [name: string]: Input | Output;
+  [name: string]: Input | Output
 }

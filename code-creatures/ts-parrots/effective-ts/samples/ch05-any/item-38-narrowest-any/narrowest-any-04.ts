@@ -1,20 +1,20 @@
 interface Foo {
-  foo: string;
+  foo: string
 }
 interface Bar {
-  bar: string;
+  bar: string
 }
-declare function expressionReturningFoo(): Foo;
+declare function expressionReturningFoo(): Foo
 function processBar(b: Bar) {
   /* ... */
 }
 function f1() {
-  const x: any = expressionReturningFoo();
-  processBar(x);
-  return x;
+  const x: any = expressionReturningFoo()
+  processBar(x)
+  return x
 }
 
 function g() {
-  const foo = f1(); // Type is any
-  foo.fooMethod(); // This call is unchecked!
+  const foo = f1() // Type is any
+  foo.fooMethod() // This call is unchecked!
 }

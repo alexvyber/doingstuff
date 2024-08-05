@@ -1,5 +1,5 @@
-import { value } from "pkg";
+import { value } from 'pkg'
 
 export function Package1() {
-  return value;
+  return value
 }

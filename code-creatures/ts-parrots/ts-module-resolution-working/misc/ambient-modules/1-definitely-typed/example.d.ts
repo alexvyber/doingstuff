@@ -1,1 +1,1 @@
-export declare function DefinitelyTyped(): "js-pkg-d-ts";
+export declare function DefinitelyTyped(): 'js-pkg-d-ts'

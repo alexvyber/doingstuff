@@ -1,16 +1,16 @@
 interface Foo {
-  foo: string;
+  foo: string
 }
 interface Bar {
-  bar: string;
+  bar: string
 }
-declare function expressionReturningFoo(): Foo;
+declare function expressionReturningFoo(): Foo
 function processBar(b: Bar) {
   /* ... */
 }
 function f1() {
-  const x = expressionReturningFoo();
+  const x = expressionReturningFoo()
   // @ts-ignore
-  processBar(x);
-  return x;
+  processBar(x)
+  return x
 }

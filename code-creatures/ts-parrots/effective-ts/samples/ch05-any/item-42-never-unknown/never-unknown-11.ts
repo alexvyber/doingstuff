@@ -2,8 +2,8 @@ function parseYAML(yaml: string): any {
   // ...
 }
 interface Foo {
-  foo: string;
+  foo: string
 }
 interface Bar {
-  bar: string;
+  bar: string
 }

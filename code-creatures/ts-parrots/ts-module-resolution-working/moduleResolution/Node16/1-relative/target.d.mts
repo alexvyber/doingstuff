@@ -1,1 +1,1 @@
-export declare const value: "target-esm";
+export declare const value: 'target-esm'

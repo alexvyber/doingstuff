@@ -1,4 +1,4 @@
 interface Person {
-  name: string;
+  name: string
 }
-const el = document.body as unknown as Person; // OK
+const el = document.body as unknown as Person // OK

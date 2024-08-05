@@ -11,9 +11,9 @@
 // }
 
 enum Crops {
-  Barley = "Barley".length,
+  Barley = 'Barley'.length,
   Corn = 2,
   Wheat,
 }
 
-console.log(Crops);
+console.log(Crops)

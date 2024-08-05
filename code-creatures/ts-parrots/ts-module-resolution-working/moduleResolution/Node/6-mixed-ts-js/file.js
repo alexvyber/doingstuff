@@ -1,1 +1,1 @@
-export const value = "js";
+export const value = 'js'

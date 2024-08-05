@@ -1,6 +1,6 @@
 interface Person {
-  first: string;
-  last: string;
+  first: string
+  last: string
 }
 function email(
   {
@@ -10,7 +10,7 @@ function email(
     // ~~~~~~ Duplicate identifier 'string'
     //        Binding element 'string' implicitly has an 'any' type
     body: string,
-  }
+  },
   // ~~~~~~ Duplicate identifier 'string'
   //        Binding element 'string' implicitly has an 'any' type
 ) {

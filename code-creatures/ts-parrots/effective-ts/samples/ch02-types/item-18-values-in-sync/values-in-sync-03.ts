@@ -1,15 +1,15 @@
 interface ScatterProps {
   // The data
-  xs: number[];
-  ys: number[];
+  xs: number[]
+  ys: number[]
 
   // Display
-  xRange: [number, number];
-  yRange: [number, number];
-  color: string;
+  xRange: [number, number]
+  yRange: [number, number]
+  color: string
 
   // Events
-  onClick: (x: number, y: number, index: number) => void;
+  onClick: (x: number, y: number, index: number) => void
 }
 function shouldUpdate(oldProps: ScatterProps, newProps: ScatterProps) {
   return (
@@ -19,5 +19,5 @@ function shouldUpdate(oldProps: ScatterProps, newProps: ScatterProps) {
     oldProps.yRange !== newProps.yRange ||
     oldProps.color !== newProps.color
     // (no check for onClick)
-  );
+  )
 }

@@ -1,11 +1,14 @@
-import "./App.css";
-import { useMousePosition } from "./components/custom-hook/useMousePostition";
+import './App.css'
+import { useMousePosition } from './components/custom-hook/useMousePostition'
 
 function App() {
-  const { x, y, onMouseMove } = useMousePosition();
+  const { x, y, onMouseMove } = useMousePosition()
   return (
     <div className="container">
-      <div className="relative-container" onMouseMove={onMouseMove}>
+      <div
+        className="relative-container"
+        onMouseMove={onMouseMove}
+      >
         <section className="absolute-section">
           <p>
             <span className="bold-span">X</span>: {x}
@@ -16,7 +19,7 @@ function App() {
         </section>
       </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

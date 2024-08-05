@@ -1,1 +1,1 @@
-export declare function ESM(): "target-esm";
+export declare function ESM(): 'target-esm'

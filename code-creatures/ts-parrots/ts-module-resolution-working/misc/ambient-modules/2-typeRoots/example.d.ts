@@ -1,1 +1,1 @@
-export declare function TypeRoots(): "js-pkg-types";
+export declare function TypeRoots(): 'js-pkg-types'

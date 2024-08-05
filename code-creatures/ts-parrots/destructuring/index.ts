@@ -8,25 +8,25 @@ const data = {
     two: {
       three: {
         four: {
-          str: "some",
+          str: 'some',
           num: 1,
         },
       },
     },
   },
-};
+}
 
-const { one } = data;
+const { one } = data
 
 const {
   one: { two },
-}: Partial<typeof data> = data;
+}: Partial<typeof data> = data
 
 const {
   one: {
     two: { three },
   },
-} = data;
+} = data
 
 const {
   one: {
@@ -36,4 +36,4 @@ const {
       },
     },
   },
-} = data;
+} = data

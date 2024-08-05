@@ -6,5 +6,5 @@
  * @param {number} val
  */
 function double(val) {
-  return 2 * val;
+  return 2 * val
 }

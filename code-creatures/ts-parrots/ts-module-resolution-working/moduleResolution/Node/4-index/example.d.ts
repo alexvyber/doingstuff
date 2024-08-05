@@ -1,1 +1,1 @@
-export declare function Index(): "index";
+export declare function Index(): 'index'

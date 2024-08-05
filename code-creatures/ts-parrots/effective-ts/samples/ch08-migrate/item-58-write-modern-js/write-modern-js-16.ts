@@ -1,4 +1,4 @@
-declare let obj: { props: { a: string; b: number } };
+declare let obj: { props: { a: string; b: number } }
 const {
   props: { a, b },
-} = obj;
+} = obj

@@ -1,6 +1,6 @@
 export function getPosition(event: React.MouseEvent<Element, MouseEvent>): {
-  x: number;
-  y: number;
+  x: number
+  y: number
 } {
-  return { x: event.clientX, y: event.clientY };
+  return { x: event.clientX, y: event.clientY }
 }

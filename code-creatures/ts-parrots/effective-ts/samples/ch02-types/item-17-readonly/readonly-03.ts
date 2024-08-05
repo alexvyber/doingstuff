@@ -1,9 +1,9 @@
 function arraySum(arr: readonly number[]) {
   let sum = 0,
-    num;
+    num
   while ((num = arr.pop()) !== undefined) {
     // ~~~ 'pop' does not exist on type 'readonly number[]'
-    sum += num;
+    sum += num
   }
-  return sum;
+  return sum
 }

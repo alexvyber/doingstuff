@@ -1,7 +1,7 @@
 interface Foo {
-  foo: string;
+  foo: string
 }
 interface Bar {
-  bar: string;
+  bar: string
 }
-declare function expressionReturningFoo(): Foo;
+declare function expressionReturningFoo(): Foo

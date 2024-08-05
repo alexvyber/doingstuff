@@ -2,17 +2,17 @@ function parseYAML(yaml: string): any {
   // ...
 }
 interface Book {
-  name: string;
-  author: string;
+  name: string
+  author: string
 }
 function safeParseYAML(yaml: string): unknown {
-  return parseYAML(yaml);
+  return parseYAML(yaml)
 }
 const book = safeParseYAML(`
   name: Villette
   author: Charlotte Brontë
-`) as Book;
-alert(book.title);
+`) as Book
+alert(book.title)
 // ~~~~~ Property 'title' does not exist on type 'Book'
-book("read");
+book('read')
 // ~~~~~~~~~ this expression is not callable

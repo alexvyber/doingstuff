@@ -6,23 +6,23 @@ import Image from "next/image"
 export default function Home() {
   return (
     <div className="flex flex-col gap-4 justify-center items-center w-screen h-screen">
-      <Stripes
+      {/* <Stripes
         className=" opacity-100"
         stripesClasses={getStripesClasses()}
         backgroundColor="bg-neutral-50 dark:bg-neutral-900/70 "
-      />
+      /> */}
 
-      <BgGrid />
+      <BgGrid />  
 
       <div className="text-sm font-extralight">Alex Vyber Portfolio v2.0</div>
-      <Image
+      {/* <Image
         src={"/me.jpeg"}
         alt=""
         width={240}
         height={360}
         className="object-cover rounded-2xl transition duration-300 ease-out rotate-3 hover:shadow-2xl hover:scale-105 hover:rotate-0 aspect-[5/6] bg-slate-100 dark:bg-slate-800 dark:shadow-neutral-900/30 grayscale hover:grayscale-0"
-      />
-      <Deck />
+      /> */}
+      {/* <Deck /> */}
     </div>
   )
 }

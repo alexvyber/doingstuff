@@ -2,7 +2,7 @@
 export default {
   printWidth: 120,
   semi: false,
-  singleQuote: true,
+  singleQuote: false,
   arrowParens: "always",
   proseWrap: "always", // printWidth line breaks in md/mdx
   tabWidth: 2,

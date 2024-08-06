@@ -42,9 +42,9 @@ for (const k in obj) { // const k: string
 }
 ```
 
-The type of k is string, but you’re trying to index into an object whose type only has three
-specific keys: 'one', 'two', and 'three'. There are strings other than these three, so this has to
-fail. Plugging in a narrower type declaration for k fixes the issue:
+The type of k is string, but you’re trying to index into an object whose type only has three specific keys: 'one',
+'two', and 'three'. There are strings other than these three, so this has to fail. Plugging in a narrower type
+declaration for k fixes the issue:
 
 ```TypeScript
 let k: keyof typeof obj;
@@ -53,9 +53,8 @@ for (k in obj) {const v = obj[k];
 }
 ```
 
-So the real question is: why is the type of k in the first example inferred as string rather than
-"one" | "two" | "three"? To understand, let’s look at a slightly different example involving an
-interface and a function:
+So the real question is: why is the type of k in the first example inferred as string rather than "one" | "two" |
+"three"? To understand, let’s look at a slightly different example involving an interface and a function:
 
 ```TypeScript
 interface ABC {
@@ -73,18 +72,18 @@ because type 'ABC' has no index signature
 }
 ```
 
-It’s the same error as before. And you can “fix” it using the same sort of declaration (let k: keyof
-ABC). But in this case TypeScript is right to complain. Here’s why:
+It’s the same error as before. And you can “fix” it using the same sort of declaration (let k: keyof ABC). But in this
+case TypeScript is right to complain. Here’s why:
 
 ```TypeScript
 const x = {a: 'a', b: 'b', c: 2, d: new Date()};
 foo(x); // OK
 ```
 
-The function foo can be called with any value assignable to ABC, not just a value with “a,” “b,” and
-“c” properties. It’s entirely possible that the value will have other proper‐ ties, too (see Item
-4). To allow for this, TypeScript gives k the only type it can be con‐ fident of, namely, string.
-Using the keyof declaration would have another downside here:
+The function foo can be called with any value assignable to ABC, not just a value with “a,” “b,” and “c” properties.
+It’s entirely possible that the value will have other proper‐ ties, too (see Item 4). To allow for this, TypeScript
+gives k the only type it can be con‐ fident of, namely, string. Using the keyof declaration would have another downside
+here:
 
 ```TypeScript
 function foo(abc: ABC) {
@@ -95,11 +94,10 @@ const v = abc[k]; // Type is string | number
 }
 ```
 
-If "a" | "b" | "c" is too narrow for k, then string | number is certainly too nar‐ row for v. In the
-preceding example one of the values is a Date, but it could be any‐ thing. The types here give a
-false sense of certainty that could lead to chaos at runtime. So what if you just want to iterate
-over the object’s keys and values without type errors? Object.entries lets you iterate over both
-simultaneously:
+If "a" | "b" | "c" is too narrow for k, then string | number is certainly too nar‐ row for v. In the preceding example
+one of the values is a Date, but it could be any‐ thing. The types here give a false sense of certainty that could lead
+to chaos at runtime. So what if you just want to iterate over the object’s keys and values without type errors?
+Object.entries lets you iterate over both simultaneously:
 
 ```TypeScript
 function foo(abc: ABC) {
@@ -110,9 +108,8 @@ v // Type is any
 }
 ```
 
-While these types may be hard to work with, they are at least honest! You should also be aware of
-the possibility of prototype pollution. Even in the case of an object literal that you define,
-for-in can produce additional keys:
+While these types may be hard to work with, they are at least honest! You should also be aware of the possibility of
+prototype pollution. Even in the case of an object literal that you define, for-in can produce additional keys:
 
 ```TypeScript
 > Object.prototype.z = 3; // Please don't do this!
@@ -123,16 +120,15 @@ y
 z
 ```
 
-Hopefully this doesn’t happen in a nonadversarial environment (you should never add enumerable
-properties to Object.prototype), but it is another reason that for-in produces string keys even for
-object literals. If you want to iterate over the keys and values in an object, use either a keyof
-declara‐ tion (let k: keyof T) or Object.entries. The former is appropriate for constants or other
-situations where you know that the object won’t have additional keys and you want precise types. The
-latter is more generally appropriate, though the key and value types are more difficult to work
-with.
+Hopefully this doesn’t happen in a nonadversarial environment (you should never add enumerable properties to
+Object.prototype), but it is another reason that for-in produces string keys even for object literals. If you want to
+iterate over the keys and values in an object, use either a keyof declara‐ tion (let k: keyof T) or Object.entries. The
+former is appropriate for constants or other situations where you know that the object won’t have additional keys and
+you want precise types. The latter is more generally appropriate, though the key and value types are more difficult to
+work with.
 
 ### Things to Remember
 
-- Use let k: keyof T and a for-in loop to iterate objects when you know exactly what the keys will
-  be. Be aware that any objects your function receives as parame‐ ters might have additional keys.
+- Use let k: keyof T and a for-in loop to iterate objects when you know exactly what the keys will be. Be aware that any
+  objects your function receives as parame‐ ters might have additional keys.
 - Use Object.entries to iterate over the keys and values of any object.

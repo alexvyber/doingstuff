@@ -15,8 +15,8 @@ export default (props) => <ArticleLayout meta={meta} {...props} />
 
 systemd promises faster startups, but your system starts up slowly, and you want to find out why.
 
-You want systemd-analyze blame. Run it with no options to see a list of system processes and how
-long they took to start:
+You want systemd-analyze blame. Run it with no options to see a list of system processes and how long they took to
+start:
 
 ```shell
 systemd-analyze blame
@@ -45,9 +45,9 @@ systemd-analyze blame --user
 # ...
 ```
 
-It is useful to review everything that starts at boot and perhaps find services you don’t want
-starting at boot. My favorite to disable is Bluetooth because I don’t use it on my servers or PCs,
-but many Linux distros enable it by default.
+It is useful to review everything that starts at boot and perhaps find services you don’t want starting at boot. My
+favorite to disable is Bluetooth because I don’t use it on my servers or PCs, but many Linux distros enable it by
+default.
 
 We can vizualize startup like this:
 

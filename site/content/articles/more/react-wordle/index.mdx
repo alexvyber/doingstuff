@@ -20,15 +20,14 @@ export default (props) => <ArticleLayout meta={meta} {...props} />
 
 This book is for sale at
 [http://leanpub.com/creatingawordlegameinreactandtypescript](http://leanpub.com/creatingawordlegameinreactandtypescript)
-This version was published on 2022-11- This is aLeanpubbook. Leanpub empowers authors and publishers
-with the Lean Publishing process.Lean Publishingis the act of publishing an in-progress ebook using
-lightweight tools and many iterations to get reader feedback, pivot until you have the right book
-and build traction once you do. © 2022 Mike Gold
+This version was published on 2022-11- This is aLeanpubbook. Leanpub empowers authors and publishers with the Lean
+Publishing process.Lean Publishingis the act of publishing an in-progress ebook using lightweight tools and many
+iterations to get reader feedback, pivot until you have the right book and build traction once you do. © 2022 Mike Gold
 
-**Tweet This Book!** Please help Mike Gold by spreading the word about this book on Twitter! The
-suggested tweet for this book is: A fun way to learn React and TypeScript The suggested hashtag for
-this book is#reactjs #typescript #game #wordle. Find out what other people are saying about the book
-by clicking on this link to search for this hashtag on Twitter: #reactjs #typescript #game #wordle
+**Tweet This Book!** Please help Mike Gold by spreading the word about this book on Twitter! The suggested tweet for
+this book is: A fun way to learn React and TypeScript The suggested hashtag for this book is#reactjs #typescript #game
+#wordle. Find out what other people are saying about the book by clicking on this link to search for this hashtag on
+Twitter: #reactjs #typescript #game #wordle
 
 I dedicate the book to my Wife, Nina, who has assisted me in the editing and creation of this book.
 
@@ -80,23 +79,20 @@ I dedicate the book to my Wife, Nina, who has assisted me in the editing and cre
 
 ### Introduction.
 
-My family and I are kind of addicted to this new game called Wordle. Wordle is the MasterMind of
-words, where you guess a 5-letter word and the program tells you which letters you guessed right.
-The program lights up a clue for each letter: A green letter indicates you got the right letter in
-the right position, yellow means the right letter in the wrong position, and a dark grey background
-means that letter is not used. In this book, we will be showing you how to create your own Wordle
-App using the power of React and Typescript. There are a couple of approaches we could take with
-React to create this application. We could go the class object-oriented route, or we could go the
-functional component route. We are going to do the latter for this article: Setup If you haven’t
-yet, you’ll need to install nodejs from here. You will also want to install the latest version of
-npm and npx globally once you have node installed nodejs. 1 npm install -g npm 2 npm install -g npx
-To set up a blank react project with typescript run the following command inside the folder you will
-be using for your Wordle Project:
+My family and I are kind of addicted to this new game called Wordle. Wordle is the MasterMind of words, where you guess
+a 5-letter word and the program tells you which letters you guessed right. The program lights up a clue for each letter:
+A green letter indicates you got the right letter in the right position, yellow means the right letter in the wrong
+position, and a dark grey background means that letter is not used. In this book, we will be showing you how to create
+your own Wordle App using the power of React and Typescript. There are a couple of approaches we could take with React
+to create this application. We could go the class object-oriented route, or we could go the functional component route.
+We are going to do the latter for this article: Setup If you haven’t yet, you’ll need to install nodejs from here. You
+will also want to install the latest version of npm and npx globally once you have node installed nodejs. 1 npm install
+-g npm 2 npm install -g npx To set up a blank react project with typescript run the following command inside the folder
+you will be using for your Wordle Project:
 
-Part One 2 1 npx create-react-app wordle --template typescript This may take a while, so be patient!
-My favorite React editor is Visual Studio Code. I recommend downloading this IDE (Integrated
-Development Environment) to follow this tutorial. Open the folder in the wordle directory and we are
-ready to begin. Visual Code IDE
+Part One 2 1 npx create-react-app wordle --template typescript This may take a while, so be patient! My favorite React
+editor is Visual Studio Code. I recommend downloading this IDE (Integrated Development Environment) to follow this
+tutorial. Open the folder in the wordle directory and we are ready to begin. Visual Code IDE
 
 ### Creating a Letter Component.
 
@@ -109,27 +105,24 @@ Accuracy: Background colors Green, Yellow, and Dark Grey, indi-
 cated by an enum.
 ```
 
-Part One 3 First we will create a component directory under our src (source) directory, and then add
-the new Letter component directory called Letter. Next create a file index.tsx in the Letter folder.
-tsx is the extension for typescript components in React. Letter Component File Next we’ll create the
-component shell that houses the component. In a functional component, this is fairly easy.
+Part One 3 First we will create a component directory under our src (source) directory, and then add the new Letter
+component directory called Letter. Next create a file index.tsx in the Letter folder. tsx is the extension for
+typescript components in React. Letter Component File Next we’ll create the component shell that houses the component.
+In a functional component, this is fairly easy.
 
-Part One 4 Letter Component in TypeScript At the top of the component, we pass in the prop values.
-All the props are defined on the ILetterProps interface, and then decon- structed when they are
-passed into our component as shown below. The props will show up as attributes on the Letter
-component when it is used in a parent component.
-`1 **exportconst** Letter=({position, value, accuracy}:ILette\ 2 rProps)=>{` In React, we render the
-component in the return statement using tsx. Tsx looks a lot like html mixed with typescript. For
-now we are only rendering one of the states: letterValue.
-`1 **return** ( 2 <> 3 <button style={{width:'50px', height:'50px'}}> 4 {value}</button> 5 </> 6 )`
-We’ve stuck the letterValue in a button, and in order to evaluate the value in React, we put
-letterValue in curly brackets}. Later in this
+Part One 4 Letter Component in TypeScript At the top of the component, we pass in the prop values. All the props are
+defined on the ILetterProps interface, and then decon- structed when they are passed into our component as shown below.
+The props will show up as attributes on the Letter component when it is used in a parent component.
+`1 **exportconst** Letter=({position, value, accuracy}:ILette\ 2 rProps)=>{` In React, we render the component in the
+return statement using tsx. Tsx looks a lot like html mixed with typescript. For now we are only rendering one of the
+states: letterValue. `1 **return** ( 2 <> 3 <button style={{width:'50px', height:'50px'}}> 4 {value}</button> 5 </> 6 )`
+We’ve stuck the letterValue in a button, and in order to evaluate the value in React, we put letterValue in curly
+brackets}. Later in this
 
-Part One 5 article, we will introduce a React utility called styled components that will make
-styling the component a bit easier. Let’s see if we can test the component so far. For that, we will
-need to rewrite App.tsx, which was generated under the src directory by the npx command: When you
-open App.tsx up it currently looks something like this (from the generated npx create): Original
-App.tsx We are going to empty it out and just add our component:
+Part One 5 article, we will introduce a React utility called styled components that will make styling the component a
+bit easier. Let’s see if we can test the component so far. For that, we will need to rewrite App.tsx, which was
+generated under the src directory by the npx command: When you open App.tsx up it currently looks something like this
+(from the generated npx create): Original App.tsx We are going to empty it out and just add our component:
 
 Part One 6
 
@@ -158,8 +151,8 @@ of H.
 
 ````
 
-To run our React application, we will bring up a bash terminal window from the Terminal menu item in
-Visual Studio Code, and then run the following command: 1 npm run start
+To run our React application, we will bring up a bash terminal window from the Terminal menu item in Visual Studio Code,
+and then run the following command: 1 npm run start
 
 ```
 
@@ -641,8 +634,8 @@ first guess.
 
 ```
 
-There are probably several ways we could conquer scoring a word in Wordle, but the approach taken
-here involves the following algorithm.
+There are probably several ways we could conquer scoring a word in Wordle, but the approach taken here involves the
+following algorithm.
 
 ```
 
@@ -660,10 +653,9 @@ here involves the following algorithm.
 
 ```
 
-Part Three 27 in the markedCorrect. If the guess letter is found in the mask, mark the array of
-results at the same index location as the guess position indicating that it is in the wrong
-position. Each time you find a letter from your guess in the mask, replace that letter’s index
-position with an underscore in the mask so it won’t find it again.
+Part Three 27 in the markedCorrect. If the guess letter is found in the mask, mark the array of results at the same
+index location as the guess position indicating that it is in the wrong position. Each time you find a letter from your
+guess in the mask, replace that letter’s index position with an underscore in the mask so it won’t find it again.
 
 ````
 

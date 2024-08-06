@@ -55,14 +55,13 @@ console.log("🚀 ~ some.method", some.method)
 
 TS: 'new' expression whose target lacks construct signature
 
-TS: 'new' expression whose target lacks construct signature # The "new expression, whose target
-lacks a construct signature" error occurs when we use the new keyword where it shouldn't be used or
-use it with a constructor function.
+TS: 'new' expression whose target lacks construct signature # The "new expression, whose target lacks a construct
+signature" error occurs when we use the new keyword where it shouldn't be used or use it with a constructor function.
 
 To solve the error, convert the constructor function to a class or remove the new keyword.
 
-Sometimes the solution to the error is to remove the new keyword. If you aren't trying to create an
-instance of something, you shouldn't use thenew keyword. Here is an example of how the error occurs.
+Sometimes the solution to the error is to remove the new keyword. If you aren't trying to create an instance of
+something, you shouldn't use thenew keyword. Here is an example of how the error occurs.
 
 index.ts
 
@@ -85,8 +84,8 @@ We used the new keyword with a constructor function which caused the error.
 
 TypeScript wants us to convert the constructor function to a class for better type safety.
 
-Convert the constructor function to a class # To solve the error in this situation, convert the
-constructor function to a class.
+Convert the constructor function to a class # To solve the error in this situation, convert the constructor function to
+a class.
 
 index.ts
 
@@ -108,12 +107,11 @@ console.log(emp1.fullName); // 👉️ "Bobby Hadz"
 console.log(emp1.getSalary()); // 👉️ 100
 ```
 
-This class creates equivalent objects to the constructor function but allows us to use the new
-keyword to create instances.
+This class creates equivalent objects to the constructor function but allows us to use the new keyword to create
+instances.
 
-TypeScript offers much better type checking for classes than it does for constructor functions.
-Using a hacky solution instead # Sometimes you aren't able to convert the function to a class for
-one reason or another.
+TypeScript offers much better type checking for classes than it does for constructor functions. Using a hacky solution
+instead # Sometimes you aren't able to convert the function to a class for one reason or another.
 
 If that's the case, you can use this hacky solution.
 
@@ -135,18 +133,17 @@ console.log(emp1.fullName); // 👉️ "Bobby Hadz"
 console.log(emp1.getSalary()); // 👉️ 100
 ```
 
-The first thing we did is type the this keyword in the Employee function - explicitly setting it to
-any.
+The first thing we did is type the this keyword in the Employee function - explicitly setting it to any.
 
 This way we won't get an error when setting properties and methods on this.
 
 We used a type assertion to type the Employee function as any right before using the new keyword.
 
-This gets the type checker to comply but doesn't look great, so it should only be used when you
-can't convert the constructor function to a class. In modern code, you rarely see constructor
-functions because classes are often more intuitive to work with and get better type safety.
+This gets the type checker to comply but doesn't look great, so it should only be used when you can't convert the
+constructor function to a class. In modern code, you rarely see constructor functions because classes are often more
+intuitive to work with and get better type safety.
 
-Conclusion # The "new expression, whose target lacks a construct signature" error occurs when we use
-the new keyword where it shouldn't be used or use it with a constructor function.
+Conclusion # The "new expression, whose target lacks a construct signature" error occurs when we use the new keyword
+where it shouldn't be used or use it with a constructor function.
 
 To solve the error, convert the constructor function to a class or remove the new keyword.

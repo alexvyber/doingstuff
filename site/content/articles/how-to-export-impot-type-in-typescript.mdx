@@ -74,21 +74,18 @@ const other: Other = {
 }
 ```
 
-Make sure that all paths are right. The example above assumes that all files are located in the same
-directory.
+Make sure that all paths are right. The example above assumes that all files are located in the same directory.
 
 ## Default Export
 
 {/* For example, if you were importing from one directory up, you would do `import {Person} from '../another-file'`. */}
 
-{/* We wrapped the name of the type in curly braces when importing it - this is called a named import. */}
-TypeScript uses modules, in the same way that JavaScript does.
+{/* We wrapped the name of the type in curly braces when importing it - this is called a named import. */} TypeScript
+uses modules, in the same way that JavaScript does.
 
-You can only import a type from a different file, if it has been exporting using named or default
-export.
+You can only import a type from a different file, if it has been exporting using named or default export.
 
-You can have **as many named exports as you want** per file, but **only one default export** per
-file.
+You can have **as many named exports as you want** per file, but **only one default export** per file.
 
 If you try to use multiple default exports in a file, you will get an error.
 
@@ -125,8 +122,7 @@ export default Some
 export default More
 ```
 
-{/* ❗ IMPORTANT: */}
-{/* If you are exporting a type, or a variable (or an arrow function) as a default export, */}
+{/* ❗ IMPORTANT: */} {/* If you are exporting a type, or a variable (or an arrow function) as a default export, */}
 {/* you have to declare it on one line and export it on another. */}
 {/* You can't declare and default export a variable on the same line. */}
 

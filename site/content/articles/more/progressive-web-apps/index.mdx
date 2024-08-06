@@ -44,13 +44,12 @@ export default (props) => <ArticleLayout meta={meta} {...props} />
 
 ##### 2
 
-While the author has used good faith efforts to ensure that the information and instructions
-contained in this work are accurate, the author disclaims all responsibility for errors or
-omissions, including without limitation responsibility for damages resulting from the use of or
-reliance on this work. Use of the information and instructions contained in this work is at your own
-risk. If any code samples or other technology this work contains or describes is subject to open
-source licenses or the intellectual property rights of others, it is your responsibility to ensure
-that your use thereof complies with such licenses and/or rights.
+While the author has used good faith efforts to ensure that the information and instructions contained in this work are
+accurate, the author disclaims all responsibility for errors or omissions, including without limitation responsibility
+for damages resulting from the use of or reliance on this work. Use of the information and instructions contained in
+this work is at your own risk. If any code samples or other technology this work contains or describes is subject to
+open source licenses or the intellectual property rights of others, it is your responsibility to ensure that your use
+thereof complies with such licenses and/or rights.
 
 ## Contents
 
@@ -80,34 +79,32 @@ that your use thereof complies with such licenses and/or rights.
 
 ## About the Author
 
-My name is Enrique Pablo Molinari. I have been working in the software industry for the last 22
-years, working in different software projects from different companies as developer, technical lead
-and architect. I’m a passionate developer and also a passionate educator. In addition to my work on
-the software industry, I’m teaching Object Oriented Design and Advance Database Systems at
-Universidad Nacional de Río Negro.
+My name is Enrique Pablo Molinari. I have been working in the software industry for the last 22 years, working in
+different software projects from different companies as developer, technical lead and architect. I’m a passionate
+developer and also a passionate educator. In addition to my work on the software industry, I’m teaching Object Oriented
+Design and Advance Database Systems at Universidad Nacional de Río Negro.
 
-Implementing Progressive Web Apps is my third book. I have also written Understanding React, a book
-to start learning React. And Coding an Architecture Style, a book about hands-on software
-architecture. You can find more about my thoughts on software development at my blog: Copy/Paste is
-for Word. I would be very happy if you want to ping me by email at enrique.molinari@gmail.com to
-send thoughts, comments or questions about this book, the others or my blog.
+Implementing Progressive Web Apps is my third book. I have also written Understanding React, a book to start learning
+React. And Coding an Architecture Style, a book about hands-on software architecture. You can find more about my
+thoughts on software development at my blog: Copy/Paste is for Word. I would be very happy if you want to ping me by
+email at enrique.molinari@gmail.com to send thoughts, comments or questions about this book, the others or my blog.
 
 ##### 4
 
 ## What is this book about?
 
-In this book we are going to implement a Progressive Web App (PWA) using a step-by-step approach.
-This learning experience starts with an already crafted React application called Task List. To
-create this application I have used the create-react-app tool with the cra-template-pwa template,
-which gives us a good starting point for building a progressive web app.
+In this book we are going to implement a Progressive Web App (PWA) using a step-by-step approach. This learning
+experience starts with an already crafted React application called Task List. To create this application I have used the
+create-react-app tool with the cra-template-pwa template, which gives us a good starting point for building a
+progressive web app.
 
-We will go into the details about how to make the web app installable and after that how to improve
-the user experience by adding offline support to the web app. To make the learning process smooth I
-will first add offline support for the read-only use cases of the application. After that, I will
-show how to provide full offline support by using the IndexedDB database and the Background Sync.
+We will go into the details about how to make the web app installable and after that how to improve the user experience
+by adding offline support to the web app. To make the learning process smooth I will first add offline support for the
+read-only use cases of the application. After that, I will show how to provide full offline support by using the
+IndexedDB database and the Background Sync.
 
-I will also explain how to update progressive web apps. How users get notified that there is a new
-release of the application waiting to be installed and how that actually happens.
+I will also explain how to update progressive web apps. How users get notified that there is a new release of the
+application waiting to be installed and how that actually happens.
 
 ```
 This book requires prior knowledge of JavaScript and React.
@@ -117,16 +114,14 @@ This book requires prior knowledge of JavaScript and React.
 
 ## Development Environment
 
-There are many development environments out there, and you can choose the one you are more
-comfortable with. In any case if you don’t have a preference, I recommend Visual Studio Code (VS
-Code). And to be more productive I suggest installing the extension VS Code ES7
-React/Redux/React-Native/JS snippets which provides JavaScript and React snippets. I would also
-suggest installing Prettier, which is a JavaScript/React code formatter. To install an extension, in
-Visual Studio Code, go to the File menu, then Preferences and then Extensions. You will see a search
-box that will allow you to find the extensions that you want to install. Finally, I really recommend
-configuring VS Code to format your source files on save. You can do that by going to the File menu,
-then Preferences and then Settings. On the search box type Editor: Format On Save. This will format
-your code right after you save it.
+There are many development environments out there, and you can choose the one you are more comfortable with. In any case
+if you don’t have a preference, I recommend Visual Studio Code (VS Code). And to be more productive I suggest installing
+the extension VS Code ES7 React/Redux/React-Native/JS snippets which provides JavaScript and React snippets. I would
+also suggest installing Prettier, which is a JavaScript/React code formatter. To install an extension, in Visual Studio
+Code, go to the File menu, then Preferences and then Extensions. You will see a search box that will allow you to find
+the extensions that you want to install. Finally, I really recommend configuring VS Code to format your source files on
+save. You can do that by going to the File menu, then Preferences and then Settings. On the search box type Editor:
+Format On Save. This will format your code right after you save it.
 
 ##### 6
 
@@ -138,11 +133,10 @@ your code right after you save it.
 
 No one has doubts about what a Web App mean. But progressive? What does it mean?
 
-The wordprogressivecomes from the design philosophy known as progressive enhancement coined by
-Steven Champeon and Nick Finck in 2003. The idea is that you have to design your Web App to work in
-old devices, old browsers, with bad connectivity or no connectivity at all, to reach as many users
-as possible. But, it provides the best user experience for newer devices and browsers. In other
-words, as described by MDN (Mozilla Development Network):
+The wordprogressivecomes from the design philosophy known as progressive enhancement coined by Steven Champeon and Nick
+Finck in 2003. The idea is that you have to design your Web App to work in old devices, old browsers, with bad
+connectivity or no connectivity at all, to reach as many users as possible. But, it provides the best user experience
+for newer devices and browsers. In other words, as described by MDN (Mozilla Development Network):
 
 ```
 "The word progressive in progressive enhancement means creating a
@@ -153,11 +147,11 @@ compelling, fully-featured experience for users of newer browsers and
 devices with richer capabilities".
 ```
 
-As we will see later in this book, there are many new features implemented by modern browsers. For
-instance, there is one particularly nice that allows your Web App to work offline. However, this and
-many other capabilities have been added during recent years to browsers at different times and some
-of them partially supported. So, feature detection is the technique that we usually use to determine
-if that functionality can be used or not. In this way, you can build a Web App thatprogresses.
+As we will see later in this book, there are many new features implemented by modern browsers. For instance, there is
+one particularly nice that allows your Web App to work offline. However, this and many other capabilities have been
+added during recent years to browsers at different times and some of them partially supported. So, feature detection is
+the technique that we usually use to determine if that functionality can be used or not. In this way, you can build a
+Web App thatprogresses.
 
 ##### 7
 
@@ -165,38 +159,34 @@ if that functionality can be used or not. In this way, you can build a Web App t
 
 ### 1.2 And... Progressive Web Apps?
 
-Progressive Web Apps are Web Apps that thanks to modern browser features, give users an experience
-similar to native mobile apps. As described by Google web.dev, on the web platform you can create
-and run applications toreachanyone, anywhere and on any device with a single codebase. On the other
-hand, platform specific applications (like mobile native apps) are veryrichandreliable. They work
-regardless of network connection. They can interact with the camera, read your contacts, share your
-calendar and many others. Progressive Web Apps fit in the middle of these. They can deliver enhanced
-capabilities like working offline, be reliable, installable and receive push notifications, like
-platform specific apps. The good thing is that they run on a browser. This is possible thanks to a
-technology implemented by modern browsers calledService Worker. The Service Worker specification was
-developed by engineers from Google, Mozilla and Samsung and released in 2014. As you can see Apple,
-the other big player, was not involved. However, Safari does support it. We will describe this
-technology in the next chapter.
+Progressive Web Apps are Web Apps that thanks to modern browser features, give users an experience similar to native
+mobile apps. As described by Google web.dev, on the web platform you can create and run applications toreachanyone,
+anywhere and on any device with a single codebase. On the other hand, platform specific applications (like mobile native
+apps) are veryrichandreliable. They work regardless of network connection. They can interact with the camera, read your
+contacts, share your calendar and many others. Progressive Web Apps fit in the middle of these. They can deliver
+enhanced capabilities like working offline, be reliable, installable and receive push notifications, like platform
+specific apps. The good thing is that they run on a browser. This is possible thanks to a technology implemented by
+modern browsers calledService Worker. The Service Worker specification was developed by engineers from Google, Mozilla
+and Samsung and released in 2014. As you can see Apple, the other big player, was not involved. However, Safari does
+support it. We will describe this technology in the next chapter.
 
 ### 1.3 Capabilities of Progressive Web Apps
 
-Thanks to the service worker and other features that browsers have implemented, we now have several
-capabilities that allow us to provide a native experience to end users. In this section, we will
-briefly describe the main progressive web apps capabilities. Some of these might not be (or
-partially) supported in some browsers, so please make sure you check that as browsers might include
-them in future releases.
+Thanks to the service worker and other features that browsers have implemented, we now have several capabilities that
+allow us to provide a native experience to end users. In this section, we will briefly describe the main progressive web
+apps capabilities. Some of these might not be (or partially) supported in some browsers, so please make sure you check
+that as browsers might include them in future releases.
 
-Installable Progressive web apps can be installed in desktops or in mobile devices. Installing a PWA
-in mobile devices gives the users a similar experience as they have with native apps. An icon
-launcher is created the same as a native app, it will be listed in the applications section of the
-mobile operating system to be removed just like any other native app. It will run on its own windows
-without any browser evidence.
+Installable Progressive web apps can be installed in desktops or in mobile devices. Installing a PWA in mobile devices
+gives the users a similar experience as they have with native apps. An icon launcher is created the same as a native
+app, it will be listed in the applications section of the mobile operating system to be removed just like any other
+native app. It will run on its own windows without any browser evidence.
 
-Splash Screen Related to the previous capability, an installed PWA when launched a splash screen is
-shown while loading. Same experience as native apps.
+Splash Screen Related to the previous capability, an installed PWA when launched a splash screen is shown while loading.
+Same experience as native apps.
 
-Offline Support Most of the PWA features were created to enable developers to create web apps that
-run even when connectivity has gone. The
+Offline Support Most of the PWA features were created to enable developers to create web apps that run even when
+connectivity has gone. The
 
 ##### CHAPTER 1. INTRODUCTION 9
 
@@ -205,46 +195,42 @@ Service Worker is the piece of software that enables us to provide offline
 capabilities.
 ```
 
-Background SyncThis capability allows us to defer the access to server- side APIs once connectivity
-is back. I mean, under connectivity issues the web app might continue working, storing data on a
-browser’s database like indexedDB and syncing that data once connectivity is back.
+Background SyncThis capability allows us to defer the access to server- side APIs once connectivity is back. I mean,
+under connectivity issues the web app might continue working, storing data on a browser’s database like indexedDB and
+syncing that data once connectivity is back.
 
-Push NotificationsThis capability enables web apps to receive push notifications in a similar way
-that is possible for native apps.
+Push NotificationsThis capability enables web apps to receive push notifications in a similar way that is possible for
+native apps.
 
-Other Capabilities There are other capabilities like Web Share API that allows us to share content
-with other apps. The Contact Picker API allows us to interact with our contact list to share some
-limited details. The Media Session API allows us to interact with media keys on keyboards, headsets,
-remote controls, etc. And additionally, it is also possible to have our PWA on the Android app
-store, just like a native app. And the same might occur on the Apple Store, depending on the type of
-the application you are building. PWABuilder can help with this.
+Other Capabilities There are other capabilities like Web Share API that allows us to share content with other apps. The
+Contact Picker API allows us to interact with our contact list to share some limited details. The Media Session API
+allows us to interact with media keys on keyboards, headsets, remote controls, etc. And additionally, it is also
+possible to have our PWA on the Android app store, just like a native app. And the same might occur on the Apple Store,
+depending on the type of the application you are building. PWABuilder can help with this.
 
 ## Chapter 2
 
 ## 2 Crafting your First PWA
 
-In this chapter we will convert with a step-by-step approach an existing React application, called
-Task List, into a progressive web app. It is a full stack application with back-end services written
-in Java.
+In this chapter we will convert with a step-by-step approach an existing React application, called Task List, into a
+progressive web app. It is a full stack application with back-end services written in Java.
 
 ### 2.1 Configure the Development Environment
 
-In this section I will show how to configure and set up the Task List application in your local
-development machine and explain its architecture. In the next section we will explore what
-functionality provides and what React components were created to build the front-end.
+In this section I will show how to configure and set up the Task List application in your local development machine and
+explain its architecture. In the next section we will explore what functionality provides and what React components were
+created to build the front-end.
 
-The Task List application was built using the microservice architecture style. We have two back-end
-services: the User Authentication and the Task List. To set up these services, you will need Java 11
-(or greater) and maven. Please, install them if you don’t have them.
+The Task List application was built using the microservice architecture style. We have two back-end services: the User
+Authentication and the Task List. To set up these services, you will need Java 11 (or greater) and maven. Please,
+install them if you don’t have them.
 
-There are two ways to set up the system in your local PC: Using a reverse proxy or using
-localtunnel.
+There are two ways to set up the system in your local PC: Using a reverse proxy or using localtunnel.
 
 #### 2.1.1 Using a Reverse Proxy
 
-To set up the development environment we first need to start the back-end services. Open a console
-window, go to the directory you would like to clone the source code to, then run the following
-commands:
+To set up the development environment we first need to start the back-end services. Open a console window, go to the
+directory you would like to clone the source code to, then run the following commands:
 
 $ git clone https://github.com/enriquemolinari/userauth.git $ cd userauth
 
@@ -254,10 +240,9 @@ $ git clone https://github.com/enriquemolinari/userauth.git $ cd userauth
 
 $ mvn install $ mvn exec:java ↪→ -Dsecret=bfhAp4qdm92bD0FIOZLanC66KgCS8cYVxq/KlSVdjhI=
 
-These commands will clone the UserAuth service source code, then install all the necessary
-dependencies, compile the source code and finally the mvn exec:javawill start theUserAuthservice on
-port 1234. The -Dsecretargument is the secure key used to encrypt the access token. Once the service
-finish to start, you will see on the console what is next:
+These commands will clone the UserAuth service source code, then install all the necessary dependencies, compile the
+source code and finally the mvn exec:javawill start theUserAuthservice on port 1234. The -Dsecretargument is the secure
+key used to encrypt the access token. Once the service finish to start, you will see on the console what is next:
 
 ```
 ... INFO io.javalin.Javalin - Listening on http://localhost:1234/
@@ -268,55 +253,50 @@ finish to start, you will see on the console what is next:
 Now, to set up theTaskListback-end service, run the following commands:
 ```
 
-$ git clone https://github.com/enriquemolinari/tasklist.git $ cd tasklist $ mvn install $ mvn
-exec:java ↪→ -Dsecret=bfhAp4qdm92bD0FIOZLanC66KgCS8cYVxq/KlSVdjhI=
+$ git clone https://github.com/enriquemolinari/tasklist.git $ cd tasklist $ mvn install $ mvn exec:java ↪→
+-Dsecret=bfhAp4qdm92bD0FIOZLanC66KgCS8cYVxq/KlSVdjhI=
 
-Again, once finished, you will see the following entries in the console window. This service runs on
-port 1235.
+Again, once finished, you will see the following entries in the console window. This service runs on port 1235.
 
 ```
 ... INFO io.javalin.Javalin - Listening on http://localhost:1235/
 ... INFO io.javalin.Javalin - Javalin started in 247ms \o/
 ```
 
-With these in place, you have the back-end services running. Both services use the Derby embedded
-(in memory) database. Every time you start the service, it generates the database schema again and
-populate it with some data. TheUser Authenticationdatabase is populated with two users:
-guser/guser123 and juser/juser123. Each of them will have some tasks already created in theTask
-Listdatabase.
+With these in place, you have the back-end services running. Both services use the Derby embedded (in memory) database.
+Every time you start the service, it generates the database schema again and populate it with some data. TheUser
+Authenticationdatabase is populated with two users: guser/guser123 and juser/juser123. Each of them will have some tasks
+already created in theTask Listdatabase.
 
-Let’s now proceed with the React application, by cloning the starter projectrepository, install and
-serve it, with the following commands:
+Let’s now proceed with the React application, by cloning the starter projectrepository, install and serve it, with the
+following commands:
 
-$ git clone ↪→ https://github.com/enriquemolinari/react-starter-tasklist $ cd react-starter-tasklist
-$ npm install $ npm start
+$ git clone ↪→ https://github.com/enriquemolinari/react-starter-tasklist $ cd react-starter-tasklist $ npm install $
+npm start
 
 ##### CHAPTER 2. CRAFTING YOUR FIRST PWA 12
 
-After that you will have the Task List React application running on port 3000. However, you won’t be
-able to connect with the back-end services due to the same-origin policy. The bank-end services
-don’t have CORS enabled by default, and even enabling it, since authentication works using cookies,
-the browsers won’t send them if you are onhttp(to useSameSite: None; you also have to useSecure).
-There are a couple of options to solve this. And yes, this is a bit more complicated than I would
-like it to be, but it is a real situation you will face if you want to build a single-page
+After that you will have the Task List React application running on port 3000. However, you won’t be able to connect
+with the back-end services due to the same-origin policy. The bank-end services don’t have CORS enabled by default, and
+even enabling it, since authentication works using cookies, the browsers won’t send them if you are onhttp(to
+useSameSite: None; you also have to useSecure). There are a couple of options to solve this. And yes, this is a bit more
+complicated than I would like it to be, but it is a real situation you will face if you want to build a single-page
 application with a microservice architecture that uses a cookie-based authentication mechanism.
 
-I will explain two options to make this work. One is using a reverse proxyand the other is using
-localtunnel. You will be able to start and work with the system using any of these options. Use the
-one you are more comfortable with.
+I will explain two options to make this work. One is using a reverse proxyand the other is using localtunnel. You will
+be able to start and work with the system using any of these options. Use the one you are more comfortable with.
 
-To go with the first option, you will have to install a reverse proxy. With a reverse proxy in
-place, the browser will only talk to it guaranteeing the same-origin policy. This architecture is
-depicted in figure 2.2. You can install any reserve proxy, there are many out there. I will provide
-configuration files for both Kong and Nginx. If you decide to install Kong, after installing it, I
-recommend configuring it to use the declarative config file (instead of using a database). To do
-that, first generate the config file with the following command:
+To go with the first option, you will have to install a reverse proxy. With a reverse proxy in place, the browser will
+only talk to it guaranteeing the same-origin policy. This architecture is depicted in figure 2.2. You can install any
+reserve proxy, there are many out there. I will provide configuration files for both Kong and Nginx. If you decide to
+install Kong, after installing it, I recommend configuring it to use the declarative config file (instead of using a
+database). To do that, first generate the config file with the following command:
 
 $ sudo kong config init
 
-Then, you must tell Kong, by using thekong.confconfiguration file, that you want to use a
-declarative configuration file. Open the filekong.confand set thedatabaseoption tooffand
-thedeclarative_configoption to the path of yourkong.ymlfile as in the example below:
+Then, you must tell Kong, by using thekong.confconfiguration file, that you want to use a declarative configuration
+file. Open the filekong.confand set thedatabaseoption tooffand thedeclarative_configoption to the path of
+yourkong.ymlfile as in the example below:
 
 ```
 database = off
@@ -345,19 +325,18 @@ services:
 - name: frontend-route paths:
 - /
 
-This will tell Kong to forward requests fromhttp://localhost:8000/auth to the User Authentication
-back-end service running onlocalhost:1234. Fromhttp://localhost:8000/appto the Task List back-end
-service running on localhost:1235. And from [http://localhost:8000/](http://localhost:8000/) to the
-React application running onlocalhost:3000. Finally don’t forget to start the Kong service:
+This will tell Kong to forward requests fromhttp://localhost:8000/auth to the User Authentication back-end service
+running onlocalhost:1234. Fromhttp://localhost:8000/appto the Task List back-end service running on localhost:1235. And
+from [http://localhost:8000/](http://localhost:8000/) to the React application running onlocalhost:3000. Finally don’t
+forget to start the Kong service:
 
 $ sudo kong start
 
 Now, if you navigate tohttp://localhost:8000/, you will see the Task List front-end.
 
-If instead of using Kong, you decide to use Nginx (if you are on Windows OS this is a good option,
-due to Kong at the time of writing this book does not support Windows), please go ahead and install
-it. After that, find the nginx config file (it will depend on your OS) and paste the following
-configuration:
+If instead of using Kong, you decide to use Nginx (if you are on Windows OS this is a good option, due to Kong at the
+time of writing this book does not support Windows), please go ahead and install it. After that, find the nginx config
+file (it will depend on your OS) and paste the following configuration:
 
 ```
 
@@ -395,16 +374,14 @@ proxy_pass [http://localhost:1235/;](http://localhost:1235/;)
 
 ```
 
-Note that we are forwarding to the same services as we did with Kong. Pretty similar to that. Make
-sure nginx is running and then if you navigate tohttp://localhost:8000/, you will see the Task List
-front-end.
+Note that we are forwarding to the same services as we did with Kong. Pretty similar to that. Make sure nginx is running
+and then if you navigate tohttp://localhost:8000/, you will see the Task List front-end.
 
 #### 2.1.2 Using LocalTunnel
 
-If you don’t want to go with a reverse proxy, the alternative I will propose is to use localtunnel.
-Localtunnel allows you to expose your local services with a publichttpsURL. This option permits to
-share your apps while you are working and it will also allow us to test the PWA application using a
-mobile device. To install it, run the following command:
+If you don’t want to go with a reverse proxy, the alternative I will propose is to use localtunnel. Localtunnel allows
+you to expose your local services with a publichttpsURL. This option permits to share your apps while you are working
+and it will also allow us to test the PWA application using a mobile device. To install it, run the following command:
 
 ```
 
@@ -412,10 +389,9 @@ $ npm install -g localtunnel
 
 ```
 
-Then, using VS Code (or your favorite editor) open the.envfile from the Task List React application,
-cloned before in thereact-starter-tasklist directory. In this file we store the URL of the back-end
-services that the React application consumes. By default, they will have the URL pointing to the
-reverse proxy, like below:
+Then, using VS Code (or your favorite editor) open the.envfile from the Task List React application, cloned before in
+thereact-starter-tasklist directory. In this file we store the URL of the back-end services that the React application
+consumes. By default, they will have the URL pointing to the reverse proxy, like below:
 
 ```
 
@@ -424,8 +400,7 @@ REACT_APP_URI_TASK=http://localhost:8000/app
 
 ```
 
-But, if you are going to use Localtunnel, you have to change the content of the file, as shown
-below:
+But, if you are going to use Localtunnel, you have to change the content of the file, as shown below:
 
 ```
 
@@ -434,8 +409,8 @@ REACT_APP_URI_TASK=https://task1.loca.lt
 
 ```
 
-This change requires to re-start the Node server. Note that instead of pointing to localhost it will
-point to real secure URLs. Now, you need to start a tunnel for each service:
+This change requires to re-start the Node server. Note that instead of pointing to localhost it will point to real
+secure URLs. Now, you need to start a tunnel for each service:
 
 $ lt --port 3000 --subdomain web-epm
 
@@ -445,11 +420,10 @@ $ lt --port 1234 --subdomain auth
 
 $ lt --port 1235 --subdomain task
 
-Each command above creates a public secure URL, starting with the specified subdomain and each
-request will forward to the localhost on the specified port. After setting this up, open a browser
-and navigate to each URL:https://web-epm.loca.lt,https://auth1.loca.ltandhttps://c task1.loca.lt.
-You will have to read a friendly reminder and click a button to proceed, as illustrated by figure
-2.1.
+Each command above creates a public secure URL, starting with the specified subdomain and each request will forward to
+the localhost on the specified port. After setting this up, open a browser and navigate to each
+URL:https://web-epm.loca.lt,https://auth1.loca.ltandhttps://c task1.loca.lt. You will have to read a friendly reminder
+and click a button to proceed, as illustrated by figure 2.1.
 
 ```
 
@@ -457,8 +431,8 @@ Figure 2.1: Localtunnel Friendly Reminder
 
 ```
 
-And finally, you have to start the back-end services UserAuth and TaskListwith an additional JVM
-parameter. Use the following command:
+And finally, you have to start the back-end services UserAuth and TaskListwith an additional JVM parameter. Use the
+following command:
 
 $ mvn exec:java -Dsecret=bfhAp4qdm92bD0FIOZLanC66KgCS8cYVxq/KlSVdjhI= -Dtest-with-lt=true
 
@@ -469,14 +443,13 @@ $ mvn exec:java -Dsecret=bfhAp4qdm92bD0FIOZLanC66KgCS8cYVxq/KlSVdjhI= -Dtest-wit
 
 ```
 
-By using the-Dtest-with-lt=trueparameter, we are enabling CORS for the
-originhttps://web-epm.loca.ltand change cookie parameters to HttpOnly; domain=loca.lt; Secure;
-SameSite=None in order to make it work.
+By using the-Dtest-with-lt=trueparameter, we are enabling CORS for the originhttps://web-epm.loca.ltand change cookie
+parameters to HttpOnly; domain=loca.lt; Secure; SameSite=None in order to make it work.
 
 ##### CHAPTER 2. CRAFTING YOUR FIRST PWA 16
 
-Then, if you navigate to https://web-epm.loca.lt, you will see the Task List front-end. This setup
-will be used later in the book to test our progressive web app from a mobile device.
+Then, if you navigate to https://web-epm.loca.lt, you will see the Task List front-end. This setup will be used later in
+the book to test our progressive web app from a mobile device.
 
 ```
 
@@ -486,19 +459,18 @@ Figure 2.2: Task List - Microservice Architecture
 
 ### 2.2 Task List React Application
 
-The main screenshots of the Task List application are illustrated in figures 2.3 and 2.4. In order
-to access their task lists a user must type first their username and password (in the login screen
-2.3). That will generate a request to the UserAuth back-end service which validates the user’s
-credentials, and if successful it will return an access token. The access token allows the user
+The main screenshots of the Task List application are illustrated in figures 2.3 and 2.4. In order to access their task
+lists a user must type first their username and password (in the login screen 2.3). That will generate a request to the
+UserAuth back-end service which validates the user’s credentials, and if successful it will return an access token. The
+access token allows the user
 
 ##### CHAPTER 2. CRAFTING YOUR FIRST PWA 17
 
-to access their tasks consuming the Task List back-end services. The token is stored in
-anhttpOnlycookie. Once authenticated, the user can retrieve their tasks. They are presented in a
-list as shown in figure 2.4 with their expiration date. The expiration date will have different
-background colors depending how close to the deadline they are. To mark a task as done (or in
-progress), the end user can click on the checkbox. The second task on figure 2.4 shows how a task
-looks like when it is marked as completed. You can also delete tasks or add new tasks.
+to access their tasks consuming the Task List back-end services. The token is stored in anhttpOnlycookie. Once
+authenticated, the user can retrieve their tasks. They are presented in a list as shown in figure 2.4 with their
+expiration date. The expiration date will have different background colors depending how close to the deadline they are.
+To mark a task as done (or in progress), the end user can click on the checkbox. The second task on figure 2.4 shows how
+a task looks like when it is marked as completed. You can also delete tasks or add new tasks.
 
 ```
 
@@ -506,9 +478,9 @@ Figure 2.3: Login Page - Task List
 
 ```
 
-Now, if you open the source code of the application, you will see, starting with an uppercase
-letter, the React components created to build the app. Let’s explore each component’s
-responsibility. They are arranged by the following hierarchy:
+Now, if you open the source code of the application, you will see, starting with an uppercase letter, the React
+components created to build the app. Let’s explore each component’s responsibility. They are arranged by the following
+hierarchy:
 
 ```
 
@@ -542,17 +514,16 @@ AddTask.js
 
 ```
 
-TheWelcome.jscomponent is responsible for painting the welcome message illustrated in figure 2.5.
-TheMenu.jscomponent paints the top header menu, see figure 2.6 (red square). TheTaskList.jscomponent
-shown in figure 2. (green square) is in charge of painting the list of tasks. It also allows the
-user to create, delete and mark as done task items. TheAddTask.jscomponent is responsible for
-painting the modal window with the form to allow the user to create new tasks (see figure 2.7,
-yellow square). And finally, theLogin.js component paints the login form shown on figure 2.3.
+TheWelcome.jscomponent is responsible for painting the welcome message illustrated in figure 2.5. TheMenu.jscomponent
+paints the top header menu, see figure 2.6 (red square). TheTaskList.jscomponent shown in figure 2. (green square) is in
+charge of painting the list of tasks. It also allows the user to create, delete and mark as done task items.
+TheAddTask.jscomponent is responsible for painting the modal window with the form to allow the user to create new tasks
+(see figure 2.7, yellow square). And finally, theLogin.js component paints the login form shown on figure 2.3.
 
-Looking at the source code again, in the src/serverfolder, you will see two JavaScript files:
-tasks.jsandusers.js. tasks.js encapsulates all thefetchrequests to the Task List back-end services.
-Whileusers.js, encapsulates all the fetchrequests to the User Authentication back-end services. Each
-of the React components described above that requires access
+Looking at the source code again, in the src/serverfolder, you will see two JavaScript files: tasks.jsandusers.js.
+tasks.js encapsulates all thefetchrequests to the Task List back-end services. Whileusers.js, encapsulates all the
+fetchrequests to the User Authentication back-end services. Each of the React components described above that requires
+access
 
 ##### CHAPTER 2. CRAFTING YOUR FIRST PWA 19
 
@@ -564,9 +535,8 @@ Figure 2.5: Welcome.js component
 
 ```
 
-Having the development environment running and an understanding of the React components that render
-the Task List application, let’s start describing what is needed to transform the application into a
-progressive web app.
+Having the development environment running and an understanding of the React components that render the Task List
+application, let’s start describing what is needed to transform the application into a progressive web app.
 
 ##### CHAPTER 2. CRAFTING YOUR FIRST PWA 20
 
@@ -586,38 +556,35 @@ Figure 2.7: AddTask.js
 
 ### 2.3 The Service Worker
 
-You might have used the tool calledcreate-react-appto create and manage React applications. Luckily
-for us, this tool allows us to createProgressive Web Appstoo. To create a new React application with
-PWA support, you can run the following command:
+You might have used the tool calledcreate-react-appto create and manage React applications. Luckily for us, this tool
+allows us to createProgressive Web Appstoo. To create a new React application with PWA support, you can run the
+following command:
 
 $ npx create-react-app my-app --template cra-template-pwa
 
-The Task List application we have described before, was created using that template^1. However, the
-PWA capabilities are not enabled yet, we will start with that in a few more paragraphs. When you
-create a React application using this tool and with this template, the PWA capabilities are not
-enabled by default, you have to enable them.
+The Task List application we have described before, was created using that template^1. However, the PWA capabilities are
+not enabled yet, we will start with that in a few more paragraphs. When you create a React application using this tool
+and with this template, the PWA capabilities are not enabled by default, you have to enable them.
 
-Progressive Web Apps capabilities are possible thanks to a technology calledService Worker. All the
-magic you can incorporate to a progressive web app is thanks to it. A Service Worker is a JavaScript
-program that runs in a background thread. It allows you to implement, in Web Apps, capabilities
-similar to those offered by native apps. Before service workers existed,Web Workerswere introduced.
-By using Web Workers, the browser allows you to run JavaScript programs in the background without
-blocking the main browser thread where your web app is running. The Service Worker is a Web Worker
-with steroids^2. The most important difference is that they caninterceptany request that your web
-app does to a remote service. And with that, you are able to implement web apps with offline
-support. This ability to intercept, for instance, a network request is done by using an event-driven
-design. The browser triggers events which your service worker can subscribe to.
+Progressive Web Apps capabilities are possible thanks to a technology calledService Worker. All the magic you can
+incorporate to a progressive web app is thanks to it. A Service Worker is a JavaScript program that runs in a background
+thread. It allows you to implement, in Web Apps, capabilities similar to those offered by native apps. Before service
+workers existed,Web Workerswere introduced. By using Web Workers, the browser allows you to run JavaScript programs in
+the background without blocking the main browser thread where your web app is running. The Service Worker is a Web
+Worker with steroids^2. The most important difference is that they caninterceptany request that your web app does to a
+remote service. And with that, you are able to implement web apps with offline support. This ability to intercept, for
+instance, a network request is done by using an event-driven design. The browser triggers events which your service
+worker can subscribe to.
 
-Now that you know what a service worker is, let’s see where is it inside the Task Application source
-code. Creating a React app using thecreate- react-apptool with thecra-template-pwagives you a React
-project with three differences. These differences, luckily, gives you much of the work required to
-make your web app work offline. Out of the three differences, the two most important are the
-addition of two JavaScript files located in thesrcfolder, named:
+Now that you know what a service worker is, let’s see where is it inside the Task Application source code. Creating a
+React app using thecreate- react-apptool with thecra-template-pwagives you a React project with three differences. These
+differences, luckily, gives you much of the work required to make your web app work offline. Out of the three
+differences, the two most important are the addition of two JavaScript files located in thesrcfolder, named:
 service-worker.jsandserviceWorkerRegistration.js. Cool!
 
-(^1) After creation I have upgraded all the workbox packages to latest version, which at the time of
-writing this book is 6.4.2 (^2) There is a great presentation about why Web Workers exists and their
-difference between Service Workers byNolan Lawsonthat I recommend you to see.
+(^1) After creation I have upgraded all the workbox packages to latest version, which at the time of writing this book
+is 6.4.2 (^2) There is a great presentation about why Web Workers exists and their difference between Service Workers
+byNolan Lawsonthat I recommend you to see.
 
 ##### CHAPTER 2. CRAFTING YOUR FIRST PWA 22
 
@@ -660,11 +627,10 @@ file, you will see the third difference:
 
 ````
 
-As you might have noted, on line 22 above, the registration of the service worker is not done by
-default, as I was mentioned. If you want it, you have to change that line to call the
-functionregister()instead ofunregc ister(). When you change that, the service worker starts the
-registration process. During this complex process there are state transitions and events are
-triggered. We will describe this by looking at the most important sections of
+As you might have noted, on line 22 above, the registration of the service worker is not done by default, as I was
+mentioned. If you want it, you have to change that line to call the functionregister()instead ofunregc ister(). When you
+change that, the service worker starts the registration process. During this complex process there are state transitions
+and events are triggered. We will describe this by looking at the most important sections of
 theservice-worker.jsandserviceWorkerRegistration.jssource code.
 
 ```
@@ -707,9 +673,8 @@ Listing 2.2: serviceWorkerRegistration.js/register()
 
 ```
 
-The first important thing to note from the code above on line 2, is that the service worker is
-registered only in aproductionbuild. This means that for testing a progressive web app, you have to
-run the following command:
+The first important thing to note from the code above on line 2, is that the service worker is registered only in
+aproductionbuild. This means that for testing a progressive web app, you have to run the following command:
 
 ```
 
@@ -721,11 +686,10 @@ $ npm run build && serve -s build
 
 ```
 
-Note additionally on line 2 the condition "serviceWorker" in navic gatorthat checks if the browser
-you are using supports a service worker. If not, your web app will work without their benefits. This
-is part of the progressive enhancement we talked about on section1.1. After that, on line 4, we
-define a subscription to theloadevent, and inside there, as explained next, we proceed with the
-registration. The registration of the service worker
+Note additionally on line 2 the condition "serviceWorker" in navic gatorthat checks if the browser you are using
+supports a service worker. If not, your web app will work without their benefits. This is part of the progressive
+enhancement we talked about on section1.1. After that, on line 4, we define a subscription to theloadevent, and inside
+there, as explained next, we proceed with the registration. The registration of the service worker
 
 ```
 
@@ -733,15 +697,14 @@ registration. The registration of the service worker
 
 ```
 
-might trigger in a different thread the download of your static files in order to cache them. This
-work might affect the performance of the main thread that renders the web app, that is the reason to
-perform the registration after (hence inside theloadevent) your web app has been finished loaded^3.
-The block of code from lines 7 to 17 has a branch where we are onhttp://localc host/or not. If we
-are onhttp://localhost/there is a call to the function checkValidServiceWorker(swUrl, config)^4
-which first will check if the`c ${process.env.PUBLIC_URL}/service-worker.js`exists. You might use
-thehttp://localhost/URL for many other web apps that might not have a service worker, so before
-registering it, it verifies if it exists. If it exists, it will call theregisterValidSW(swUrl,
-config), in the same way that if you aren’t onhttp://localhost/(elsebranch on line 15).
+might trigger in a different thread the download of your static files in order to cache them. This work might affect the
+performance of the main thread that renders the web app, that is the reason to perform the registration after (hence
+inside theloadevent) your web app has been finished loaded^3. The block of code from lines 7 to 17 has a branch where we
+are onhttp://localc host/or not. If we are onhttp://localhost/there is a call to the function
+checkValidServiceWorker(swUrl, config)^4 which first will check if
+the`c ${process.env.PUBLIC_URL}/service-worker.js`exists. You might use thehttp://localhost/URL for many other web apps
+that might not have a service worker, so before registering it, it verifies if it exists. If it exists, it will call
+theregisterValidSW(swUrl, config), in the same way that if you aren’t onhttp://localhost/(elsebranch on line 15).
 
 ```
 
@@ -809,25 +772,23 @@ registerValidSW(swUrl, config).
 ```
 
 On line 2 (and 3) above, is where the registration is finally done. The line
-navigator.serviceWorker.register(swUrl)willdownloadtheservicc e-worker.jsfile and then isexecuted(in
-a context without access to the DOM). After that, the service worker starts the life cycle shown on
-figure 2.8, which I will describe while I explain the source code above.
+navigator.serviceWorker.register(swUrl)willdownloadtheservicc e-worker.jsfile and then isexecuted(in a context without
+access to the DOM). After that, the service worker starts the life cycle shown on figure 2.8, which I will describe
+while I explain the source code above.
 
 ```
 
 ```
 
-Note that if the registration is successful (service worker downloaded and executed) it subscribes
-to theupdatefoundevent, on line 5. That event is triggered every time the registration of a service
-worker enters in the installingstate. Since that is exactly what is happening, the function starts
-its execution. At this point, and before moving to theinstalledstate, the service worker is
-dispatched with theinstalllife cycle event (as shown in figure2.8). This event is the place to
-perform aprecache of the static assets of the application. We will go back to this later. On line 6
-above, the service worker instance is assigned to theinstallingWorker, and subscribes to
-thestatechangeevent (see line 10). Every time a service worker moves from one state to another the
-function started at line 11 will be executed. If we are in the installed state (ifcondition on line
-11), it will check if we have another service worker active (ifcondition on line 12). Thenavigatc
-or.serviceWorker.controller(see here:controller) property gives you an
+Note that if the registration is successful (service worker downloaded and executed) it subscribes to
+theupdatefoundevent, on line 5. That event is triggered every time the registration of a service worker enters in the
+installingstate. Since that is exactly what is happening, the function starts its execution. At this point, and before
+moving to theinstalledstate, the service worker is dispatched with theinstalllife cycle event (as shown in figure2.8).
+This event is the place to perform aprecache of the static assets of the application. We will go back to this later. On
+line 6 above, the service worker instance is assigned to theinstallingWorker, and subscribes to thestatechangeevent (see
+line 10). Every time a service worker moves from one state to another the function started at line 11 will be executed.
+If we are in the installed state (ifcondition on line 11), it will check if we have another service worker active
+(ifcondition on line 12). Thenavigatc or.serviceWorker.controller(see here:controller) property gives you an
 
 ```
 
@@ -835,28 +796,25 @@ or.serviceWorker.controller(see here:controller) property gives you an
 
 ```
 
-instance of the service worker that is currently controlling the web app pages (the active one).
-Thefirst timeyour app register a service worker, it won’t be any other service worker activated for
-the same origin. Anysubsequent deployment of the application, due to we will be in the case of
-trying to register a service worker when there is one already active, will require some additional
-work that we will discuss in the next chapter. For now we will put the focus on first time
-registration. So, now that we understand this, we know that the condition on line 12 will be false,
-jumping to the line 23 where "Content is cached for offline use"is printed on the console. At this
-point in this process, if you have the service worker subscribed to theinstall life cycle event
-(this is done on theservice-worker.js, as we will see later), whatever you do there, it has
-finished. And finally, ifconfig.onSuccessis set, a call to the callbackonSuccessis executed. That
-callback can be used to show to the end user a toast message informing that the application has been
-cached. At some point later, the service worker is dispatched with the activatelife cycle event
-(used for cleaning up the cache, if necessary), and after that the service worker becomesactivated.
+instance of the service worker that is currently controlling the web app pages (the active one). Thefirst timeyour app
+register a service worker, it won’t be any other service worker activated for the same origin. Anysubsequent deployment
+of the application, due to we will be in the case of trying to register a service worker when there is one already
+active, will require some additional work that we will discuss in the next chapter. For now we will put the focus on
+first time registration. So, now that we understand this, we know that the condition on line 12 will be false, jumping
+to the line 23 where "Content is cached for offline use"is printed on the console. At this point in this process, if you
+have the service worker subscribed to theinstall life cycle event (this is done on theservice-worker.js, as we will see
+later), whatever you do there, it has finished. And finally, ifconfig.onSuccessis set, a call to the callbackonSuccessis
+executed. That callback can be used to show to the end user a toast message informing that the application has been
+cached. At some point later, the service worker is dispatched with the activatelife cycle event (used for cleaning up
+the cache, if necessary), and after that the service worker becomesactivated.
 
 ```
 
 ```
 
-Ok, this was the review of theserviceWorkerRegistration.jssource code, while I explained how the
-service worker lice cycle works. Let’s now review the source code of theservice-worker.jsbelow. As
-it was mentioned it is involved in the process explained above because of their subscription to
-theinstallandactivatelife cycle events.
+Ok, this was the review of theserviceWorkerRegistration.jssource code, while I explained how the service worker lice
+cycle works. Let’s now review the source code of theservice-worker.jsbelow. As it was mentioned it is involved in the
+process explained above because of their subscription to theinstallandactivatelife cycle events.
 
 ```
 
@@ -917,11 +875,10 @@ Listing 2.4: service-worker.js
 
 ```
 
-The first important thing to mention, and you might have noted from looking at the import statements
-above, is that it usesworkbox. Workbox is a set of modules created by Google to help with the
-implementation of service workers and caching. As mentioned, the service worker is the place to
-implement native apps capabilities. One of them most important capabilities to implement is the idea
-that the web app will still work even without
+The first important thing to mention, and you might have noted from looking at the import statements above, is that it
+usesworkbox. Workbox is a set of modules created by Google to help with the implementation of service workers and
+caching. As mentioned, the service worker is the place to implement native apps capabilities. One of them most important
+capabilities to implement is the idea that the web app will still work even without
 
 ```
 
@@ -929,29 +886,26 @@ that the web app will still work even without
 
 ```
 
-connectivity. In order to do that, we have to cache the web application. By creating the React
-application with thecra-template-pwa, we have most of this job done, and is what I will explain
-next. One of the features that the implementation above gives us is toprecache^5 the static content
-of the web app. That is: JavaScripts and CSSs files located in thesrcdirectory plus the
-public/index.html. Additionally, it will precache the JavaScript and CSS files that your React
-components imports. The thing is that when we create a production build with the command$npm run
-build,webpacktakes all these static files and create some specifics files minimized and combined
-(see these detailshere). To deal with this thecreate-react-tooluses theworkbox- webpack-plugin. This
-plugin is integrated in the production build^6 and it will take care of generating the list of
-webpack-generated assets plus compiling a production version of the service worker, based on the one
-we have presented on listing2.4.
+connectivity. In order to do that, we have to cache the web application. By creating the React application with
+thecra-template-pwa, we have most of this job done, and is what I will explain next. One of the features that the
+implementation above gives us is toprecache^5 the static content of the web app. That is: JavaScripts and CSSs files
+located in thesrcdirectory plus the public/index.html. Additionally, it will precache the JavaScript and CSS files that
+your React components imports. The thing is that when we create a production build with the command$npm run
+build,webpacktakes all these static files and create some specifics files minimized and combined (see these
+detailshere). To deal with this thecreate-react-tooluses theworkbox- webpack-plugin. This plugin is integrated in the
+production build^6 and it will take care of generating the list of webpack-generated assets plus compiling a production
+version of the service worker, based on the one we have presented on listing2.4.
 
 ```
 
 ```
 
-Let me repeat that to make it crystal clear, theservice-worker.jsfile from listing2.4, is not the
-one used in production. A new one will be created by the production build, based on what is
-specified in the service-worc ker.js. This is the reason why the service worker is only activated in
-a production build. If we look at line 9 on listing2.4, the functionprecac
-cheAndRoute(self.**WB_MANIFEST)is the one that precache all the static assets. The
-variableself.**WB_MANIFESTis replaced with the URLs of all the files in thebuild/staticfolder, plus
-the filepublic/index.html. Like below:
+Let me repeat that to make it crystal clear, theservice-worker.jsfile from listing2.4, is not the one used in
+production. A new one will be created by the production build, based on what is specified in the service-worc ker.js.
+This is the reason why the service worker is only activated in a production build. If we look at line 9 on listing2.4,
+the functionprecac cheAndRoute(self.**WB_MANIFEST)is the one that precache all the static assets. The
+variableself.**WB_MANIFESTis replaced with the URLs of all the files in thebuild/staticfolder, plus the
+filepublic/index.html. Like below:
 
 ```
 
@@ -966,8 +920,7 @@ the filepublic/index.html. Like below:
 
 ```
 
-And when the build process creates the production service worker, it will finally looks like this^7
-:
+And when the build process creates the production service worker, it will finally looks like this^7 :
 
 ```
 
@@ -998,19 +951,18 @@ understand how this process works.
 
 ```
 
-Note from the code above that the precache is executed when the install event is dispatched, as
-mentioned before. And to cache content theCacheStorage is used.
+Note from the code above that the precache is executed when the install event is dispatched, as mentioned before. And to
+cache content theCacheStorage is used.
 
 ```
 
 ```
 
-As it was mentioned, a service worker can intercept network requests and it may respond to the
-browser with cached content, content from a remote service (network) or content generated in the
-service worker. This is called routingin Workbox terms. So, in addition to precache, theprecacheAnc
-dRoutefunction willroute any static content request, that the web app perform, to the cache. This is
-done by adding a listener in the production service worker to thefetchevent^8. Something similar to
-the code below:
+As it was mentioned, a service worker can intercept network requests and it may respond to the browser with cached
+content, content from a remote service (network) or content generated in the service worker. This is called routingin
+Workbox terms. So, in addition to precache, theprecacheAnc dRoutefunction willroute any static content request, that the
+web app perform, to the cache. This is done by adding a listener in the production service worker to thefetchevent^8.
+Something similar to the code below:
 
 ```
 
@@ -1030,9 +982,8 @@ the code below:
 
 ```
 
-The code above will check if the resource requested is in the cache (line 3), and return that if it
-is there. If not, it will perform a network request using the fetchfunction (orcondition on line 4).
-Then, it uses theFetchEvent.respondWith
+The code above will check if the resource requested is in the cache (line 3), and return that if it is there. If not, it
+will perform a network request using the fetchfunction (orcondition on line 4). Then, it uses theFetchEvent.respondWith
 
 ```
 
@@ -1042,39 +993,35 @@ Then, it uses theFetchEvent.respondWith
 
 ```
 
-method (line 2) to return the response. The response will be either the one from the cache or the
-one obtained from the network. The service worker generated by the production build will use
-thecache-first strategy, meaning that if the content exists in the cache, it will be returned from
-there. Only when the content is not in the cache, it will be requested through the network. In the
-next chapter I will explain how to update the cache when a new release of the web app is deployed in
-production.
+method (line 2) to return the response. The response will be either the one from the cache or the one obtained from the
+network. The service worker generated by the production build will use thecache-first strategy, meaning that if the
+content exists in the cache, it will be returned from there. Only when the content is not in the cache, it will be
+requested through the network. In the next chapter I will explain how to update the cache when a new release of the web
+app is deployed in production.
 
 ```
 
 ```
 
-On lines 12 and 32, there are two method calls to the same function: rec gisterRoute. The one on
-line 12 will route anynavigational requestto the index.htmlstored in the cache. And the one on line
-32 will register a route to dynamically cache^9 pngfiles. This is done due to the twopngfiles we
-have on the public folder (React logos). Those are not managed by webpack, so they are not cached.
-If you add more images here, if they arepngs they will be cached. Of course, that method can be
-customized to cache other types of files. Note that on the second parameter of
-theregisterRoutefunction, we are passing an instance of a class calledStaleWhileRevalidate. That
-specifies thestrategywe want to use to cache the content. With this one, on each request to a png
-file, the service worker retrieves them from both the cache and the network. Responding with the one
-from the cache (if available) but updating the cache with the one from the network. There are
-otherstrategiesyou can use if you need it.
+On lines 12 and 32, there are two method calls to the same function: rec gisterRoute. The one on line 12 will route
+anynavigational requestto the index.htmlstored in the cache. And the one on line 32 will register a route to dynamically
+cache^9 pngfiles. This is done due to the twopngfiles we have on the public folder (React logos). Those are not managed
+by webpack, so they are not cached. If you add more images here, if they arepngs they will be cached. Of course, that
+method can be customized to cache other types of files. Note that on the second parameter of theregisterRoutefunction,
+we are passing an instance of a class calledStaleWhileRevalidate. That specifies thestrategywe want to use to cache the
+content. With this one, on each request to a png file, the service worker retrieves them from both the cache and the
+network. Responding with the one from the cache (if available) but updating the cache with the one from the network.
+There are otherstrategiesyou can use if you need it.
 
 ```
 
 ```
 
-The subscription to the message event on line 43 is used on subsequent service worker registration.
-I will explain that in the next chapter. And finally, on line 7 theclientsClaim()function
-(docshere). I left this one to the end, because I wanted to explain how caching works first. What
-does this do? When a service worker is activated it won’t take control of opened browser tabs, until
-the next reload. With this method, those open tabs get controlled by the service worker immediately.
-This method adds the following code to the production service worker:
+The subscription to the message event on line 43 is used on subsequent service worker registration. I will explain that
+in the next chapter. And finally, on line 7 theclientsClaim()function (docshere). I left this one to the end, because I
+wanted to explain how caching works first. What does this do? When a service worker is activated it won’t take control
+of opened browser tabs, until the next reload. With this method, those open tabs get controlled by the service worker
+immediately. This method adds the following code to the production service worker:
 
 ```
 
@@ -1084,8 +1031,8 @@ This method adds the following code to the production service worker:
 
 ```
 
-Calling theself.clients.claim()method (see official docshere) before the activation of the service
-worker will throw an error, that is why it is done
+Calling theself.clients.claim()method (see official docshere) before the activation of the service worker will throw an
+error, that is why it is done
 
 ```
 
@@ -1102,10 +1049,10 @@ on the activate event.
 
 ```
 
-That was the explanation of the source code of theserviceWorkerRegc istration.jsand
-theservice-worker.js. With them, we have the static content caching resolved. Let’s now jump to show
-how all of this looks on the browser. Open the starter project on your favorite editor and change
-the filesrc/index.jsto register the service worker, it should looks like below:
+That was the explanation of the source code of theserviceWorkerRegc istration.jsand theservice-worker.js. With them, we
+have the static content caching resolved. Let’s now jump to show how all of this looks on the browser. Open the starter
+project on your favorite editor and change the filesrc/index.jsto register the service worker, it should looks like
+below:
 
 ```
 
@@ -1134,8 +1081,7 @@ the filesrc/index.jsto register the service worker, it should looks like below:
 
 ```
 
-Then, run the following commands to create a production build and start serving it with a static
-server:
+Then, run the following commands to create a production build and start serving it with a static server:
 
 ```
 
@@ -1153,8 +1099,8 @@ $ cd react-starter-tasklist $ npm run build $ serve -s build/
 
 ```
 
-After that, navigate tohttp://localhost:3000/(in Chrome if possible) and open the development tools,
-pressing theF12key. Let’s see how the
+After that, navigate tohttp://localhost:3000/(in Chrome if possible) and open the development tools, pressing theF12key.
+Let’s see how the
 
 ```
 
@@ -1389,20 +1335,18 @@ Figure 2.14: Splash Screen
 
 ```
 
-At this point the Task List application is installable, cool!. But if we try to use the application,
-while we areoffline, it will crash. This experience is not really nice for a web app that should
-look like a native app. Let’s fix it. We first have to decide if we want to just show a fancy screen
-to inform the user that the connectivity is lost, or in addition to that, we want to provide some
-functionality. With very little effort we can provide some of the Task List functionality. We would
-like our end users to be able to see their tasks while they are offline. To be able to do that we
-have, somehow, to have the tasks stored in the cache. To implement that, we have to change the
-service worker to intercept thefetchrequest in order to cache the tasks every time they are
-retrieved from the remote service. And in the case of the remote service becoming unreachable, (due
-to connectivity issues) then, we will return the tasks from the cache. In other words, we are going
-to implement theNetwork Firststrategy. The network first strategy will first try to get the data
-from the remote service. If that is successful, the cache is updated and the data is returned to the
-browser. If not, the data is obtained from the cache and returned to the browser. This is described
-by google in Network falling back to cache.
+At this point the Task List application is installable, cool!. But if we try to use the application, while we
+areoffline, it will crash. This experience is not really nice for a web app that should look like a native app. Let’s
+fix it. We first have to decide if we want to just show a fancy screen to inform the user that the connectivity is lost,
+or in addition to that, we want to provide some functionality. With very little effort we can provide some of the Task
+List functionality. We would like our end users to be able to see their tasks while they are offline. To be able to do
+that we have, somehow, to have the tasks stored in the cache. To implement that, we have to change the service worker to
+intercept thefetchrequest in order to cache the tasks every time they are retrieved from the remote service. And in the
+case of the remote service becoming unreachable, (due to connectivity issues) then, we will return the tasks from the
+cache. In other words, we are going to implement theNetwork Firststrategy. The network first strategy will first try to
+get the data from the remote service. If that is successful, the cache is updated and the data is returned to the
+browser. If not, the data is obtained from the cache and returned to the browser. This is described by google in Network
+falling back to cache.
 
 ```
 
@@ -1462,20 +1406,18 @@ Listing 2.6: Task List Network First Strategy Caching
 
 ```
 
-On line 1 above we are subscribing to the fetchevent. That event is triggered every time a fetch
-request is executed by the browser. Theif condition on line 2 will ignore all the fetch requests
-done by the application except the one that retrieves the task list. In case that condition is
-satisfied (retrieve tasks is executed), the line 3 will be executed. It will first try to fetch the
-tasks from the network (line 4), using a function defined there to abort the request if it takes
-longer than one second. If the request is completed within one second, the cache is populated with
-the response (line 7) and the response is returned to the browser (line 8). Note that from here, the
-flow continues on the first.then()of theretrievefunction from the filesrc/server/tasks.js(line 35 on
-the starter project). If there is no connectivity (or a very poor one) thecatchon line 11 is
-executed. It will first find the response on the cache (line 12) and if there is a response stored
-for that request, it is returned (line 14). If there is no entry or the cache is empty, it will
-return aResponsewith an empty task array (line 16). The caches.match(...)returns aPromisethat
-resolves to aResponsewith the first matching request orundefinedif there is no match (that is why I
-put theifstatement on line 13). Additionally, it is important to mention that
+On line 1 above we are subscribing to the fetchevent. That event is triggered every time a fetch request is executed by
+the browser. Theif condition on line 2 will ignore all the fetch requests done by the application except the one that
+retrieves the task list. In case that condition is satisfied (retrieve tasks is executed), the line 3 will be executed.
+It will first try to fetch the tasks from the network (line 4), using a function defined there to abort the request if
+it takes longer than one second. If the request is completed within one second, the cache is populated with the response
+(line 7) and the response is returned to the browser (line 8). Note that from here, the flow continues on the
+first.then()of theretrievefunction from the filesrc/server/tasks.js(line 35 on the starter project). If there is no
+connectivity (or a very poor one) thecatchon line 11 is executed. It will first find the response on the cache (line 12)
+and if there is a response stored for that request, it is returned (line 14). If there is no entry or the cache is
+empty, it will return aResponsewith an empty task array (line 16). The caches.match(...)returns aPromisethat resolves to
+aResponsewith the first matching request orundefinedif there is no match (that is why I put theifstatement on line 13).
+Additionally, it is important to mention that
 
 ```
 
@@ -1483,16 +1425,16 @@ put theifstatement on line 13). Additionally, it is important to mention that
 
 ```
 
-thee.respondWithon line 3 expects as argument aResponseor aPromise that resolves to aResponse. Make
-sure you always provide that. This is a home made implementation of the Network First strategy.
+thee.respondWithon line 3 expects as argument aResponseor aPromise that resolves to aResponse. Make sure you always
+provide that. This is a home made implementation of the Network First strategy.
 
 ```
 
 ```
 
-However, instead of the above implementation and since we are using workbox, we will take advantage
-of their utilities. We will use the registerRoute method. We will register the retrieve tasks URL
-and the handler will be the NetworkFirst strategy class. See the code below:
+However, instead of the above implementation and since we are using workbox, we will take advantage of their utilities.
+We will use the registerRoute method. We will register the retrieve tasks URL and the handler will be the NetworkFirst
+strategy class. See the code below:
 
 ```
 
@@ -1532,9 +1474,8 @@ Listing 2.7: Network First Strategy using Workbox
 
 ```
 
-The first parameter of theregisterRouteabove (line 21), is the condition I wrote on line 2 on
-listing 2.6. By default,registerRoutewill only intercept requests with the http GET method. If you
-need to change that, you can use
+The first parameter of theregisterRouteabove (line 21), is the condition I wrote on line 2 on listing 2.6. By
+default,registerRoutewill only intercept requests with the http GET method. If you need to change that, you can use
 
 ```
 
@@ -1700,9 +1641,8 @@ Listing 2.8: Offline Message Component
 
 ```
 
-Now open theTaskList.jscomponent, we are going to do minor changes to incorporate the offline
-detector hook and theOfflineAlertcomponent. Below are highlighted the lines of code you have to add
-to the component.
+Now open theTaskList.jscomponent, we are going to do minor changes to incorporate the offline detector hook and
+theOfflineAlertcomponent. Below are highlighted the lines of code you have to add to the component.
 
 ```
 
@@ -1754,9 +1694,9 @@ Listing 2.9: TaskList.js
 
 ```
 
-The changes are the import statements on lines 3 and 4. A call to theusc eOffLineDetectorhook on
-line 12, and the JSX element on line 19 to render theOfflineAlertcomponent. The custom hook will
-update theisOnline state variable each time it detects a change in the connectivity status. When
+The changes are the import statements on lines 3 and 4. A call to theusc eOffLineDetectorhook on line 12, and the JSX
+element on line 19 to render theOfflineAlertcomponent. The custom hook will update theisOnline state variable each time
+it detects a change in the connectivity status. When
 
 ```
 
@@ -1764,9 +1704,8 @@ update theisOnline state variable each time it detects a change in the connectiv
 
 ```
 
-this happens it will trigger the render of theTaskListcomponent, provoking the render of
-theOfflineAlertcomponent. Figure 2.18 illustrates how the toast message is shown when there is no
-internet connection^13.
+this happens it will trigger the render of theTaskListcomponent, provoking the render of theOfflineAlertcomponent.
+Figure 2.18 illustrates how the toast message is shown when there is no internet connection^13.
 
 ```
 
@@ -1778,10 +1717,9 @@ Figure 2.18: Task List without Connectivity
 
 ```
 
-Let’s now proceed with a few more additional changes to prevent the users from using the task list
-functionality when there is no Internet connection. Below are highlighted the lines I have changed
-to disable the checkboxes, the trash icons and the Add Task button. Listing 2.10: TaskList:
-Disabling actions
+Let’s now proceed with a few more additional changes to prevent the users from using the task list functionality when
+there is no Internet connection. Below are highlighted the lines I have changed to disable the checkboxes, the trash
+icons and the Add Task button. Listing 2.10: TaskList: Disabling actions
 
 ```
 
@@ -1875,12 +1813,11 @@ t.text}
 
 ```
 
-The changes above prevents the users from performing any action that adds, deletes or modifies the
-state of the web app. Finally, I will disable the login/logout link from the Menu. To do that, I
-have to somehow provide to theMenu.jscomponent theisOnLinestate variable. To make that possible,
-sinceTaskList.jsandMenu.jscomponents are siblings (see the component hierarchy on 2.1), I have to
-move the use of theuseOffLineDetectorhook to the parent component:App.js. And from there, pass
-theisOnLinevalue usingprops. See the code of theApp.jscomponent below:
+The changes above prevents the users from performing any action that adds, deletes or modifies the state of the web app.
+Finally, I will disable the login/logout link from the Menu. To do that, I have to somehow provide to
+theMenu.jscomponent theisOnLinestate variable. To make that possible, sinceTaskList.jsandMenu.jscomponents are siblings
+(see the component hierarchy on 2.1), I have to move the use of theuseOffLineDetectorhook to the parent
+component:App.js. And from there, pass theisOnLinevalue usingprops. See the code of theApp.jscomponent below:
 
 ```
 
@@ -2010,9 +1947,9 @@ Listing 2.12: Menu: Disabling login/logout
 
 ```
 
-With the changes above, we are removing, when we are offline, the link that allows a user to login
-or logout. Figure 2.19 shows how the list of tasks looks like when the user is offline. Note that
-features like add a new task or mark a task as done are disabled.
+With the changes above, we are removing, when we are offline, the link that allows a user to login or logout. Figure
+2.19 shows how the list of tasks looks like when the user is offline. Note that features like add a new task or mark a
+task as done are disabled.
 
 ```
 
@@ -2024,8 +1961,8 @@ Figure 2.19: Task List Grid - Offline mode
 
 ```
 
-With these changes, we have created a pretty decent progressive web app. The source code can be
-downloaded from pwa-v1. In the following chapters I will show and implement more capabilities.
+With these changes, we have created a pretty decent progressive web app. The source code can be downloaded from pwa-v1.
+In the following chapters I will show and implement more capabilities.
 
 ```
 
@@ -2111,46 +2048,43 @@ installed and waiting to be activated (yellow box). The new service worker
 
 ```
 
-was installed which means that the install event was triggered. As mentioned, by being subscribed to
-this event the new service worker creates new entries in the cache (with the new updated content).
-It won’t delete anything from the cache at this point as the application is still being served by
-the first service worker and requires those entries. Old entries will be deleted once the new
-service worker gets activated. The new service worker will be in the waiting state until all the
-clients (browser’s tabs) that are currently controlled by the first service worker get closed. This
+was installed which means that the install event was triggered. As mentioned, by being subscribed to this event the new
+service worker creates new entries in the cache (with the new updated content). It won’t delete anything from the cache
+at this point as the application is still being served by the first service worker and requires those entries. Old
+entries will be deleted once the new service worker gets activated. The new service worker will be in the waiting state
+until all the clients (browser’s tabs) that are currently controlled by the first service worker get closed. This
 mechanismensuresthat only one versionof your service worker is running at a time.
 
 ```
 
 ```
 
-At this point, we need a way to handle this situation which requires shutting down the first service
-worker and activating the new one. First of all, it would be nice to inform the user that there is a
-new version of the application available. And additionally, give them the option to update it right
-away or at some point later. Let’s now implement this.
+At this point, we need a way to handle this situation which requires shutting down the first service worker and
+activating the new one. First of all, it would be nice to inform the user that there is a new version of the application
+available. And additionally, give them the option to update it right away or at some point later. Let’s now implement
+this.
 
 ```
 
 ```
 
-When the browser detects that there is a new service worker on the server, it downloads it and the
-registration process starts again, with the difference that now there is already a service worker
-activated. So, if you look again at the service worker registration source code presented on listing
-2.3, on line 13 we know that there is a new service worker waiting to be activated^1. This is
-detected because at line 11 it is checked that there is a service worker just installed (the new
-one) and on line 12 we check if there is currently a service worker controlling the clients (the
-current one). So, inside this branch on line 20 there is a call to theonUpdatecallback. A body for
-that function can be passed as parameter to theregister()function, see line 1 on listing 2.2
-(theconfigargument). We will use that callback to show a message that informs the user that there is
-a new version of the application available. We will implement this message using the react-toastify
-package that is already installed in the starter project, since we use it to inform the user when
-the internet connection has gone.
+When the browser detects that there is a new service worker on the server, it downloads it and the registration process
+starts again, with the difference that now there is already a service worker activated. So, if you look again at the
+service worker registration source code presented on listing 2.3, on line 13 we know that there is a new service worker
+waiting to be activated^1. This is detected because at line 11 it is checked that there is a service worker just
+installed (the new one) and on line 12 we check if there is currently a service worker controlling the clients (the
+current one). So, inside this branch on line 20 there is a call to theonUpdatecallback. A body for that function can be
+passed as parameter to theregister()function, see line 1 on listing 2.2 (theconfigargument). We will use that callback
+to show a message that informs the user that there is a new version of the application available. We will implement this
+message using the react-toastify package that is already installed in the starter project, since we use it to inform the
+user when the internet connection has gone.
 
 ```
 
 ```
 
-The first change we will do is to move the render of theOfflineAlert component. Open an editor and
-remove it from theTaskList component and add it to theAppcomponent, as shown below on line 18:
+The first change we will do is to move the render of theOfflineAlert component. Open an editor and remove it from
+theTaskList component and add it to theAppcomponent, as shown below on line 18:
 
 ```
 
@@ -2218,9 +2152,8 @@ tabs for this page are closed"
 
 ```
 
-With this change, we will see the toast message not only when the task list component is rendered
-but also when the other components are rendered. Have this in place, let’s apply the following
-changes to theindex.jsfile:
+With this change, we will see the toast message not only when the task list component is rendered but also when the
+other components are rendered. Have this in place, let’s apply the following changes to theindex.jsfile:
 
 ```
 
@@ -2284,29 +2217,27 @@ Listing 3.2: Adding New Content Available Message
 
 ```
 
-On line 44 above, note how now we are passing an object with the c onUpdateproperty to the service
-worker registration function. With that, when there is an update, the functiononNewRelease(line 22)
-will be called (passing an instance of the service worker that is being registered). On that
-function, we are just showing a toast message to the user using the Msc g component defined on
-line 11. This component receives as a prop the instance of the service worker being registered to
-prepare the code for the update as we will see later. Now, to see this working in a browser, you
-first need to create a production build and start the server (see listing 2.5). Then navigate
-tohttp://localhost:8000/and open the browser’s DevTools, go to the Application tab and then to the
-Service Workers item. On the waiting service worker press the "skipWaiting" link, as shown in figure
-3.3. That will shutdown the current service worker and activate the new one. Now, close all the
-browser’s tabs and go to your favorite editor to do a small change like removing theconsole.logprint
-on line 30 (from listing 3.2). This is just to trigger an update process to now see the toast
-message. After that, create a production build and navigate tohttp://localhost:8000/ with the
-browser’s DevTools open. You will now see what the figure 3.4 shows.
+On line 44 above, note how now we are passing an object with the c onUpdateproperty to the service worker registration
+function. With that, when there is an update, the functiononNewRelease(line 22) will be called (passing an instance of
+the service worker that is being registered). On that function, we are just showing a toast message to the user using
+the Msc g component defined on line 11. This component receives as a prop the instance of the service worker being
+registered to prepare the code for the update as we will see later. Now, to see this working in a browser, you first
+need to create a production build and start the server (see listing 2.5). Then navigate tohttp://localhost:8000/and open
+the browser’s DevTools, go to the Application tab and then to the Service Workers item. On the waiting service worker
+press the "skipWaiting" link, as shown in figure 3.3. That will shutdown the current service worker and activate the new
+one. Now, close all the browser’s tabs and go to your favorite editor to do a small change like removing
+theconsole.logprint on line 30 (from listing 3.2). This is just to trigger an update process to now see the toast
+message. After that, create a production build and navigate tohttp://localhost:8000/ with the browser’s DevTools open.
+You will now see what the figure 3.4 shows.
 
 ```
 
 ```
 
-Now, what is left to do is to implement the "skip waiting" programmatically when the user clicks on
-the "here" button from the toast message (as figure 3.4 depicts). To do that, we will use the
-messageevent listener declared on the service worker on listing 2.4 at line 43. Using the
-postMessage we can communicate the application with the service worker. In this case, we
+Now, what is left to do is to implement the "skip waiting" programmatically when the user clicks on the "here" button
+from the toast message (as figure 3.4 depicts). To do that, we will use the messageevent listener declared on the
+service worker on listing 2.4 at line 43. Using the postMessage we can communicate the application with the service
+worker. In this case, we
 
 ```
 
@@ -2314,8 +2245,8 @@ postMessage we can communicate the application with the service worker. In this 
 
 ```
 
-can pass the "SKIP_WAITING" message and that will discard the current service worker and promote to
-active the new one. In your editor, open again theindex.jsand add the following highlighted changes:
+can pass the "SKIP_WAITING" message and that will discard the current service worker and promote to active the new one.
+In your editor, open again theindex.jsand add the following highlighted changes:
 
 ```
 
@@ -2371,21 +2302,21 @@ Listing 3.3: Adding New Content Available Message
 
 ```
 
-From the code above, when the user click on the "here" button from the toast message (line 6) to
-update the version of the application, we call theonAlertToastClick(registration)function which
-finally post the c `{"type": "SKIP_WAITING"}` message to the service worker in the waiting state.
-That message is received by the callback function on listing 2.4 at line 43 which ends up calling
-theself.skipWaiting()which shuts down the current service worker and activates the new one.
+From the code above, when the user click on the "here" button from the toast message (line 6) to update the version of
+the application, we call theonAlertToastClick(registration)function which finally post the c `{"type": "SKIP_WAITING"}`
+message to the service worker in the waiting state. That message is received by the callback function on listing 2.4 at
+line 43 which ends up calling theself.skipWaiting()which shuts down the current service worker and activates the new
+one.
 
 ```
 
 ```
 
-Finally, starting at line 25 above, we are subscribing to thecontrollec rchangeevent, which will be
-triggered when the new service worker starts controlling the clients (browser’s tabs). And when that
-happens a reload is executed. This reload is necessary because the version of the application we are
-seeing is the previous one as it was controlled and served with the previous version of the service
-worker. By reloading, the new service worker will now serve the application showing the new content.
+Finally, starting at line 25 above, we are subscribing to thecontrollec rchangeevent, which will be triggered when the
+new service worker starts controlling the clients (browser’s tabs). And when that happens a reload is executed. This
+reload is necessary because the version of the application we are seeing is the previous one as it was controlled and
+served with the previous version of the service worker. By reloading, the new service worker will now serve the
+application showing the new content.
 
 ```
 
@@ -2423,14 +2354,13 @@ Figure 3.4: Task List Application - New content available
 
 ```
 
-If due to the nature of the application, the users will have it open for a long time, there is a way
-to programmatically perform the check to see if there is a new service worker on the server. The
-ServiceWorkerRegistration API provides an update method to do exactly that. This method, when
-called, will check if there is a new service worker on the server and if there is a byte- different
-to the one on the cache it will trigger the update process described in the previous section. So, an
-alternative that I recommend is to set up an interval at registration to perform this check every 1
-or 2 hours (or what you consider is best for you). Open theserviceWorkerRegistration.js file on an
-editor and on theregisterValidSWfunction add the following highlighted lines:
+If due to the nature of the application, the users will have it open for a long time, there is a way to programmatically
+perform the check to see if there is a new service worker on the server. The ServiceWorkerRegistration API provides an
+update method to do exactly that. This method, when called, will check if there is a new service worker on the server
+and if there is a byte- different to the one on the cache it will trigger the update process described in the previous
+section. So, an alternative that I recommend is to set up an interval at registration to perform this check every 1 or 2
+hours (or what you consider is best for you). Open theserviceWorkerRegistration.js file on an editor and on
+theregisterValidSWfunction add the following highlighted lines:
 
 ```
 
@@ -2462,11 +2392,10 @@ Listing 3.4: Adding New Content Available Message
 
 ```
 
-To test this, first of all, change the interval time from two hours to 10 seconds (line 7 above).
-Create a production build and navigate tohttp:c //localhost:8000/. Click the "here" button on the
-toast message. Now, without closing the browser’s tab, stop the server. Go to the editor, make any
-change to the application and then create the production build again (starting the server one more
-time). You will note that now the toast message will
+To test this, first of all, change the interval time from two hours to 10 seconds (line 7 above). Create a production
+build and navigate tohttp:c //localhost:8000/. Click the "here" button on the toast message. Now, without closing the
+browser’s tab, stop the server. Go to the editor, make any change to the application and then create the production
+build again (starting the server one more time). You will note that now the toast message will
 
 ```
 
@@ -2486,14 +2415,13 @@ The full source code is available pwa-v1-update.
 
 ```
 
-In this chapter we are going to make the Task List application to work fully offline. All the
-features described in section 2.2 will work without connectivity. To make this work, we are going to
-use the browser’s database called IndexedDB. In the next section I will describe in detail what is
-and how to use IndexedDB, but for now, it is just important to understand that it will be used to
-persist the tasks. Instead of consuming Task List’s remote services, we are going to implement the
-persistence in this browser’s database. And to keep the tasks synchronized with the remote storage
-exposed by Task List’s services we will take advantage of the Background Sync capability that the
-service worker offers.
+In this chapter we are going to make the Task List application to work fully offline. All the features described in
+section 2.2 will work without connectivity. To make this work, we are going to use the browser’s database called
+IndexedDB. In the next section I will describe in detail what is and how to use IndexedDB, but for now, it is just
+important to understand that it will be used to persist the tasks. Instead of consuming Task List’s remote services, we
+are going to implement the persistence in this browser’s database. And to keep the tasks synchronized with the remote
+storage exposed by Task List’s services we will take advantage of the Background Sync capability that the service worker
+offers.
 
 ```
 
@@ -2501,9 +2429,8 @@ service worker offers.
 
 ```
 
-The Background Sync capability (at the time of writing this book supported by Chrome, Edge and
-Opera) is pretty easy to use. From the web app you can trigger a sync by registering an event like
-below:
+The Background Sync capability (at the time of writing this book supported by Chrome, Edge and Opera) is pretty easy to
+use. From the web app you can trigger a sync by registering an event like below:
 
 ```
 
@@ -2519,9 +2446,9 @@ Listing 4.1: Registering the Background Sync
 
 ```
 
-In the code above, we are registering on the current service worker (obtained by
-callingnavigator.serviceWorker.ready) the sync event with the tag c "sync-queued-data". And then, in
-the service worker file, you can listen to a sync event like below:
+In the code above, we are registering on the current service worker (obtained by callingnavigator.serviceWorker.ready)
+the sync event with the tag c "sync-queued-data". And then, in the service worker file, you can listen to a sync event
+like below:
 
 ```
 
@@ -2547,21 +2474,20 @@ Listing 4.2: Listening to the Background Sync event
 
 ```
 
-Note on line 1 above that we are listening to the sync event. On line 6, I query the tag to
-determine which is the action I need to process. Tags are used to identify the action to be executed
-on each event. In a web app you might need to register a sync event for syncing data and another to
-send an email for instance. Tags are used to identify them. ThedoSyncfunction must return a Promise,
-as this is what the event.waitUntil requires. If the promise resolves the service worker will mark
-the event as completed. If not, it will re-try some minutes later.
+Note on line 1 above that we are listening to the sync event. On line 6, I query the tag to determine which is the
+action I need to process. Tags are used to identify the action to be executed on each event. In a web app you might need
+to register a sync event for syncing data and another to send an email for instance. Tags are used to identify them.
+ThedoSyncfunction must return a Promise, as this is what the event.waitUntil requires. If the promise resolves the
+service worker will mark the event as completed. If not, it will re-try some minutes later.
 
 ```
 
 ```
 
-Having said that, figure 4.1 illustrates how the web app will work. On the left we have the
-browser’s thread that is running the web app, storing tasks in the IndexedDB database and
-registering sync events. On the right we have the service worker listening to and processing sync
-events, obtaining the data from IndexedDB and sending it to the remote service.
+Having said that, figure 4.1 illustrates how the web app will work. On the left we have the browser’s thread that is
+running the web app, storing tasks in the IndexedDB database and registering sync events. On the right we have the
+service worker listening to and processing sync events, obtaining the data from IndexedDB and sending it to the remote
+service.
 
 ```
 
@@ -2575,8 +2501,8 @@ Figure 4.1: Using Background Sync and IndexedDB
 
 ```
 
-IndexedDB is a NoSQL database that falls into the key-value category. It supportstransactionswhich
-is a required feature for the implementation
+IndexedDB is a NoSQL database that falls into the key-value category. It supportstransactionswhich is a required feature
+for the implementation
 
 ```
 
@@ -2590,25 +2516,22 @@ we are going to do in this chapter, as you will see later.
 
 ```
 
-An IndexedDB database has a name (which is associated with the domain/origin) and a version. When
-the database is created the first time the version is one. The version determines how the current
-structure of the database is.
+An IndexedDB database has a name (which is associated with the domain/origin) and a version. When the database is
+created the first time the version is one. The version determines how the current structure of the database is.
 
 ```
 
 ```
 
-A database has one or more object stores. The object store is the storage mechanism of an IndexedDB
-database. An object store has a list of records where each record consists of a key and a value
-(like any other key-value NoSQL database). Let’s continue showing some code examples to explain how
-IndexedDB works.
+A database has one or more object stores. The object store is the storage mechanism of an IndexedDB database. An object
+store has a list of records where each record consists of a key and a value (like any other key-value NoSQL database).
+Let’s continue showing some code examples to explain how IndexedDB works.
 
 ```
 
 ```
 
-The example below, listing 4.3, shows how to open a database, create an object store and insert some
-data.
+The example below, listing 4.3, shows how to open a database, create an object store and insert some data.
 
 ```
 
@@ -2647,39 +2570,34 @@ Listing 4.3: IndexedDB - Event Based API
 
 ```
 
-On line 1 above, we are opening the database calledpeopledb. The first time, if a database with that
-name does not exist, it will be created. From looking at the code above, you might have guessed that
-the IndexedDB API isevent based, meaning that we have to register callbacks on the events we are
-interested in. On line 4, we are registering the callback for theonupgrc adeneededevent. This event
-is triggered when you open a database with a new databaseversion(the second parameter of
-theindexedDB.open). Every time you need to change the structure of your database (adding/changing
+On line 1 above, we are opening the database calledpeopledb. The first time, if a database with that name does not
+exist, it will be created. From looking at the code above, you might have guessed that the IndexedDB API isevent based,
+meaning that we have to register callbacks on the events we are interested in. On line 4, we are registering the
+callback for theonupgrc adeneededevent. This event is triggered when you open a database with a new databaseversion(the
+second parameter of theindexedDB.open). Every time you need to change the structure of your database (adding/changing
 indexes or adding/changing object stores), you have to specify a new version and that will trigger
-theonupgradeneededevent. In the example above, on line 1, the version parameter is not specified and
-when that is the case one is the default value. Of course, the very first time you open (and gets
-created) a database theonupgradeneededevent is triggered. On line 6 above, I’m creating an object
-store calledpeopleand defining theidkey as the primary key. On lines 7 and 8, I’m defining two
-indexes, the first one to search people by their name and the second one to search people by their
-primary key.
+theonupgradeneededevent. In the example above, on line 1, the version parameter is not specified and when that is the
+case one is the default value. Of course, the very first time you open (and gets created) a database
+theonupgradeneededevent is triggered. On line 6 above, I’m creating an object store calledpeopleand defining theidkey as
+the primary key. On lines 7 and 8, I’m defining two indexes, the first one to search people by their name and the second
+one to search people by their primary key.
 
 ```
 
 ```
 
-Theonsuccessevent, on line 11, is triggered after successfully opening the database. On line 14 I’m
-opening a transaction. The first parameter indicates that the transaction will expand over
-thepeopleobject store and the second parameter that it will be for reading and writing data. On line
-15, I get a reference to thepeopleobject store to be used on lines 17, 18, 19 and 20 to create new
-entries. Note that a JavaScript object is passed to thestore.put method. That JavaScript object must
-include the key defined as the primary key (seekeyPathon line 6). The primary key is the only
-mandatory property that must be included. Finally, on line 22, I’m registering
-thetx.oncompletecallback that will be triggered once the transaction completes. Figure 4.2 shows the
-database structure we created with the example above in the Chrome development tool. Note that it
-shows the origin, the version and how many object stores it has. It can also be deleted from the
-Delete databasebutton. Figure 4.3 shows the data stored in thepeopleobject store. Note also that
-hanging from the object store we have the two indexes created. The indexes are special object stores
-created to get access to the data by a specific key. See figure 4.4 that illustrates how
-theby_nameindex looks like. Note that another columnkeyPath: nameis added, which is used every time
-there is a retrieval byname.
+Theonsuccessevent, on line 11, is triggered after successfully opening the database. On line 14 I’m opening a
+transaction. The first parameter indicates that the transaction will expand over thepeopleobject store and the second
+parameter that it will be for reading and writing data. On line 15, I get a reference to thepeopleobject store to be
+used on lines 17, 18, 19 and 20 to create new entries. Note that a JavaScript object is passed to thestore.put method.
+That JavaScript object must include the key defined as the primary key (seekeyPathon line 6). The primary key is the
+only mandatory property that must be included. Finally, on line 22, I’m registering thetx.oncompletecallback that will
+be triggered once the transaction completes. Figure 4.2 shows the database structure we created with the example above
+in the Chrome development tool. Note that it shows the origin, the version and how many object stores it has. It can
+also be deleted from the Delete databasebutton. Figure 4.3 shows the data stored in thepeopleobject store. Note also
+that hanging from the object store we have the two indexes created. The indexes are special object stores created to get
+access to the data by a specific key. See figure 4.4 that illustrates how theby_nameindex looks like. Note that another
+columnkeyPath: nameis added, which is used every time there is a retrieval byname.
 
 ```
 
@@ -2699,11 +2617,10 @@ Figure 4.3: IndexedDB - Object Store People
 
 ```
 
-Instead of using the IndexedDB API directly, we are going to use a very thin wrapper of it that was
-developed by Jake Archibald called idb. It is apromisebased API, which simplifies the code that
-needs to be written to interact with IndexedDB. Now, to introduce idb, I’m going to show a couple of
-examples to help you understand the code that we will write in the next section to provide full
-offline support for the Task List application.
+Instead of using the IndexedDB API directly, we are going to use a very thin wrapper of it that was developed by Jake
+Archibald called idb. It is apromisebased API, which simplifies the code that needs to be written to interact with
+IndexedDB. Now, to introduce idb, I’m going to show a couple of examples to help you understand the code that we will
+write in the next section to provide full offline support for the Task List application.
 
 ```
 
@@ -2742,19 +2659,18 @@ Figure 4.4: IndexedDB - by_name Index
 
 ```
 
-In listing 4.4 we use theopenDBmethod to create a connection to the IndexedDB database. This method
-returns a promise that resolves to an improved IDBDatabase. The openDB method receives as parameter
-the database’s name, the version and then an object with theupgradefunction. Theupgradefunction is
-called if the version passed as the second parameter differs from the current version of the created
-database. This is equivalent to theonupgradeneeded event function we presented before. We use this
-callback function to create the object stores and indexes.
+In listing 4.4 we use theopenDBmethod to create a connection to the IndexedDB database. This method returns a promise
+that resolves to an improved IDBDatabase. The openDB method receives as parameter the database’s name, the version and
+then an object with theupgradefunction. Theupgradefunction is called if the version passed as the second parameter
+differs from the current version of the created database. This is equivalent to theonupgradeneeded event function we
+presented before. We use this callback function to create the object stores and indexes.
 
 ```
 
 ```
 
-To add objects into an object store we can proceed in the following way as illustrated on listing
-4.5. If you try to add an object with a key that already exists you will get an error.
+To add objects into an object store we can proceed in the following way as illustrated on listing 4.5. If you try to add
+an object with a key that already exists you will get an error.
 
 ```
 
@@ -2770,9 +2686,8 @@ Listing 4.5: idb - Add an object
 
 ```
 
-In case you need to update an object that is already stored, use theput method as illustrated on
-listing 4.6. If the key does not exist in the object store, theputmethod will incorporate the object
-into that object store.
+In case you need to update an object that is already stored, use theput method as illustrated on listing 4.6. If the key
+does not exist in the object store, theputmethod will incorporate the object into that object store.
 
 ```
 
@@ -2810,21 +2725,19 @@ Listing 4.7: idb - Transactions
 
 ```
 
-On line 1 above, the first parameter of thetransactionmethod indicates in which object store the
-transaction will apply. And with the second parameter you indicate which kind of transaction you are
-going to execute. In this case is a"readwrite"transaction."readonly"transactions are valid too.
-Finally, thedonemethod, on line 5 above, resolves when the transaction completes successfully,
-otherwise rejects with an error.
+On line 1 above, the first parameter of thetransactionmethod indicates in which object store the transaction will apply.
+And with the second parameter you indicate which kind of transaction you are going to execute. In this case is
+a"readwrite"transaction."readonly"transactions are valid too. Finally, thedonemethod, on line 5 above, resolves when the
+transaction completes successfully, otherwise rejects with an error.
 
 ```
 
 ```
 
-On listing 4.8, I’m opening a database connection that creates two object stores:
-STORE_NAME_1andSTORE_NAME_2. Then, on line 23, I’m opening a transaction. Note that now as the first
-argument of thetransactionmethod I’m passing an array with both object store’s names. That indicates
-that the transaction will expand both object stores. After that I’m adding objects to both object
-stores and finally finishing with thedonemethod as in the previous listing.
+On listing 4.8, I’m opening a database connection that creates two object stores: STORE_NAME_1andSTORE_NAME_2. Then, on
+line 23, I’m opening a transaction. Note that now as the first argument of thetransactionmethod I’m passing an array
+with both object store’s names. That indicates that the transaction will expand both object stores. After that I’m
+adding objects to both object stores and finally finishing with thedonemethod as in the previous listing.
 
 ```
 
@@ -2874,9 +2787,8 @@ Listing 4.8: idb - Transactions with Two Object Stores
 
 ```
 
-Transactions across two object stores is something we are going to use in the next section when we
-explain the changes applied to the Task List application. Next, I’m going to show different ways of
-retrieving objects.
+Transactions across two object stores is something we are going to use in the next section when we explain the changes
+applied to the Task List application. Next, I’m going to show different ways of retrieving objects.
 
 ```
 
@@ -2888,8 +2800,8 @@ Listing 4.9: idb - Retrieving Objects
 
 ```
 
-1 //retrieves the object with key == 22 2 await db.get(STORE_NAME, 22); 3 4 //retrieves the key with
-key == 22 5 await db.getKey(STORE_NAME, 22) 6
+1 //retrieves the object with key == 22 2 await db.get(STORE_NAME, 22); 3 4 //retrieves the key with key == 22 5 await
+db.getKey(STORE_NAME, 22) 6
 
 ```
 
@@ -2923,8 +2835,8 @@ Listing 4.10: idb - Delete and Clear
 
 ```
 
-1 //delete the object with key == 22 2 await db.delete(STORE_NAME, 22); 3 4 //clears the entire
-object store 5 await db.clear(STORE_NAME);
+1 //delete the object with key == 22 2 await db.delete(STORE_NAME, 22); 3 4 //clears the entire object store 5 await
+db.clear(STORE_NAME);
 
 ```
 
@@ -2932,21 +2844,20 @@ object store 5 await db.clear(STORE_NAME);
 
 ```
 
-In this section, we will describe step by step the changes we are going to make to the Task List
-application to transform it into a fully offline first Progressive Web App. The repository from the
-previous chapter pwa-v1- update will be our starting point.
+In this section, we will describe step by step the changes we are going to make to the Task List application to
+transform it into a fully offline first Progressive Web App. The repository from the previous chapter pwa-v1- update
+will be our starting point.
 
 ```
 
 ```
 
-Figure 4.5 illustrates how we are going to deal with the IndexedDB and the Background Sync
-capability. As the figure describes, we are going to use two object stores. One for the task items
-calledtask-storeand another one that we will use as a queue called queue-store. The queue-storewill
-contain the data required to perform the replication to the back-end service. Every time we add a
-new task or we mark a task as done (or in progress) or we delete a task, we push the change into
-thequeue-storeto indicate the operation that needs to be replicated to the back-end service. That is
-why it is important to execute these operations in a transaction. We need to
+Figure 4.5 illustrates how we are going to deal with the IndexedDB and the Background Sync capability. As the figure
+describes, we are going to use two object stores. One for the task items calledtask-storeand another one that we will
+use as a queue called queue-store. The queue-storewill contain the data required to perform the replication to the
+back-end service. Every time we add a new task or we mark a task as done (or in progress) or we delete a task, we push
+the change into thequeue-storeto indicate the operation that needs to be replicated to the back-end service. That is why
+it is important to execute these operations in a transaction. We need to
 
 ```
 
@@ -2954,13 +2865,11 @@ why it is important to execute these operations in a transaction. We need to
 
 ```
 
-be consistent, if we change somehow thetask-store, we have to also push that change into the
-queue-store. And finally, if the transaction succeeds we register the Background Sync event. The
-skeleton code in the listing 4.11 shows how this will be implemented. On line 2 we open a
-transaction that expands the two object stores. Then, we do the operation requested plus pushing the
-change into thequeue-storeand finally, on line 6, if the transaction succeeds we register the
-Background Sync event. The service worker will then proceed with the replication if there is
-connectivity.
+be consistent, if we change somehow thetask-store, we have to also push that change into the queue-store. And finally,
+if the transaction succeeds we register the Background Sync event. The skeleton code in the listing 4.11 shows how this
+will be implemented. On line 2 we open a transaction that expands the two object stores. Then, we do the operation
+requested plus pushing the change into thequeue-storeand finally, on line 6, if the transaction succeeds we register the
+Background Sync event. The service worker will then proceed with the replication if there is connectivity.
 
 ```
 
@@ -2991,9 +2900,9 @@ Listing 4.11: Explaining the Detailed Architecture figure with Code
 
 ```
 
-Let’s move now to make the necessary code changes to implement what we have described. Looking at
-the source code project from the previous chapter pwa-v1-update, in thesrc/serverfolder, you will
-see thetasks.jsmodule that encapsulates all the fetch requests to the Task List back-end services.
+Let’s move now to make the necessary code changes to implement what we have described. Looking at the source code
+project from the previous chapter pwa-v1-update, in thesrc/serverfolder, you will see thetasks.jsmodule that
+encapsulates all the fetch requests to the Task List back-end services.
 
 ```
 
@@ -3001,8 +2910,8 @@ see thetasks.jsmodule that encapsulates all the fetch requests to the Task List 
 
 ```
 
-This module exposes four functions that are shown on listing 4.12. These functions are used from
-theTaskList.jsand theAddTask.jscomponents.
+This module exposes four functions that are shown on listing 4.12. These functions are used from theTaskList.jsand
+theAddTask.jscomponents.
 
 ```
 
@@ -3025,9 +2934,8 @@ Listing 4.12: server/tasks.js exposed functions
 
 ```
 
-What we are going to do now is to create a folder calledlocaland then create atasks.jsmodule that
-implements those four functions but using the idb wrapper of IndexedDB API. Listing 4.13 shows how I
-have implemented thetasks.jsmodule.
+What we are going to do now is to create a folder calledlocaland then create atasks.jsmodule that implements those four
+functions but using the idb wrapper of IndexedDB API. Listing 4.13 shows how I have implemented thetasks.jsmodule.
 
 ```
 
@@ -3188,8 +3096,8 @@ Listing 4.13: local/tasks.js
 
 ```
 
-By looking at the implementation of the module I’m sure most of the code will be familiar to you as
-I have used the constructions shown in the
+By looking at the implementation of the module I’m sure most of the code will be familiar to you as I have used the
+constructions shown in the
 
 ```
 
@@ -3269,21 +3177,18 @@ Listing 4.14: local/taskStatus.js
 
 ```
 
-To see these changes working on the browser we have to change theAddc
-Task.jsandTaskList.jscomponents to use thelocal/tasks.jsmodule instead of theserver/tasks.jsmodule.
-Go ahead and apply these changes. After that, start the application with thenpm startcommand and
-navigate tohttp://localhost:8000/. You will first need to sign in and then go to the Task List. Of
-course, until you don’t add new entries the list will be empty. However, as illustrated in figure
-4.6 note that thetaskdbdatabase is created with both object stores. They are created because
-theTaskListc .jscomponent invokes thelocal/tasks.js/retrievefunction which first opens the database
-and since the database is not there yet it gets created. Now, if we add a task, see how they look on
-both object stores in figures 4.7 and 4.8. And if we delete that task, thetask-storewill be empty
-but thequeue-store will have two entries now. See figure 4.9. Note that there are two entries, one
-that corresponds to the add operation we did, and the last one that corresponds to the delete
-operation. See the propertyop:"del". Now that we have all the operations implemented using IndexedDB
-it is time to add the Background Sync service. In order to synchronize the data the Task List
-back-end exposes the following POST API `https://{host}/tasks/bulk`, which expects as POST’s body a
-list ofqueue-storeobjects. Like below:
+To see these changes working on the browser we have to change theAddc Task.jsandTaskList.jscomponents to use
+thelocal/tasks.jsmodule instead of theserver/tasks.jsmodule. Go ahead and apply these changes. After that, start the
+application with thenpm startcommand and navigate tohttp://localhost:8000/. You will first need to sign in and then go
+to the Task List. Of course, until you don’t add new entries the list will be empty. However, as illustrated in figure
+4.6 note that thetaskdbdatabase is created with both object stores. They are created because theTaskListc .jscomponent
+invokes thelocal/tasks.js/retrievefunction which first opens the database and since the database is not there yet it
+gets created. Now, if we add a task, see how they look on both object stores in figures 4.7 and 4.8. And if we delete
+that task, thetask-storewill be empty but thequeue-store will have two entries now. See figure 4.9. Note that there are
+two entries, one that corresponds to the add operation we did, and the last one that corresponds to the delete
+operation. See the propertyop:"del". Now that we have all the operations implemented using IndexedDB it is time to add
+the Background Sync service. In order to synchronize the data the Task List back-end exposes the following POST API
+`https://{host}/tasks/bulk`, which expects as POST’s body a list ofqueue-storeobjects. Like below:
 
 ##### CHAPTER 4. INCORPORATING BACKGROUND SYNC 85
 
@@ -3310,10 +3215,9 @@ list ofqueue-storeobjects. Like below:
 
 ```
 
-Here you can find the implementation of the back-end service. It is pretty simple. It will first
-reorder the list byqueuedTimeand in that order will apply each operation. Everything wrapped in a
-transaction, which means that all will be applied or nothing. To consume this API I’m going to add a
-new
+Here you can find the implementation of the back-end service. It is pretty simple. It will first reorder the list
+byqueuedTimeand in that order will apply each operation. Everything wrapped in a transaction, which means that all will
+be applied or nothing. To consume this API I’m going to add a new
 
 ##### CHAPTER 4. INCORPORATING BACKGROUND SYNC 86
 
@@ -3378,9 +3282,9 @@ Figure 4.8: queue-store with one entry
 
 ```
 
-The function exported above receives a list of tasks as parameters, that we will obtain, as we will
-see later, from thequeue-storeand creates a fetch POST request. If the request succeeds it will
-resolve, otherwise reject. Add this module to the project in theserver/syncTasks.jsfile.
+The function exported above receives a list of tasks as parameters, that we will obtain, as we will see later, from
+thequeue-storeand creates a fetch POST request. If the request succeeds it will resolve, otherwise reject. Add this
+module to the project in theserver/syncTasks.jsfile.
 
 ```
 
@@ -3400,8 +3304,7 @@ Figure 4.9: queue-store with two entries while task-store is empty
 
 ```
 
-you will find the changes to add thesyncevent listener and thedoSync() function that does the
-syncing work.
+you will find the changes to add thesyncevent listener and thedoSync() function that does the syncing work.
 
 ```
 
@@ -3427,8 +3330,8 @@ Listing 4.16: Service Worker Sync Event Listener
 
 ```
 
-Note above, on line 7, if theevent.tagis equals tosync-queued-data, it will retrieve all the queued
-items from thequeue-storeand call thesyncServc
+Note above, on line 7, if theevent.tagis equals tosync-queued-data, it will retrieve all the queued items from
+thequeue-storeand call thesyncServc
 
 ```
 
@@ -3436,10 +3339,9 @@ items from thequeue-storeand call thesyncServc
 
 ```
 
-er.bulkTasks. Finally, if that remote API call resolves, all the queued items from
-thequeue-storegets deleted. Below is the implementation of theloc
-cal/tasks.js/deleteAllQueued()andlocal/tasks.js/getAllQueued() functions. Listing 4.17: Retrieve all
-and Delete all queued items
+er.bulkTasks. Finally, if that remote API call resolves, all the queued items from thequeue-storegets deleted. Below is
+the implementation of theloc cal/tasks.js/deleteAllQueued()andlocal/tasks.js/getAllQueued() functions. Listing 4.17:
+Retrieve all and Delete all queued items
 
 ```
 
@@ -3455,14 +3357,13 @@ and Delete all queued items
 
 ```
 
-After adding all these changes to the project we are ready to see it working. Create a production
-build and start the project. Every time you add, update or delete a task, if there is connectivity,
-the sync event will be triggered logging in the Chrome dev tool console the action, as illustrated
-in figure 4.10. Now, suppose your phone crashes and you buy a new one. You will want to have all
-your tasks back in your new phone, right?. Let’s add a simple button on theWelcome.jscomponent that
-performs this job. Additionally, I will add another button that prints on the console what are the
-tasks we have on the server. This one is only for debugging purposes so you can verify easily that
-the changes are correctly replicated. On thelocal/tasks.jsadd and expose the following function:
+After adding all these changes to the project we are ready to see it working. Create a production build and start the
+project. Every time you add, update or delete a task, if there is connectivity, the sync event will be triggered logging
+in the Chrome dev tool console the action, as illustrated in figure 4.10. Now, suppose your phone crashes and you buy a
+new one. You will want to have all your tasks back in your new phone, right?. Let’s add a simple button on
+theWelcome.jscomponent that performs this job. Additionally, I will add another button that prints on the console what
+are the tasks we have on the server. This one is only for debugging purposes so you can verify easily that the changes
+are correctly replicated. On thelocal/tasks.jsadd and expose the following function:
 
 ```
 
@@ -3581,15 +3482,13 @@ Listing 4.19: Welcome.js
 
 ```
 
-With this in place, we can do a full test of the application. Start the back- end services as
-explained in 2.1.1 or 2.1.2. Create a production build and start the application. Then, navigate
-tohttp://localhost:8000/. First sign in and then go to the welcome screen. If you click on the
-button that prints on the console the items that are on the server, you will see the four items that
-the back-end Task List service has created by default. This is illustrated on figure 4.11. Finally,
-if you click on the "Start from Server" button, you will get those four items created locally and a
-toast message will inform the user when finished as illustrated on figure 4.12. Now, you can start
-making changes to the task list and then verify what there is on the back-end to make sure
-everything is working.
+With this in place, we can do a full test of the application. Start the back- end services as explained in 2.1.1 or
+2.1.2. Create a production build and start the application. Then, navigate tohttp://localhost:8000/. First sign in and
+then go to the welcome screen. If you click on the button that prints on the console the items that are on the server,
+you will see the four items that the back-end Task List service has created by default. This is illustrated on figure
+4.11. Finally, if you click on the "Start from Server" button, you will get those four items created locally and a toast
+message will inform the user when finished as illustrated on figure 4.12. Now, you can start making changes to the task
+list and then verify what there is on the back-end to make sure everything is working.
 
 ```
 
@@ -3667,12 +3566,11 @@ Figure 4.13: Errors, Retries and lastChance
 
 ```
 
-Anyway, whatever the problems are during synchronization it would be ideal to inform that to the end
-user. And to do that we have to perform a communication from the service worker to the Web App. We
-have explained in section 3.1 how to perform a communication from the Web App to the service worker.
-Now, we are going to show how to do it from the service worker to the Web App to inform the end user
-if there is an error during the syncing process. To implement this, let’s first add themessageevent
-listener to theindex.jsfile.
+Anyway, whatever the problems are during synchronization it would be ideal to inform that to the end user. And to do
+that we have to perform a communication from the service worker to the Web App. We have explained in section 3.1 how to
+perform a communication from the Web App to the service worker. Now, we are going to show how to do it from the service
+worker to the Web App to inform the end user if there is an error during the syncing process. To implement this, let’s
+first add themessageevent listener to theindex.jsfile.
 
 ```
 
@@ -3696,16 +3594,15 @@ Listing 4.20: Adding the message Event Listener to the index.js
 
 ```
 
-In listing 4.20 above we are listening to themessageevent coming from the service worker. As
-parameter, it receives aneventobject in which we can pass data from the calling/triggering client.
-If theevent.data.typeis SYNC_ERRORthen we will show the error to the end user.
+In listing 4.20 above we are listening to themessageevent coming from the service worker. As parameter, it receives
+aneventobject in which we can pass data from the calling/triggering client. If theevent.data.typeis SYNC_ERRORthen we
+will show the error to the end user.
 
 ```
 
 ```
 
-Now, on theservice-worker.jswe have to change thedoSync()function to incorporate thepostMessagecall
-if there are errors.
+Now, on theservice-worker.jswe have to change thedoSync()function to incorporate thepostMessagecall if there are errors.
 
 ```
 
@@ -3742,12 +3639,11 @@ Listing 4.21: Communicate errors to the Web App
 
 ```
 
-Note that on listing 4.21 above starting at line 10, we have added the catch block. On line 11, the
-sentence self.clients.matchAll() will obtain all the clients (browser window tabs) controlled by the
-service worker. To each of them, we will post theSYNC_ERRORmessage with the actual error coming from
-the back-end API in themsgproperty. And finally, thereturn Promc ise.reject()is important to inform
-the browser that the syncing must be tried again later. With these changes, the user will be
-informed about any
+Note that on listing 4.21 above starting at line 10, we have added the catch block. On line 11, the sentence
+self.clients.matchAll() will obtain all the clients (browser window tabs) controlled by the service worker. To each of
+them, we will post theSYNC_ERRORmessage with the actual error coming from the back-end API in themsgproperty. And
+finally, thereturn Promc ise.reject()is important to inform the browser that the syncing must be tried again later. With
+these changes, the user will be informed about any
 
 ```
 
@@ -3755,8 +3651,8 @@ informed about any
 
 ```
 
-error that might occur at sync time. Figure 4.14 illustrates how the message is presented to the
-user. In this case, the user is not authenticated at the time the sync service ran.
+error that might occur at sync time. Figure 4.14 illustrates how the message is presented to the user. In this case, the
+user is not authenticated at the time the sync service ran.
 
 ```
 
@@ -3768,9 +3664,8 @@ Figure 4.14: Sync Error Shown to the User
 
 ```
 
-Finally, if you want to do something in case thelastChanceistrue, we can pass that value to the Web
-App and re-register the sync event. We can do this by adding the highlighted changes shown on
-listing 4.22 below.
+Finally, if you want to do something in case thelastChanceistrue, we can pass that value to the Web App and re-register
+the sync event. We can do this by adding the highlighted changes shown on listing 4.22 below.
 
 ```
 
@@ -3799,8 +3694,7 @@ Listing 4.22: re-register the sync event when lastChance
 
 ```
 
-And in the service workerdoSync()function we have to pass thelastc Chanceproperty value, as shown
-below:
+And in the service workerdoSync()function we have to pass thelastc Chanceproperty value, as shown below:
 
 ```
 
@@ -3838,8 +3732,8 @@ Listing 4.23: Passing lastChance to the Web App
 
 ```
 
-With this, we have finished adding the background sync service to Task List. The full source code of
-this version of the application can be found at react-pwa-tasklist-v2.
+With this, we have finished adding the background sync service to Task List. The full source code of this version of the
+application can be found at react-pwa-tasklist-v2.
 
 ```
 

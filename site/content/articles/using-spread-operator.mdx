@@ -9,8 +9,8 @@ export const meta = {
 
 export default (props) => <ArticleLayout meta={meta} {...props} />
 
-Spread operator allows us to expand iterable (or strings) in various places. I’m very often using
-this operator when constructing an object. For example:
+Spread operator allows us to expand iterable (or strings) in various places. I’m very often using this operator when
+constructing an object. For example:
 
 ## Constructing new object
 
@@ -26,8 +26,8 @@ console.log(user) // age, first, last name
 
 ## Overwriting existing property
 
-It works well also when we want to overwrite properties. Let’s say that we want to update the age
-field of the `user` above. We may do the following:
+It works well also when we want to overwrite properties. Let’s say that we want to update the age field of the `user`
+above. We may do the following:
 
 ```TypeScript
 const newAge = { age: 37 }
@@ -60,8 +60,8 @@ Math.min(1000, 100, 10, 1)
 
 ## Copying arrays
 
-Last but not least, the spread operator does a good job of copying arrays. Not deep copying but just
-to avoid the mutation of the original array:
+Last but not least, the spread operator does a good job of copying arrays. Not deep copying but just to avoid the
+mutation of the original array:
 
 ```TypeScript
 const numbers = [1000, 100, 10, 1]
@@ -76,11 +76,11 @@ console.log(smallest) // 1
 console.log(numbers) // [1, 10, 100, 1000]
 ```
 
-The getSmallest function sorts passed array inplace and returns the smallest one. The problem is
-that original array gets mutated.
+The getSmallest function sorts passed array inplace and returns the smallest one. The problem is that original array
+gets mutated.
 
-With spread operator we can copy original array into new array and sort this new array inplace
-without mutating original one.
+With spread operator we can copy original array into new array and sort this new array inplace without mutating original
+one.
 
 ```TypeScript
 const numbers = [1000, 100, 10, 1]
@@ -97,8 +97,8 @@ console.log(numbers) // [1000, 100, 10, 1]
 
 ## Spreading with Types
 
-We can also spread operator in type land. In this example we spread `Args` tuple while asigning type
-to `args` parameter.
+We can also spread operator in type land. In this example we spread `Args` tuple while asigning type to `args`
+parameter.
 
 ```TypeScript
 type Args = [string,number,"some" | "other"]

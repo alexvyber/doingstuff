@@ -57,8 +57,7 @@ export const books: Book[] = [
         status: "done",
       },
       {
-        title:
-          "Ego, Authority, Failure: Using Emotional Intelligence Like a Hostage Negotiator to Succeed as a Leader",
+        title: "Ego, Authority, Failure: Using Emotional Intelligence Like a Hostage Negotiator to Succeed as a Leader",
         description:
           "Lorema dfasd fasdf asdf adsf adsf asdfLorema dfasd fasdf asdf adsf adsf asdfLorema dfasd fasdf asdf adsf adsf asdfLorema dfasd fasdf asdf adsf adsf asdfLorema dfasd fasdf asdf adsf adsf asdfLorema dfasd fasdf asdf adsf adsf asdf",
         href: "https://www.amazon.com/Speechless-Controlling-Words-Minds/dp/1684510821",
@@ -68,8 +67,7 @@ export const books: Book[] = [
         status: "working",
       },
       {
-        title:
-          "The End of the World Is Just the Beginning: Mapping the Collapse of Globalization Hardcover",
+        title: "The End of the World Is Just the Beginning: Mapping the Collapse of Globalization Hardcover",
         description:
           "Lorema dfasd fasdf asdf adsf adsf asdfLorema dfasd fasdf asdf adsf adsf asdfLorema dfasd fasdf asdf adsf adsf asdfLorema dfasd fasdf asdf adsf adsf asdfLorema dfasd fasdf asdf adsf adsf asdfLorema dfasd fasdf asdf adsf adsf asdf",
         href: "https://www.amazon.com/End-World-Just-Beginning-Globalization/dp/006323047X",

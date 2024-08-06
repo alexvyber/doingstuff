@@ -10,8 +10,7 @@ export const meta = {
 
 export default (props) => <ArticleLayout meta={meta} {...props} />
 
-I want to share a small tip regarding the block scope. Specifically when we want to create it on
-purpose.
+I want to share a small tip regarding the block scope. Specifically when we want to create it on purpose.
 
 Let's see in code:
 
@@ -28,8 +27,8 @@ const func = (someFunc: () => { message: string }) => {
 }
 ```
 
-`message` is a constant that is defined in the `func` function scope. We can’t destruct the
-operation argument from `someFunc` return because there is a naming clash.
+`message` is a constant that is defined in the `func` function scope. We can’t destruct the operation argument from
+`someFunc` return because there is a naming clash.
 
 The possible quick fix for that might be to create an alias:
 
@@ -63,5 +62,5 @@ const otherFunc = (someFunc: () => { message: string }) => {
 }
 ```
 
-When I need to use variable almost immediately after declaration and don't expect to use it a lot, I
-prefer to use block scope. In all other situations I use alias.
+When I need to use variable almost immediately after declaration and don't expect to use it a lot, I prefer to use block
+scope. In all other situations I use alias.

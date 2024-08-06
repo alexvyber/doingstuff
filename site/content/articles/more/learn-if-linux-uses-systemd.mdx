@@ -13,11 +13,11 @@ Sometimes you need to know if your Linux distribution uses systemd or something 
 
 Look for the `/run/systemd/system/` directory. If this exists, then your init system is systemd.
 
-The `/run/systemd/` directory may be present on your system if your distribution supports multiple
-init systems. But systemd is not the active init unless you see /run/ systemd/system/. There are
-several other ways to learn which init system your system is using. Try querying `/sbin/init`.
-Originally this was the SysV executable, and now most Linux distributions preserve the name and
-symlink it to the systemd executable. This example confirms that the init is systemd:
+The `/run/systemd/` directory may be present on your system if your distribution supports multiple init systems. But
+systemd is not the active init unless you see /run/ systemd/system/. There are several other ways to learn which init
+system your system is using. Try querying `/sbin/init`. Originally this was the SysV executable, and now most Linux
+distributions preserve the name and symlink it to the systemd executable. This example confirms that the init is
+systemd:
 
 ```shell
 $ stat /sbin/inits
@@ -34,9 +34,9 @@ File: /sbin/init
 # ...
 ```
 
-The `/proc` pseudofilesystem is an interface to your Linux kernel, and contains the current state of
-a running system. It is called a pseudofilesystem because it exists only in memory and not on disk.
-In this example, `/proc/1/exe` is symlinked to the systemd executable:
+The `/proc` pseudofilesystem is an interface to your Linux kernel, and contains the current state of a running system.
+It is called a pseudofilesystem because it exists only in memory and not on disk. In this example, `/proc/1/exe` is
+symlinked to the systemd executable:
 
 ```shell
 $ sudo stat /proc/1/exe
@@ -67,8 +67,8 @@ $ cat /proc/1/comm
 init
 ```
 
-The command attached to process ID (PID) 1 is your init. PID 1 is the first process launched at
-startup, which then starts all other processes. You can see this with the ps command:
+The command attached to process ID (PID) 1 is your init. PID 1 is the first process launched at startup, which then
+starts all other processes. You can see this with the ps command:
 
 ```shell
 $ ps -p 1
@@ -84,8 +84,7 @@ PID TTY          TIME CMD
 1 ?        00:00:00 init
 ```
 
-Linux support for systemd varies. Most of the major Linux distributions have adoped systemd,
-including Fedora, Red Hat, CentOS, openSUSE, SUSE Linux Enterprise, Debian, Ubuntu, Linux Mint,
-Arch, Manjaro, Elementary, and Mageia Linux. Some popular distributions that do not support systemd,
-or include it but not as the default init, are Slackware, PCLinuxOS, Gentoo Linux, MX Linux, and
-antiX.
+Linux support for systemd varies. Most of the major Linux distributions have adoped systemd, including Fedora, Red Hat,
+CentOS, openSUSE, SUSE Linux Enterprise, Debian, Ubuntu, Linux Mint, Arch, Manjaro, Elementary, and Mageia Linux. Some
+popular distributions that do not support systemd, or include it but not as the default init, are Slackware, PCLinuxOS,
+Gentoo Linux, MX Linux, and antiX.

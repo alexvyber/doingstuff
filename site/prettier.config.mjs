@@ -6,7 +6,7 @@ export default {
   arrowParens: "always",
   proseWrap: "always", // printWidth line breaks in md/mdx
   tabWidth: 2,
-  trailingComma: "all",
+  trailingComma: "es5",
 
   // importOrderSeparation: false, // import order groups won't be separated by a new line
   // importOrderSortSpecifiers: true, // sorts the import specifiers alphabetically

@@ -1,0 +1,109 @@
+export const metadata = {
+  author: "Alex Vyber",
+  date: "2023-05-15",
+  title: "Using Spread Operator in TypeScript",
+  description: "How to use spread operator in TypeScript",
+}
+
+# Using Spread Operator in TypeScript
+
+Spread operator allows us to expand iterable (or strings) in various places. I’m very often using this operator when
+constructing an object. For example:
+
+## Constructing new object
+
+```TypeScript
+const name = {
+  firstName: "Alex",
+  lastName: "Vyber"
+}
+
+const user = { age: 36, ...name } // Adding fields to an object
+console.log(user) // age, first, last name
+```
+
+## Overwriting existing property
+
+It works well also when we want to overwrite properties. Let’s say that we want to update the age field of the `user`
+above. We may do the following:
+
+```TypeScript
+const newAge = { age: 37 }
+const updatedUser = { ...user, ...newAge }
+
+console.log(updatedUser) // age=37
+```
+
+## Passing multiple number of arguments to a function call
+
+Another popular use case is when we want to pass multiple arguments to a function:
+
+```TypeScript
+function isAllEqual(a:number, b:number, c:number): boolean {
+  return (a === b) && (a === c)
+}
+
+const nines = [9,9,9]
+
+isAllEqual(...nines)
+// is equivalent to
+isAllEqual(9,9,9)
+
+const numbers = [1000, 100, 10, 1]
+
+Math.min(...numbers)
+// is equivalent to
+Math.min(1000, 100, 10, 1)
+```
+
+## Copying arrays
+
+Last but not least, the spread operator does a good job of copying arrays. Not deep copying but just to avoid the
+mutation of the original array:
+
+```TypeScript
+const numbers = [1000, 100, 10, 1]
+
+function getSmallest(arr: number[]): number | undefined {
+  return arr.sort((a, b) => (a < b ? -1 : 1))[0]
+}
+
+const smallest = getSmallest(numbers)
+
+console.log(smallest) // 1
+console.log(numbers) // [1, 10, 100, 1000]
+```
+
+The getSmallest function sorts passed array inplace and returns the smallest one. The problem is that original array
+gets mutated.
+
+With spread operator we can copy original array into new array and sort this new array inplace without mutating original
+one.
+
+```TypeScript
+const numbers = [1000, 100, 10, 1]
+
+function getSmallest(arr: number[]): number | undefined {
+  return [...arr].sort((a, b) => (a < b ? -1 : 1))[0]
+}
+
+const smallest = getSmallest(numbers)
+
+console.log(smallest) // 1
+console.log(numbers) // [1000, 100, 10, 1]
+```
+
+## Spreading with Types
+
+We can also spread operator in type land. In this example we spread `Args` tuple while asigning type to `args`
+parameter.
+
+```TypeScript
+type Args = [string,number,"some" | "other"]
+
+function Some(...args: [...Args]) {
+  // (parameter) args: [string, number, "some" | "other"]
+
+  // ... some code
+}
+```

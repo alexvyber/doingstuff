@@ -1,0 +1,169 @@
+@import "prism-themes/themes/prism-vs.min.css";
+
+.token.tag,
+.token.selector,
+.token.selector .class,
+.token.selector.class {
+  color: theme("colors.red.600");
+}
+.token.function {
+  color: theme("colors.blue.600");
+}
+
+.token.number {
+  color: theme("colors.orange.600");
+}
+
+.token.pseudo-class,
+.token.attr-name,
+.token.class-name {
+  color: theme("colors.orange.600");
+}
+
+.token.keyword,
+.token.rule,
+.token.important {
+  color: theme("colors.purple.700");
+}
+
+.token.module {
+  color: theme("colors.orange.600");
+}
+
+.token.class,
+.token.property {
+  color: theme("colors.red.500");
+}
+
+.token.attr-value,
+.token.class,
+.token.string,
+.token.property {
+  color: theme("colors.lime.600");
+}
+
+.token.punctuation,
+.token.attr-equals {
+  color: theme("colors.neutral.700");
+}
+
+.token.unit,
+.language-css .token.function {
+  color: theme("colors.sky.500");
+}
+
+.token.comment,
+.token.combinator {
+  color: theme("colors.neutral.400");
+}
+
+.token.operator {
+  color: theme("colors.cyan.600");
+}
+
+.token.builtin {
+  color: theme("colors.teal.600");
+}
+.token.punctuation {
+  color: theme("colors.blue.900");
+}
+
+pre {
+  @apply overflow-auto rounded-xl;
+}
+
+/* code {
+  @apply px-2 py-1;
+  background: var(--tw-prose-pre-bg);
+  color: var(--tw-prose-pre-code);
+} */
+
+/* pre[class*="language-"] {
+ 
+} */
+
+pre[class*="language-"] {
+  @apply mb-4 mt-0 rounded-xl border border-[#ececec] py-2.5 font-mono text-[13px] font-normal;
+  font-family: var(--font-geist-mono) !important;
+  background: theme("colors.white");
+}
+
+/* pre[class*="language-"]::selection {
+  color: red;
+  background-color: yellow;
+} */
+
+pre[class*="language-"] code[class*="language-"] {
+  font-family: var(--font-geist-mono) !important;
+
+  @apply m-0 whitespace-pre-wrap bg-transparent py-0;
+}
+
+.rehype-code-title {
+  @apply relative rounded-t-xl border-l border-r border-t border-neutral-200 bg-neutral-100 pl-5 pt-0.5 font-mono text-[12px] font-medium;
+}
+
+.rehype-code-title::after {
+  content: "";
+  background-color: #f5f5f5;
+  position: absolute;
+  box-sizing: unset;
+  top: 20px;
+  margin: -1px;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  border-left: 1px solid #e5e5e5;
+  border-right: 1px solid #e5e5e5;
+  height: 20px;
+}
+
+/**
+ * Adds code highlighting & line numbers
+ * Inspired by gatsby remark prism - https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/
+ * 1. Make the element just wide enough to fit its content.
+ * 2. Always fill the visible space in .code-highlight.
+ */
+
+.code-highlight {
+  float: left; /* 1 */
+  min-width: 100%; /* 2 */
+}
+
+.code-line {
+  color: theme("colors.neutral.700");
+  display: block;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-left: -16px;
+  margin-right: -16px;
+  border-left-width: 4px;
+  border-left-color: rgba(31, 41, 55, 0); /* Set code block color */
+}
+
+.code-line.inserted {
+  background-color: rgba(16, 185, 129, 0.2); /* Set inserted line (+) color */
+}
+
+.code-line.deleted {
+  background-color: rgba(239, 68, 68, 0.2); /* Set deleted line (-) color */
+}
+
+.highlight-line {
+  margin-left: -16px;
+  margin-right: -16px;
+  background-color: rgba(249, 251, 253, 0.1); /* Set highlight bg color */
+  border-left-width: 4px;
+  border-left-color: #f97316; /* Set highlight accent border color */
+}
+
+.line-number::before {
+  display: inline-block;
+  width: 1rem;
+  text-align: right;
+  margin-right: 16px;
+  margin-left: -6px;
+  font-size: 13px;
+  color: #bdbdbd; /* Line number color */
+  content: attr(line);
+}

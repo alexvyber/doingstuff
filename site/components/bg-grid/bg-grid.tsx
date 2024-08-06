@@ -15,14 +15,14 @@ export function BgGrid() {
         "overflow-hidden",
         "rounded-2xl shadow-2xl lg:rounded-3xl",
         "p-1 sm:p-2 lg:p-3",
-        "border border-neutral-200 bg-gradient-to-br from-neutral-100 via-neutral-50 to-neutral-200 dark:border-neutral-800 dark:from-neutral-800 dark:via-neutral-900 dark:to-neutral-800",
+        "border border-neutral-200 bg-gradient-to-br from-neutral-100 via-neutral-50 to-neutral-200 dark:border-neutral-800 dark:from-neutral-800 dark:via-neutral-900 dark:to-neutral-800"
       )}
     >
       <div
         className={cx(
           "border border-neutral-200",
           "relative h-full w-full overflow-hidden rounded-xl bg-white",
-          "shadow-inner dark:border-neutral-800 dark:bg-[#101010] sm:rounded-[10px] lg:rounded-xl",
+          "shadow-inner dark:border-neutral-800 dark:bg-[#101010] sm:rounded-[10px] lg:rounded-xl"
         )}
       >
         {Array.from({ length: Math.ceil(width / spacing) }, (_, i) => (

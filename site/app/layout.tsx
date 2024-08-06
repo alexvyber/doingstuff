@@ -5,7 +5,7 @@ import { cx } from "cvax"
 import type { Metadata } from "next"
 import localFont from "next/font/local"
 
-import { NavDock } from "@/components/dock-demo"
+import { NavDock } from "@/components/dock"
 
 const geistSans = localFont({ src: "./fonts/GeistVF.woff", variable: "--font-geist-sans" })
 const geistMono = localFont({ src: "./fonts/GeistMonoVF.woff", variable: "--font-geist-mono" })
@@ -17,23 +17,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: React.PropsWithChildren) {
   return (
-    <html
-      lang="en"
-      className={"h-full"}
-    >
+    <html lang="en" className={"h-full"}>
       <body
         className={cx(
           `${geistSans.variable} ${geistMono.variable}`,
           "relative h-full w-full",
           "dark:bg-neutral-950",
-          "bg-neutral-50 font-sans font-light text-neutral-800 dark:text-neutral-300",
+          "bg-neutral-50 font-sans font-light text-neutral-800 dark:text-neutral-300"
         )}
       >
         {children}
         <div className="index-y-0 fixed bottom-0 z-10 flex w-full justify-center">
-          <div>
-            <NavDock />
-          </div>
+          <NavDock />
         </div>
       </body>
     </html>

@@ -1,0 +1,31 @@
+export const metadata = {
+  author: "Alex Vyber",
+  date: "2023-02-06",
+  title: "Asynchronous Immediately Invoked Function Expression",
+  description: "Asynchronous Immediately Invoked Function Expression",
+}
+
+# Asynchronous Immediately Invoked Function Expression
+
+Nowadays all JavaScript engines support a top-level await. So, we don’t need to write all this nonsense;) anymore.
+
+TODO: write all cases where I still use this
+
+```TypeScript
+type Todo = {
+	userId: number;
+	id: number;
+	title: string;
+	completed: boolean;
+};
+
+const url = "https://jsonplaceholder.typicode.com/todos";
+
+(async function getData() {
+	const res = await fetch(url);
+	const data: Todo[] = await res.json();
+
+	console.log(data.slice(0, 10));
+	console.log(data[0]?.title);
+})();
+```

@@ -16,28 +16,15 @@
 
   grid-template-rows: repeat(auto-fill, var(--stripe-height));
   grid-template-columns:
-    [viewport-start] 1fr [left-gutter-start] repeat(
-      var(--gutter-columns),
-      var(--gutter-column-width)
-    )
-    [left-gutter-end content-start] repeat(
-      var(--content-columns),
-      var(--content-column-width)
-    )
-    [content-end right-gutter-start] repeat(
-      var(--gutter-columns),
-      var(--gutter-column-width)
-    )
+    [viewport-start] 1fr [left-gutter-start] repeat(var(--gutter-columns), var(--gutter-column-width))
+    [left-gutter-end content-start] repeat(var(--content-columns), var(--content-column-width))
+    [content-end right-gutter-start] repeat(var(--gutter-columns), var(--gutter-column-width))
     [right-gutter-end] 1fr [viewport-end];
 }
 
 @media (min-width: 1024px) {
   .gridy {
     --gutter-column-width: var(--content-column-width);
-    min-width: calc(
-      1024px /
-      var(--content-columns) *
-      (var(--gutter-columns) * 2 + var(--content-columns))
-    );
+    min-width: calc(1024px / var(--content-columns) * (var(--gutter-columns) * 2 + var(--content-columns)));
   }
 }

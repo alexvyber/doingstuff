@@ -96,7 +96,7 @@ function Dock({ className, children }: DockProps) {
           "shadow-[0px_1px_1px_0px_rgba(0,0,0,0.05),0px_1px_1px_0px_rgba(255,252,240,0.5)_inset,0px_0px_0px_1px_hsla(0,0%,100%,0.1)_inset,0px_0px_1px_0px_rgba(28,27,26,0.5)]",
           "shadow-[rgba(17,24,28,0.08)_0_0_0_1px,rgba(17,24,28,0.08)_0_1px_2px_-1px,rgba(17,24,28,0.04)_0_2px_4px]",
           "dark:shadow-[0_1px_0_0_rgba(255,255,255,0.03)_inset,0_0_0_1px_rgba(255,255,255,0.03)_inset,0_0_0_1px_rgba(0,0,0,0.1),0_2px_2px_0_rgba(0,0,0,0.1),0_4px_4px_0_rgba(0,0,0,0.1),0_8px_8px_0_rgba(0,0,0,0.1)]",
-          className,
+          className
         )}
         // Event handler for mouse movement within the dock
         onMouseMove={(e) => {
@@ -227,7 +227,7 @@ function DockCard({ children, id }: DockCardProps) {
         }
       },
     },
-    [elCenterX, dock],
+    [elCenterX, dock]
   )
 
   // Hook to update the center X position of the card on window resize for accurate mouse interaction
@@ -284,16 +284,13 @@ function DockCard({ children, id }: DockCardProps) {
   const width = useSpring(widthSync, { mass: 0.1, stiffness: 350, damping: 20 })
 
   return (
-    <div
-      className="flex flex-col items-center gap-1"
-      key={id}
-    >
+    <div className="flex flex-col items-center gap-1" key={id}>
       {/* Motion button for the card, handling click events and animations */}
       <motion.button
         ref={cardRef} // Reference to the button element
         className={cn(
           "aspect-square rounded-lg border border-black/5 border-opacity-10 bg-white dark:border-white/5 dark:bg-neutral-800",
-          "transition-filter brightness-95 saturate-100 duration-200 hover:brightness-100 hover:saturate-100",
+          "transition-filter brightness-95 saturate-100 duration-200 hover:brightness-100 hover:saturate-100"
         )}
         onClick={handleClick} // Click handler to start/stop animation
         style={{
@@ -381,7 +378,7 @@ interface MousePositionOptions {
 // Custom hook to track mouse position and animate values accordingly
 export function useMousePosition(
   options: MousePositionOptions = {}, // Options to customize behavior, including an onChange callback
-  deps: readonly any[] = [], // Dependencies array to determine when the effect should re-run
+  deps: readonly any[] = [] // Dependencies array to determine when the effect should re-run
 ) {
   const { onChange } = options // Destructure onChange from options for use in the effect
 
@@ -424,7 +421,7 @@ export function useMousePosition(
       x, // Motion value for x coordinate
       y, // Motion value for y coordinate
     }),
-    [x, y], // Dependencies for the memoized return value
+    [x, y] // Dependencies for the memoized return value
   )
 }
 

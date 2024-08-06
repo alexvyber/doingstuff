@@ -20,11 +20,11 @@ export default function Home() {
             <Heading className="text-center">Welcome to DoingStuff</Heading>
 
             <div className="flex flex-col items-center gap-6 text-xl text-neutral-500">
-              <Text className="text-center font-semibold">
+              <Text className="text-center font-medium">
                 Hi! I’m Alex Vyber and this is my personal space on the Tirnets. Here you can find a bunch of my stuff:
               </Text>
 
-              <div className={cn("flex flex-col gap-3 font-semibold", "font-mono")}>
+              <div className={cn("flex flex-col gap-3 font-medium", "font-mono")}>
                 <Text className="">Current projects</Text>
                 <Text className="">Written content</Text>
                 <Text className="">Experiments</Text>

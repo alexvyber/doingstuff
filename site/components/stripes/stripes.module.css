@@ -20,8 +20,14 @@
       var(--gutter-columns),
       var(--gutter-column-width)
     )
-    [left-gutter-end content-start] repeat(var(--content-columns), var(--content-column-width))
-    [content-end right-gutter-start] repeat(var(--gutter-columns), var(--gutter-column-width))
+    [left-gutter-end content-start] repeat(
+      var(--content-columns),
+      var(--content-column-width)
+    )
+    [content-end right-gutter-start] repeat(
+      var(--gutter-columns),
+      var(--gutter-column-width)
+    )
     [right-gutter-end] 1fr [viewport-end];
 }
 
@@ -29,7 +35,9 @@
   .gridy {
     --gutter-column-width: var(--content-column-width);
     min-width: calc(
-      1024px / var(--content-columns) * (var(--gutter-columns) * 2 + var(--content-columns))
+      1024px /
+      var(--content-columns) *
+      (var(--gutter-columns) * 2 + var(--content-columns))
     );
   }
 }

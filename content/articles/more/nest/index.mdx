@@ -1,0 +1,1327 @@
+import Image from "next/image"
+
+import { ArticleLayout } from "@/layouts/article-layout"
+
+// import one from "./one.png" // import two from "./two.png"
+
+export const metadata = {
+  author: "Alex Vyber",
+  date: "2023-02-05",
+  title: "NestJS Build a RESTful CRUD API",
+  description: "NestJS Build a RESTful CRUD API",
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+# NestJS
+
+## Build a RESTful
+
+## CRUD API
+
+by Kerry Ritter
+
+Build your first NestJS app with the CLI from
+
+scratch, CRUD operations and integrate a UI.
+
+## Contents
+
+- Welcome
+- Introduction to NestJS
+  - What is NestJS?
+  - What is TypeScript?
+  - What about Express?
+  - Review
+- System Setup & Installing Prerequisites
+  - Install NodeJS...
+  - Install the NestJS CLI
+  - Postman
+- Starting Your Application
+  - Scaffolding the project with the NestJS CLI.
+  - Review of the default project structure.
+  - Application Files
+  - Serve the application.
+- Setting up the Todo Module
+  - Understanding NestJS module structure
+  - Create theTododirectory and files
+  - Create theTodointerface
+  - Create theTodoServicedata service
+  - Create theTodoControllerREST API Controller
+  - Create theTodoModulemodule.
+  - ImportTodoModuleintoAppModule
+  - Make a request to theTodoController.
+  - Bonus: Using the CLI generator
+- Implementing the Data Service and Controller
+  - findAll()
+  - create()
+  - findOne().
+  - update().
+  - remove() CONTENTS
+  - Ready for integration!
+- Integrating with a User Interface
+  - Enable CORS
+  - Test the Full-Stack Application
+  - Summary.
+
+## Welcome
+
+Hi! I’m Kerry Ritter, the author of this eBook and course author atUltimate Courses¹. I have been working in NestJS
+since it was released and I’m excited to write this eBook to help you get started on your journey with this fantastic
+framework. NestJS has been exploding in popularity since its release in 2017 - and for good reason. NestJS provides a
+great way to build server-side Node applications with modern tooling like TypeScript and the latest ECMAScript. With
+architecture patterns that will be familiar to developers of many backgrounds - most notably Angular, Java, and
+ASP.NET - NestJS is fairly easy to get started and be productive with. In this eBook, you will:
+
+- Dive into NestJS fundamentals
+- Discover how to create NestJS applications
+- Build your first NestJS REST API
+- Use your REST API with an existing user interface
+
+Whether you’re new to Node or new to server-side development, this eBook will guide you in successfully getting started
+with NestJS and TypeScript. IfbytheendofthiseBookyou’reasexcitedaboutNestJSasIam,Ihighlyrecommendyoupre-order the NestJS
+Basics and NestJS Pro courses coming soon atUltimate Courses². Thank you for reading and I hope you find this eBook
+helpful. If you do,let me know in a tweet³! ¹https://www.ultimatecourses.com ²https://www.ultimatecourses.com
+³https://www.twitter.com/kerryritter
+
+## Introduction to NestJS
+
+### What is NestJS?..
+
+NestJS is a JavaScript application framework for building efficient, scalable Node.js server-side applications. It uses
+progressive JavaScript, is built with and fully supports TypeScript - yet still enables developers to code in pure
+JavaScript - and combines elements of OOP (Object Oriented Programming), FP (Functional Programming), and FRP
+(Functional Reactive Programming).
+
+That’s a technical way of saying that NestJS enables you to build readable, maintainable, and enterprise-ready
+applications on the Node platform. For developers in the ASP.NET or Java worlds, this means you can now write
+applications in Node using tools and paradigms you might find quite familiar - tools such as decorator-driven (also
+known as attribute-driven) controller routing, inversion-of-control techniques, and MV\* application architectures. For
+developers in the Angular world, this means you can use techniques you’ve used in your client-side Angular code on the
+server-side - techniques such as module containers, injectable services, pipes, guards, and more.
+
+UnlikemanyotherpopularNode-basedwebframeworks,NestJStakesafairlyopinionatedapproach. NestJS provides refined,
+standardized architecture patterns that are supported by the CLI and encouraged by the framework design. The framework
+also provides a fair amount of tooling out of the box: a dependency injection container, end-to-end and unit test suite
+setups, and scripts for production builds, a development server, formatting, and linting. While not immediately packaged
+with tools for configuration (@nestjs/config) or database interactions (@nestjs/typeorm or@nestjs/mongoosebeing the
+popular two), the modularity pattern built into NestJS makes it very easy to bolt functionality such as these into your
+application rather quickly.
+
+### What is TypeScript?
+
+As mentioned, NestJS is a JavaScript framework for NodeJS that is built using TypeScript. If you’re
+unfamiliarwithTypeScript,thiscanbeaconfusingstatement-howcanaframeworkwritteninone language be targeting another
+language? The explanation is a rather simple premise: TypeScript is a superset of JavaScript and all TypeScript code is
+“transpiled” to JavaScript code. Being a “superset language” means that all JavaScript code is inherently valid
+TypeScript code - all of the added syntactical sugar and functionality is optionally added on top of the existing
+JavaScript language. Transpilation is the process in which code written in one language is converted or compiled into
+another language. For TypeScript, this means the new features are converted into code that runs in pure JavaScript
+environments and abstract features like data typing is stripped out of the actual executable output. Take the following
+example:
+
+Introduction to NestJS 3
+
+```TypeScript
+1 // Written TypeScript Code
+2 **class** Dog {
+3 **constructor** (
+4 readonly name: **string** ,
+5 readonly age: **number** ,
+6 ){
+7 }
+8
+9 getDetailOutput(): **string** {
+10 **return** ` **${this** .name **}** is **${this** .age **}** years old.`;
+11 }
+12 }
+13
+14 console.log( **new** Dog('Max', 10 ).getDetailOutput());
+15 console.log( **new** Dog('Socket', 6 ).getDetailOutput());
+```
+
+```TypeScript
+1 // Transpiled JavaScript Output
+2 "use strict";
+3 **class** Dog {
+4 constructor(name, age) {
+5 **this** .name = name;
+6 **this** .age= age;
+7 }
+8 getDetailOutput() {
+9 **return** ` **${this** .name **}** is **${this** .age **}** years old.`;
+10 }
+11 }
+12
+13 console.log( **new** Dog('Max', 10 ).getDetailOutput());
+14 console.log( **new** Dog('Socket', 6 ).getDetailOutput());
+```
+
+You may notice that in the TypeScriptconstructor, there are some techniques that you won’t see in JavaScript code. The
+most obvious differences are the: stringand: numberdeclarations. These type declarations are a way to tell the
+transpiler and the intellisense tooling in your code-editor that you expect these parameters to be of a certain data
+type. So, if I try to do something like this, I will get an error. This type mismatch will cause the TypeScript
+transpilation to fail because the constructor expects astringand anumber, not twostrings.
+
+```TypeScript
+1 console.log( new Dog('Max', 'ten').getDetailOutput());
+2 // ^ 'ten' is not a number!
+
+```
+
+You may also notice that the JavaScript code does not have any reference to input or output types. This is because
+typing is only a concept used in TypeScript by the TypeScript compiler and
+
+Introduction to NestJS 4
+
+integrated intellisense tools; JavaScript run-times such as in Node or your browser cannot interpret this additional
+syntax, so the compiler removes them. Similarly, thegetDetailOutput()method has a return type declaration ofstring. This
+tells the consumer that this method will return a string, and the transpiler and intellisense tools will respond
+accordingly. In addition to these type declarations, you may have noticed that thereadonlymodifier in the
+constructor.ThisisafuturefeatureofJavaScriptthatisnotcurrentlyavailableandisanotheraspect that makes using TypeScript
+such an enjoyable experience: TypeScript developers get to use many of the future JavaScript features today! As you may
+see in the two code examples, thereadonly modifier is a short-hand way to automatically assign theconstructorparameters
+to class-level variables on the instance ofDog. This and many other features are immediately available in the TypeScript
+language, but not yet available when using pure JavaScript and Node.
+TypeScripthasaplethoraoffunctionalityandfeaturestooffertomakeyourlifeasadevelopereasier. While the examples in this
+eBook will be written in TypeScript, we will be using the simpler aspects of the language; a deep understanding of
+TypeScript is not a prerequisite to being productive in this eBook! However, if you’d like to master the TypeScript
+language,Ultimate Courses offers courses that will take you from beginner to expert⁴.
+
+### What about Express?
+
+Ifyou’refamiliarwiththeNodeJSworld,you’velikelyheardofExpress.Itisoneofthemostinstalled
+andmostdepended-onNPMpackagesofalltime.Sowhy,then,dosomanypeopleopttouseNestJS? Express is, by its own tagline, an
+“unopinionated, minimalist” framework. This means that Express offers a relatively small and concise API without putting
+too many restrictions on how to architect
+ororganizeyourcodebase.Whilethismaybedesirable,manypreferamoreopinionated,structured, and streamlined methodology.
+Express’s unopinionated nature allows developers to create their own architecture and design. For some, this manifests
+into an MVC-esque controllers-based approach; for others, this leads to a more functional-style route-to-function
+approach. While this gives the developer many options when
+creatingapplications,italsomeansthatthereisnostandardapplicationarchitectureordesigninthe Express world. This leads to
+an ecosystem that has no particularly focused or guided way of solving core problems like database interactions,
+configuration, code extensibility, or modularity. Again this is not inherently bad or undesirable; NestJS’s opinionated
+design is purely an alternative approach that provides the structure and standardization that many prefer. However, it
+is important to note that using NestJS does not forgo the use of Express - quite the opposite! By default, Express is
+the web framework that powers NestJS under the hood. This means all the tooling available to the Express ecosystem -
+such ashelmetfor security,multerfor file
+uploads,cookie-parserforcookiemanagement-isavailabletoyouinNestJS.NestJSmerelycreates
+⁴https://ultimatecourses.com/courses/typescript
+
+Introduction to NestJS 5
+
+structured and dependency injection-friendly ways to interact with the Express pipeline, such as by using abstract base
+classes for@Injectablemiddleware and decorators for tools like@Pipes and @Guards. While the implementation may not look
+exactly the same, at the end of the day you are still working with Express under the hood, just in a more opinionated
+and structured fashion.
+
+Note that Express is the underlying HTTP framework used by NestJSbydefault: NestJS’s design allows for changing out what
+underlying platform is being used to handle web requests. Another popular framework that is supported by NestJS is
+Fastify, a library focused on high-performance
+webapplications.LeveragingNestJSallowsyoutoswapouttheseunderlyingplatformswithrelative ease!
+
+### Review
+
+Hopefully this section has left you with the following take-aways as you begin your journey into NestJS:
+
+- NestJS is an opinionated NodeJS application framework.
+- NestJSisbuiltwithTypeScript,butyoucanwriteyourapplicationsinTypeScriptorJavaScript.
+- NestJS uses Express under the hood and provides mechanisms to use Express paradigms like middleware and routing.
+
+## System Setup & Installing Prerequisites
+
+### Install NodeJS...
+
+NestJS is a framework that runs on NodeJS. To get started, you’ll need to install the NodeJS runtime onto your machine.
+The simplest way to do this is by going to https://www.nodejs.org and downloading the LTS version for your operating
+system. It is also a recommended idea to use a tool callednvm(https://github.com/nvm-sh/nvm)
+ornvm-windows(https://github.com/coreybutler/nvm- windows); these tools are version managers for NodeJS that make it
+very easy to install, uninstall, or change the version of NodeJS that is being used on your machine. Once installed,
+open your command-line tool of choice and verify your installation with these two simple commands to check the version
+of NodeJS and NPM. While NestJS only requires Node 10 or above, it is best practice to stay up-to-date with the current
+LTS version of Node.
+
+```bash
+1 node -v
+2 npm -v
+
+```
+
+### Install the NestJS CLI
+
+NestJS provides a command-line interface that offers project scaffolding, resource generation, and scripts for building,
+testing, formatting, and linting. While not a requirement, it is highly recommended to leverage the CLI to simplify
+these processes. The NestJS CLI is installable via NPM as a global package:
+
+```bash
+1 npm install -g @nestjs/cli
+
+```
+
+Once installed, open your command-line tool of choice and verify your installation with this command to check the
+version of NestJS. This eBook leverages version 7 of NestJS, but should be compatible with future major versions.
+
+```bash
+1 nest -v
+```
+
+**NestJS CLI Basics**
+
+The CLI tool allows you to simplify a number of processes that would otherwise be done by hand. While we won’t cover all
+of the CLI, let’s review some of the most helpful commands available.
+
+System Setup & Installing Prerequisites 7
+
+**nest new**
+
+This command kicks off a wizard that will scaffold a new NestJS web application. It automatically generates your project
+structure, required NPM dependencies, and provides scripts for building, linting, formatting, and testing.
+
+**nest start**
+
+This command handles the transpilation of your TypeScript or JavaScript code and kicks off the NestJS web server
+athttp://localhost:3000by default. Note that passing the--watchflag enables the file watcher that will automatically
+transpile your code and restart the web server whenever a file insrcchanges.
+
+**nest generate**
+
+This command allows you to generate any of the NestJS elements, such as modules, controllers, services, pipes, guards,
+and more. In addition to the element you specified, it will also set up a.spec test suite file that is immediately ready
+for you to write your unit tests.
+
+### Postman
+
+Postman is a fantastic tool that makes it easy to send web requests to APIs. In this eBook, we will be making web
+requests to our NestJS API, and using Postman will make testing these requests much simpler. The Postman API client can
+be downloaded at https://www.postman.com/downloads/.
+
+## Starting Your Application
+
+Now that you have an idea of what NestJS is all about and you have installed the tools that you need, let’s get started!
+
+### Scaffolding the project with the NestJS CLI.
+
+TocreateanewNestJSapplication,openyourcommand-linetoolofchoice,thenfindyourpreferred working directory. Once there, run
+the following command to scaffold a new application named “todo-list-api”.
+
+```
+
+1 nest new todo-list-api
+
+```
+
+The CLI will generate some files for you and then ask you which package manager you prefer to use. In this eBook, we
+will be usingnpmand recommend you do the same. Once selected, the CLI will begin installing all of the required
+dependencies. You can now open the project attodo-list-apiin your code editor of choice; I recommendVisual Studio
+Code⁵because of its lightweight nature and excellent TypeScript support.
+
+### Review of the default project structure.
+
+At the root level of the project, you will see configuration files needed for the NestJS tooling, particularly for
+building, linting, and formatting. You are welcome to modify these to suit your preferences, but the default settings
+are a great starting point.
+
+```
+
+**package.json default scripts**
+
+```
+
+Mostnotablyinyournewprojectcodebase,youwillseepackage.json.ThisisthefileusedbyNPM to manage dependencies, provide script
+commands, and provide basic project definition. Inside this file, the NestJS CLI has set up useful scripts that we will
+use throughout this eBook. These scripts can be run with `npm run {script name}`.
+
+```
+
+npm run build
+
+```
+
+This command will transpile your TypeScript code into Node-ready JavaScript code. The output of this process can be
+found atdist. These contents will be what you deploy to your server. ⁵https://code.visualstudio.com/
+
+Starting Your Application 9
+
+**npm run format**
+
+This useful command leverages the libraryprettierto format the code to a uniform style guide. This is a great tool,
+especially for teams, to create a cohesive and uniform code base. Typically you will want to run this before each commit
+or code change.
+
+**npm run start**
+
+This command runs the code in thedistfolder created by thenpm run buildcommand to start the NestJS web server. This
+command is typically used on the server where your code is running.
+
+**npm run start:dev**
+
+This is similar to thenpm run startcommand, but it uses the--watchflag to enable a file-watcher that automatically
+rebuilds your code and restarts the web server. This command is what you will want to use when developing on your
+machine.
+
+### Application Files
+
+In NestJS applications, all of the application source code lives in thesrcfolder. Opening this folder, you will see four
+TypeScript files and one test suite.
+
+**main.ts**
+
+main.tsis the entry point of your NestJS application; when thenest startis executed, it finds themain.tsfile and
+executes it. This file is particularly small and straight-forward. Inside of the bootstrap()method, theNestFactoryclass
+generates anINestApplication(theappvariable) by instantiating theAppModuleclass (outlined below).
+
+Once you have yourINestApplication, you can apply global middleware, make global application changes, and start your
+process - much like one would do when using Express. In our case, which is set up by NestJS by default, we want to start
+the Express web server. This is done with the app.listen()method. The application will run on whatever port you supply
+to thelistenmethod which is 3000 by default.
+
+**app.controller.ts**
+
+TheAppControllerisabasicNestJScontrollerthatprovidesanendpointathttp://localhost:3000. By default, a service is injected
+into the class to demonstrate the dependency injection process.
+
+**app.controller.spec.ts**
+
+This spec file is a test suite for theAppControllerclass. Suites like these are automatically generated whenever you
+create elements using thenest generatecommand and provide a great boilerplate to get started with your tests.
+
+Starting Your Application 10
+
+**app.service.ts**
+
+TheAppServiceis a simple NestJS injectable provider. In this default class we return a ‘hello world’ message, but in
+real-world applications you will see these service classes doing the bulk of the business logic work.
+
+**app.module.ts**
+
+TheAppModuleis your root module. Modules are used as the dependency injection container and is where all of your
+controllers and providers will be registered for use. As you will see, the AppControllerandAppServiceclasses are
+registered here for the application to use. It is common practice to keep this particularAppModulemodule going forward
+and import all subsequent modules in theimportsarray.
+
+### Serve the application.
+
+Now that you have seen the default setup of a NestJS application, let’s serve the application and access the default
+route in your browser.
+
+1. In your command-line tool of choice, run thenpm run start:devcommand in your application directory - you should see
+   thepackage.jsonfile in this directory. You’ll see the NestJS process creating yourINestApplication, wiring up all of
+   the application routes, and start listening at [http://localhost:3000.](http://localhost:3000.)
+
+`1 [NestFactory] Starting Nest application... 2 [InstanceLoader]AppModule dependencies initialized +10ms 3 [RoutesResolver]AppController {}: +5ms 4 [RouterExplorer]Mapped { GET} route +3ms 5 [NestApplication] Nest application successfully started +4ms`
+
+2. In your browser, go tohttp://localhost:3000. You will be greeted with the “Hello World!” message. Congratulations -
+   you ran your first NestJS application! In the next section, we will start extending this default application with our
+   own routes and services.
+
+## Setting up the Todo Module
+
+### Understanding NestJS module structure
+
+The NestJS application architecture takes a “per-feature” module approach, akin to what you may
+seeintheAngularorPythonDjangoworlds.Withthisdesign,alloftheclassesandfunctionallayers
+requiredtomakeasinglefeaturefunctional(i.e.CRUDactionsforadatabasemodel)willbegrouped inside of one folder and injected
+into a module. ASP.NET, Java, and other communities often employ a pattern that groups classes by type (i.e.
+aControllersfolder, aServicesfolder, aModelsfolder). For example, an ASP.NET MVC API application structure may look like
+this:
+
+1 Controllers/ 2 |--- TodoController.cs 3 Services/ 4 |--- TodoService.cs 5 Models/ 6 |--- TodoEntity.cs
+
+Following the NestJS structure, your app will instead look like this:
+
+1 todo/ 2 |--- todo.controller.ts 3 |--- todo.entity.ts 4 |--- todo.module.ts 5 |--- todo.service.ts
+
+This may be a shift in thinking if you’re accustomed to the former approach, but grouping functionality per feature can
+be a great paradigm that keeps related code easy to discover. This approach makes it rather painless to pick up and move
+large portions of functionality to new codebases or into packagable libraries, and also makes easy to split up code
+responsibilities to teams or team members. In the above example, I noted three elements of a NestJS modules that are
+important to understand before going forward: modules, controllers, and providers.
+
+Setting up the Todo Module 12
+
+**Modules**
+
+Modules are where all of the controllers and providers are registered, along with all of the imported sub-modules which
+contain their own controllers and providers. Modules hook up the dependency injection containers and enable the
+resolving of required dependencies for controllers and providers. In NestJS, modules are created by decorating a class
+with the@Moduledecorator. A simple example of a Module class would look like:
+
+` 1 **@Module** ({ 2 imports: [DatabaseModule], 3 controllers: [TodoController], 4 providers: [TodoService], 5 exports: [TodoService], 6 }) 7 **exportclass** TodoModule {}`
+
+The@Moduledecorator takes in an object with four properties:
+
+- imports: Importing other@Moduleclasses allows for using other sub-modules and creating the hierarchy of functionality.
+  For instance, theAppModulewill be importing theTodoModule, enabling theTodoModulefunctionality to be enabled at the
+  root of the application. This is also how third-party modules such as@nestjs/typeorm,@nestjs/config, and others are
+  wired into your application.
+- controllers: Thecontrollersarray contains the@Controllerclasses that are registered to this module. By defining them
+  in this array, they are made accessible via HTTP requests.
+- providers:Theprovidersarraycontainsall@Injectableclassessuchasdataservices,instance factories, pipes, guards,
+  middleware and interceptors.
+- exports:Thisarrayallowsformakingprovidersandimportsregisteredtothismoduleavailable for use outside of the current
+  module. For example, aTodoServiceregistered to aTodoModule
+  isonlyavailableclassesinsidetheTodoModule.OnceTodoServiceisaddedtotheexportsarray, it is now available to outside
+  modules.
+
+**Controllers**
+
+Controllers are responsible for interpreting input, passing the request details to services, and then formatting the
+service results in a way that can be exposed as responses. In the case of NestJS, “Controller” specifically refers to a
+class that handles HTTP requests. In NestJS, controllers are decorated with the@Controllerdecorator. By passing a string
+into the @Controllerargument, we define a base route path for all of the routes inside of the controller. The routes
+inside this class are notated with HTTP method decorators and path designations. It is best practice to keep controllers
+relatively “thin” and avoid putting significant business logic, data logic, or otherwise processing logic in your
+controller route methods: that work belongs in
+
+Setting up the Todo Module 13
+
+a provider service. By keeping the controller’s responsibility clearly defined as input and output transformation, it
+becomes easier to write, read, design, and test your code. A simple example of a Controller class would look like:
+
+```TypeScript
+1 **@Controller** ('api/app')
+2 **exportclass** AppController {
+3 **constructor** ( **private** readonly appService: **AppService** ) {}
+4
+5 **@Get** ('health')
+6 getHealth(): HealthCheck {
+7 **returnthis** .appService.getHealth();
+8 }
+9 }
+
+
+```
+
+**Providers**
+
+ProvidersisablanketterminNestJSthatencompassesserviceclasses,repositories,factories,utilities classes, and anything of
+that nature. This also includes important NestJS elements like middleware and guards. These are marked with
+the@Injectable()decorator.
+
+### Create theTododirectory and files
+
+```
+To start building our customTodomodule, let’s first create the empty files we will need. While the
+NestJS CLI has some excellent generation tools that we can use (which we will review later!), for
+this exercise we will create them by hand to demonstrate how these files all work together.
+Inside of your application directory, make the following directory and files:
+```
+
+- todo/
+- todo/todo.controller.ts
+- todo/todo.interface.ts
+- todo/todo.module.ts
+- todo/todo.service.ts
+
+### Create theTodointerface
+
+Inside of thetodo/todo.interface.tsfile, we will define the shape of theTodoJSON object. Note that interfaces are
+different from classes in that interfaces are “abstract” - there is no JavaScript code output and they are purely used
+for the TypeScript compiler and intellisense tooling - while classes are actual instantiations in memory. To create an
+interface, use the TypeScript keywordinterface.
+
+Setting up the Todo Module 14
+
+1 _// todo.interface.ts_ 2 **interface** Todo { 3 }
+
+OurTodoclass will have three properties:
+
+- an optionalid(optional newTodorequests will auto-assign theid)
+- alabelstring
+- acompleteboolean flag
+
+We will add these to the interface as such:
+
+```TypeScript
+1 _// todo.interface.ts_
+2 **interface** Todo {
+3 id?: **number** ;
+4 label: **string** ;
+5 complete: **boolean** ;
+6 }
+```
+
+Now that we’ve defined the structure, we will need to make this interface available to the other TypeScript
+filesusingthe keywordexport.Without thiskeyword,theinterface isessentially private to the file in which it is defined.
+In the end, yourtodo.interface.tsfile should look as such:
+
+```TypeScript
+1 **exportinterface** Todo {
+2 id?: **number** ;
+3 label: **string** ;
+4 complete: **boolean** ;
+5 }
+```
+
+### Create theTodoServicedata service
+
+Following the prescribed NestJS architecture pattern, we will create aTodoServiceclass that handle the data logic for
+maintaining ourTodos. Inside of thetodo.service.tsfile, we will define an exported TypeScript class,TodoService, and
+decorate it with the@Injectabledecorator.
+
+Setting up the Todo Module 15
+
+```TypeScript
+1 _// todo.service.ts_
+2 **import** { Injectable } from '@nestjs/common';
+3
+4 **@Injectable** ()
+5 **exportclass** TodoService {
+6 }
+```
+
+In this eBook, we will be using an in-memory array as our storage mechanism. This will not persist and will be cleared
+out every time the development server is restarted, but it will serve as a simple
+mechanismtostartyourNestJSjourney.Tocreatethisarray,wewilldefineandinstantiateastorage class-level variable. Once added,
+yourtodo.service.tsclass should look as such:
+
+```TypeScript
+1 **import** { Injectable } from '@nestjs/common';
+2 **import** { Todo } from'./todo.interface';
+3
+4 **@Injectable** ()
+5 **exportclass** TodoService {
+6 **private** storage: **Todo** []= [];
+7 }
+
+```
+
+Note that NestJS providers are singletons by default and any injection of the TodoService will share the same in-memory
+array.
+
+### Create theTodoControllerREST API Controller
+
+We now need a Controller to handle our HTTP requests. To do so, we create and export a TodoControllerclass that is
+decorated with the NestJS@Controllerdecorator with the base route path of “todo”.
+
+```TypeScript
+
+1 _// todo.controller.ts_
+2 **import** { Controller } from '@nestjs/common';
+3
+4 **@Controller** ('todo')
+5 **exportclass** TodoController {
+6 }
+
+```
+
+To leverage theTodoService we created, we will use NestJS’s dependency injection through constructor injection. Using
+TypeScript’s constructor assignment feature, we can easily set the provider as a private, readonly class-level instance
+property.
+
+Setting up the Todo Module 16
+
+```TypeScript
+1 // todo.controller.ts
+2 import { Controller } from '@nestjs/common';
+3 import { TodoService } from'./todo.service';
+4
+5 @Controller ('todo')
+6 exportclass TodoController {
+7 constructor ( private readonly todoService: TodoService ) {}
+8 }
+
+```
+
+NestJS will analyze the parameters in the constructor, find the types in the dependency injection container, and resolve
+them. We will now be able to use theTodoServicein controller methods via this.todoService. To validate our module, we
+will set up a single GET route that returns an empty array (note the added import). Routes are enabled using HTTP method
+decorators:@Get,@Post,@Put,@Patch, and @Delete. Just like the parameter passed to@Controller, the value passed to the
+method decorator definesthepathoftheroute.InthecaseofthisGETrequest,wewillleaveitasundefined,ultimately resolving to the
+base route path of/todo.
+
+```TypeScript
+1 **import** { Controller, Get } from'@nestjs/common';
+2 **import** { TodoService } from'./todo.service';
+3 **import** { Todo } from'./todo.interface';
+4
+5 **@Controller** ('todo')
+6 **exportclass** TodoController {
+7 **constructor** ( **private** readonly todoService: **TodoService** ) {}
+8
+9 **@Get** ()
+10 findAll(): Todo[] {
+11 **return** [];
+12 }
+13 }
+
+
+
+
+```
+
+### Create theTodoModulemodule.
+
+With our Controller and Provider classes created, we now need to create a class and decorate it with the@Moduledecorator
+to register them to the NestJS application. To do so, we’ll create aTodoModule class and decorate it with
+the@Moduledecorator.
+
+Setting up the Todo Module 17
+
+```TypeScript
+1 // todo.module.ts
+2 import { Module } from'@nestjs/common';
+3
+4 @Module ({})
+5 exportclass TodoModule {}
+
+```
+
+Now we can add theTodoServiceas a Provider to this module to make it available for injection.
+
+```TypeScript
+1 // todo.module.ts
+2 import { Module } from'@nestjs/common';
+3 import { TodoService } from'./todo.service';
+4
+5 @Module ({
+6 providers: [TodoService],
+7 })
+8 exportclass TodoModule {}
+
+```
+
+With theTodoServicenow registered, we can register theTodoControllerwhich will resolve the service as a dependency.
+
+```TypeScript
+1 _// todo.module.ts_
+2 **import** { Module } from'@nestjs/common';
+3 **import** { TodoController } from './todo.controller';
+4 **import** { TodoService } from'./todo.service';
+5
+6 **@Module** ({
+7 controllers: [TodoController],
+8 providers: [TodoService],
+9 })
+10 **exportclass** TodoModule {}
+
+### ImportTodoModuleintoAppModule
+
+```
+
+We now have a contained module of functionality, from the HTTP request to the data storage.
+However,therootmoduleAppModulewesawinthepreviouschaptershasnoreferencetoTodoModule. As we know, our
+entrypointmain.tscreates theINestApplicationfrom theAppModule, so without this reference, ourTodoModulelogic is
+unavailable. To create this link betweenAppModuleandTodoModule, open theapp.module.tsfile. In this@Module decorator,
+addTodoModuleto theimportsarray.
+
+Setting up the Todo Module 18
+
+```TypeScript
+1 _// app.module.ts_
+2 **import** { Module } from'@nestjs/common';
+3 **import** { AppController } from'./app.controller';
+4 **import** { AppService } from './app.service';
+5 **import** { TodoModule } from './todo/todo.module';
+6
+7 **@Module** ({
+8 imports: [TodoModule],
+9 controllers: [AppController],
+10 providers: [AppService],
+11 })
+12 **exportclass** AppModule {}
+
+### Make a request to theTodoController.
+
+
+If the development server is not still running, start it by runningnpm run start:dev. In the console
+output, you should see Nest wiring up theTodoModuleand creating theTodoControllerroute:
+```
+
+```
+1 [NestFactory] Starting Nest application...
+2 [InstanceLoader]AppModule dependencies initialized +9ms
+3 [InstanceLoader]TodoModule dependencies initialized +1ms
+4 [RoutesResolver]AppController {}: +4ms
+5 [RouterExplorer]Mapped {, GET} route +2ms
+6 [RoutesResolver]TodoController {/todo}: +0ms
+7 [RouterExplorer]Mapped {/todo, GET} route +1ms
+8 [NestApplication] Nest application successfully started +2ms`
+
+```
+
+Withyourserverstillrunning,openthePostmanapplication.MakeanewrequesttotheTodoController
+routeathttp://localhost:3000/todo.ThecontrollerwillreturnaJSONresponseofanemptyarray, which we return in
+thefindAll()method.
+
+Setting up the Todo Module 19
+
+We are now resolving HTTP requests to ourTodoControllerand are ready to start adding in the CRUD actions to the
+controller and service.
+
+### Bonus: Using the CLI generator
+
+In this exercise, we created these files by hand to demonstrate how all of the decorators and files work together. The
+Nest CLI simplifies this process quite a bit and we can accomplish the same module setup with the following commands:
+
+1 nest generate module todo 2 nest generate controller todo 3 nest generate service todo 4 cdtodo &&nest generate
+interface todo
+
+## Implementing the Data Service and Controller
+
+We are now ready to start implementing our CRUD actions. For all of these actions, we will be querying and mutating
+thestoragearray in our serviceTodoService.
+
+### findAll()
+
+**Add the service method**
+
+To begin, we will implement a method that will give us all of the items in storage. Our first step is to open
+thetodo.service.tsfile, add thefindAll()method definition, and return thestoragearray.
+
+```TypeScript
+1 _// todo.service.ts_
+2 **import** { Injectable } from '@nestjs/common';
+3 **import** { Todo } from'./todo.interface';
+4
+5 **@Injectable** ()
+6 **exportclass** TodoService {
+7 **private** storage: **Todo** []= [];
+8
+9 findAll(): Todo[] {
+10 **returnthis** .storage;
+11 }
+12 }
+
+```
+
+**Add the GET route**
+
+Wehavenowexposedtheprivatestoragearrayandcanaccessitthroughthecontroller.Tocallthis, open thetodo.controller.tsfile and
+update thefindAll()method to call theTodoService.
+
+Implementing the Data Service and Controller 21
+
+```TypeScript
+1 _// todo.controller.ts_
+2 **import** {
+3 Controller,
+4 Get,
+5 } from'@nestjs/common';
+6 **import** { TodoService } from'./todo.service';
+7 **import** { Todo } from'./todo.interface';
+8
+9 **@Controller** ('todo')
+10 **exportclass** TodoController {
+11 **constructor** ( **private** readonly todoService: **TodoService** ) {}
+12
+13 **@Get** ()
+14 findAll(): Todo[] {
+15 **returnthis** .todoService.findAll();
+16 }
+17 }
+
+```
+
+Ensure that the development server is still running in your command-line tool. Open Postman and make a GET request
+tohttp://localhost:3000/todo. In response, we’ll get an empty array (again).
+
+Implementing the Data Service and Controller 22
+
+### create()
+
+**Add the service method**
+
+To add a newTodoto ourstoragearray, let’s implement acreate()method in our data service. This method will take in
+aTodointerface, calculate and set the optionalidvalue, and add it to the storage array.
+
+```TypeScript
+
+1 _// todo.service.ts_
+2 **import** { Injectable } from '@nestjs/common';
+3 **import** { Todo } from'./todo.interface';
+4
+5 **@Injectable** ()
+6 **exportclass** TodoService {
+7 **private** storage: **Todo** []= [];
+8
+9 create(todo: **Todo** ): **void** {
+10 **const** currentMaxId = Math.max(... **this** .storage.map((t: **Todo** ) =>t.id));
+11 todo.id= currentMaxId + 1 ;
+12 **this** .storage.push(todo);
+13 }
+14
+15 findAll(): Todo[] {
+16 **returnthis** .storage;
+17 }
+18 }
+
+```
+
+**Add the POST route**
+
+With the data service method in place, we now need to enable an HTTP endpoint in our controller to call it. To do this,
+we will create a@Postroute on theTodoController. Following REST standards, we’ll configure this route to bePOST /todo.
+With@Post,@Put, and@Patchroutes, the HTTP content body is used to transfer data objects, such as JSON, XML, or text. In
+this example, we will be sending a JSON object of aTodoitem. For NestJS to parse and interpret the content body, the
+decorator@Bodyshould be applied to the route method parameter. NestJS will applyJSON.parse()to the content and provide
+you a JSON object to work with. Since we expect this payload to match ourTodointerface, we will type it as such.
+
+Implementing the Data Service and Controller 23
+
+```TypeScript
+
+1 _// todo.controller.ts_
+2 **import** {
+3 Body,
+4 Controller,
+5 Get,
+6 Post,
+7 } from'@nestjs/common';
+8 **import** { Todo } from'./todo.interface';
+9 **import** { TodoService } from'./todo.service';
+10
+11 **@Controller** ('todo')
+12 **exportclass** TodoController {
+13 **constructor** ( **private** readonly todoService: **TodoService** ) {}
+14
+15 **@Post** ()
+16 create( **@Body** () todo: **Todo** ): **void** {
+17 **returnthis** .todoService.create(todo);
+18 }
+19
+20 **@Get** ()
+21 findAll(): Todo[] {
+22 **returnthis** .todoService.findAll();
+23 }
+24 }
+
+```
+
+We can now send a POST request tohttp://localhost:3000/todowith a JSON payload to add it to thestoragearray. In Postman,
+do the following to set up your POST request:
+
+1.Create a new request tab. 2.Change the GET value in the HTTP method dropdown to POST. 3.Enter
+thehttp://localhost:3000/todovalue in the URL. 4.In the“Body”tab, select“raw”. In the dropdown to the right of “binary”,
+select“JSON (application/json)”. 5.In the textarea, supply the following body:
+
+```json
+1 {
+2 "label" :"Create an awesome API",
+3 "complete" : false
+4 }
+
+```
+
+Send the request. Our response will be empty, but with a status of201 Created.
+
+Implementing the Data Service and Controller 24
+
+We can now make a GET request tohttp://localhost:3000/todoagain to see our newTodoitem in our array with a setidof 1.
+
+**Quick aside: Adding the NestJS Logger**
+
+You may have noticed that there was no indication in our command-line console that request was processed. While this is
+likely ideal in most scenarios, it would be very helpful for us to see that we are hitting the routes that we expect.
+
+Implementing the Data Service and Controller 25
+
+NestJS provides aLoggerimplementation that makes it easy to add logging to your application. It is best practice to use
+thisLoggerclass over theconsolelog methods because the log messages are formatted in a cohesive fashion, and
+theLoggerallows you to swap out functionality or disable logging completely at a global level with simple configuration
+in yourmain.tsfile. To add logging to our controller, create a new instance of aLoggeras a class-level variable on the
+TodoController. We will add a log statement to each of our methods as well.
+
+```TypeScript
+
+1 **import** {
+2 Body,
+3 Controller,
+4 Get,
+5 Logger,
+6 Post,
+7 } from'@nestjs/common';
+8 **import** { Todo } from'./todo.interface';
+9 **import** { TodoService } from'./todo.service';
+10
+11 **@Controller** ('todo')
+12 **exportclass** TodoController {
+13 **private** readonly logger= **new** Logger(TodoController.name);
+14
+15 **constructor** ( **private** readonly todoService: **TodoService** ) {}
+16
+17 **@Post** ()
+18 create( **@Body** () todo: **Todo** ): **void** {
+19 **this** .logger.log('Handling create() request...');
+20 **returnthis** .todoService.create(todo);
+21 }
+22
+23 **@Get** ()
+24 findAll(): Todo[] {
+25 **this** .logger.log('Handling findAll() request...');
+26 **returnthis** .todoService.findAll();
+27 }
+28 }
+
+```
+
+Now when we make a request to either method, we will see items in our console such as:
+
+```bash
+1 [TodoController]Handling create() request...
+2 [TodoController]Handling findAll() request...
+
+```
+
+Implementing the Data Service and Controller 26
+
+### findOne().
+
+**Add the service method**
+
+We will now add a method that allows us to retrieve a singleTodoitem from thestoragearray. To do so, in
+theTodoServiceaddfindOne()method that does afind()on thestoragearray.
+
+```TypeScript
+
+1 **import** { Injectable } from '@nestjs/common';
+2 **import** { Todo } from'./todo.interface';
+3
+4 **@Injectable** ()
+5 **exportclass** TodoService {
+6
+7 _// ..._
+8
+9 findOne(id: **number** ): Todo {
+10 **returnthis** .storage.find((t: **Todo** ) =>t.id ===id);
+11 }
+12 }
+
+**Add the GET route**
+
+```
+
+We will now need to update theTodoControlleraccordingly to enable this service method through an HTTP request.
+Intodo.controller.ts, we will add a new@Getmethod, but this time we will take in a route parameter in the@Getdecorator.
+Route parameters are variables inside of a given path. Routers use pattern matching to interpret and parse these paths
+and pluck out the variables in the provided route pattern. To access this variable in your NestJS route method,
+the@Paramdecorator is applied to the method argument, supplying the name of the route parameter. In our API, we want to
+supply theTodoobject’sidas a route parameter, so we use the route pattern of:idto indicate a parameter variable with
+anid, and then use the@Param('id')decorator to hook the value into the method argument.
+
+```TypeScript
+
+Implementing the Data Service and Controller 27
+
+1 **import** {
+2 Body,
+3 Controller,
+4 Get,
+5 Logger,
+6 Param,
+7 Post,
+8 } from'@nestjs/common';
+9 **import** { Todo } from'./todo.interface';
+10 **import** { TodoService } from'./todo.service';
+11
+12 **@Controller** ('todo')
+13 **exportclass** TodoController {
+14 _// ..._
+15
+16 **@Get** (':id')
+17 findOne( **@Param** ('id') id: **number** ): Todo {
+18 **this** .logger.log('Handling findOne() request with id='+ id + '...');
+19 **returnthis** .todoService.findOne(id);
+20 }
+21 }
+
+```
+
+Since thestoragearray was cleared when we restarted our development server, we will do the following to test:
+
+1.Send the POST request outlined in thecreate()section to create a newTodoitem. 2.Send a GET request
+tohttp://localhost:3000/todoto see all the items instorage, including your newTodo. 3.Send a GET request
+tohttp://localhost:3000/todo/1, our new route, to retrieve theTodo item directly.
+
+Implementing the Data Service and Controller 28
+
+Uh oh, the response is empty! Our command-line console says we hit the route with expected ID ([TodoController] Handling
+findOne() request with id=1...). So, what happened? It is important to understand that by default,@Paramvalues are
+strings. While we gave it the type of number, recall that TypeScript types are abstract and have no impact on the actual
+executing code; this is to say that the executing code had no way of knowing it should have parsed the route
+parameteridto a number. This is where the@Pipedecorator comes in.
+
+**About NestJS Pipes**
+
+Pipes in NestJS transform request parameters at a method level. While you can create your own, the @nestjs/commonpackage
+comes with very helpful pipes that cover most common use-cases.
+
+- ValidationPipe: provides request validation using theclass-validatorlibrary.
+- ParseIntPipe: parses the route parameter to anumbertype.
+- ParseBoolPipe: parses the route parameter to abooleantype.
+- ParseArrayPipe: parses the route parameter to an array of a given type.
+- ParseUUIDPipe: parses the route parameter to a UUID of a provided version.
+- DefaultValuePipe: allows for a default value if no value is supplied in the route.
+
+**Parsing theidroute parameter**
+
+To fix ourfindOne()endpoint, we need to add theParseIntPipeto our@Parampipe.
+
+```TypeScript
+1 **import** {
+2 Body,
+3 Controller,
+4 Get,
+5 Logger,
+6 Param,
+7 ParseIntPipe,
+8 Post,
+9 } from'@nestjs/common';
+10 **import** { Todo } from'./todo.interface';
+11 **import** { TodoService } from'./todo.service';
+12
+13 **@Controller** ('todo')
+14 **exportclass** TodoController {
+15 _// ..._
+16
+17 **@Get** (':id')
+
+Implementing the Data Service and Controller 29
+
+18 findOne( **@Param** ('id', ParseIntPipe) id: **number** ): Todo {
+19 **this** .logger.log('Handling findOne() request with id='+ id + '...');
+20 **returnthis** .todoService.findOne(id);
+21 }
+22 }
+
+```
+
+This will parse the value to a number and now our.find()method in our data service will find an exact equality against
+theTodoitem we POST. Since thestoragearray was cleared when we restarted our development server, we will do the
+following to test:
+
+1.Send the POST request outlined in thecreate()section to create a newTodoitem. 2.Send a GET request
+tohttp://localhost:3000/todoto see all the items instorage, including your newTodo. 3.Send a GET request
+tohttp://localhost:3000/todo/1, our new route, to retrieve theTodo item directly.
+
+With this pipe in place, we’re now able to retrieve theTodoitem.
+
+### update().
+
+**Add the service method**
+
+We will now create a method to update an item in ourstoragearray. This method will find the item in the array and
+replace it with an object in the request body.
+
+Implementing the Data Service and Controller 30
+
+```TypeScript
+1 _// todo.service.ts_
+2 **import** { Injectable } from '@nestjs/common';
+3 **import** { Todo } from'./todo.interface';
+4
+5 **@Injectable** ()
+6 **exportclass** TodoService {
+7 _// ..._
+8
+9 update(id: **number** , todo: **Todo** ): **void** {
+10 **const** index = **this** .storage.findIndex((t: **Todo** ) => t.id=== id);
+11 **this** .storage[index]=todo;
+12 }
+13 }
+
+```
+
+**Add the PUT route**
+
+With this method in place, we will expose the method through a PUT request. To do so, we’ll need to use our learnings
+about the@Bodydecorator, the@Paramdecorator, and pipes to create the route we need. The route will supply theidwhile the
+content body will provide the payload of theTodo.
+
+```TypeScript
+1 **import** {
+2 Body,
+3 Controller,
+4 Get,
+5 Logger,
+6 Param,
+7 ParseIntPipe,
+8 Post,
+9 Put,
+10 } from'@nestjs/common';
+11 **import** { Todo } from'./todo.interface';
+12 **import** { TodoService } from'./todo.service';
+13
+14 **@Controller** ('todo')
+15 **exportclass** TodoController {
+16 _// ..._
+17
+18 **@Put** (':id')
+19 update( **@Param** ('id', ParseIntPipe) id: **number** , **@Body** () todo: **Todo** ): **void** {
+20 **this** .logger.log('Handling update() request with id='+ id+ '...');
+21 **returnthis** .todoService.update(id, todo);
+22 }
+23 }
+
+```
+
+Implementing the Data Service and Controller 31
+
+Since thestoragearray was cleared when we restarted our development server, we will do the following to test:
+
+1.Send the POST request outlined in thecreate()section to create a newTodoitem. 2.Send a GET request
+tohttp://localhost:3000/todoto see all the items instorage, including your newTodo.
+
+With thestoragearray set up, let’s now send a PUT request to update the"complete"flag totrue.
+
+1.Create a new request tab. 2.Change the GET value in the HTTP method dropdown to PUT. 3.Enter
+thehttp://localhost:3000/todo/1value in the URL. 4.In the“Body”tab, select“raw”. In the dropdown to the right of
+“binary”, select“JSON (application/json)”. 5.In the textarea, supply the following body:
+
+```TypeScript
+
+#### 1 {
+
+2 **"id"** : 1 ,
+3 **"label"** : "Create an awesome API",
+4 **"complete"** : **true**
+5 }
+
+Implementing the Data Service and Controller 32
+
+```
+
+To validate the value has changed, send a GET request tohttp://localhost:3000/todoto see all of the items in
+thestoragearray.
+
+### remove()
+
+**Add the service method**
+
+At the end of ourTodoprocess, we’ll want to remove items from thestoragearray. Following our process, we’ll add a
+newremove()method to theTodoServicethat finds the item in thestorage array and splices it out of memory.
+
+```TypeScript
+1 _// todo.service.ts_
+2 **import** { Injectable } from '@nestjs/common';
+3 **import** { Todo } from'./todo.interface';
+4
+5 **@Injectable** ()
+6 **exportclass** TodoService {
+7 _// ..._
+8 remove(id: **number** ): **void** {
+9 **const** index = **this** .storage.findIndex((t: **Todo** ) => t.id=== id);
+10 **this** .storage.splice(index, 1 );
+11 }
+12 }
+```
+
+**Add the DELETE route**
+
+DELETE requests look quite like GET requests in that they are not accompanied by a content body. To create this
+endpoint, we’ll add the@Deletedecorator to a new method that calls our data service.
+
+Implementing the Data Service and Controller 33
+
+As with the GET and PUT routes, we’ll need to make sureParseIntPipepipe is in place.
+
+```TypeScript
+1 **import** {
+2 Body,
+3 Controller,
+4 Delete,
+5 Get,
+6 Logger,
+7 Param,
+8 ParseIntPipe,
+9 Post,
+10 Put,
+11 } from'@nestjs/common';
+12 **import** { Todo } from'./todo.interface';
+13 **import** { TodoService } from'./todo.service';
+14
+15 **@Controller** ('todo')
+16 **exportclass** TodoController {
+17 _// ..._
+18
+19 **@Delete** (':id')
+20 remove( **@Param** ('id', ParseIntPipe) id: **number** ): **void** {
+21 **this** .logger.log('Handling remove() request with id='+ id+ '...');
+22 **returnthis** .todoService.remove(id);
+23 }
+24 }
+```
+
+We can now test the whole CRUD workflow via Postman.
+
+1.Send the POST request outlined in thecreate()section to create a newTodoitem. 2.Send a GET request
+tohttp://localhost:3000/todoto see all the items instorage, including your newTodo. 3.Send the PUT request outlined in
+theupdate()section to set theTodoitem to"completed": true. 4.Send a GET request tohttp://localhost:3000/todoto see the
+updated item instorage. 5.Send a DELETE request tohttp://localhost:3000/todo/1to remove the item instorage. 6.Send a GET
+request tohttp://localhost:3000/todoto see the now emptiedstorage.
+
+With logging enabled, your command-line console will look something like this:
+
+Implementing the Data Service and Controller 34
+
+```bash
+1 [TodoController]Handling create() request...
+2 [TodoController]Handling findAll() request...
+3 [TodoController]Handling update() request with id= 1 ...
+4 [TodoController]Handling findAll() request...
+5 [TodoController]Handling remove() request with id= 1 ...
+6 [TodoController]Handling findAll() request...
+```
+
+## Ready for integration!
+
+TheTodoControllernow has full CRUD operations and we can hook it up to a user interface to allow users to modify
+thestoragearray. In the next chapter, we’ll point a pre-existing user interface on StackBlitz at our local server and
+watch the full-stack application come to life.
+
+It’s time for the fun part: seeing everything come to life in a fully integrated full-stack application. We have
+prepared a Todo list app that you can run against your local development server: https://stackblitz.com/edit/js-17i3zg
+To test with this user interface, start up your development web server withnpm run start:dev. In the user interface, try
+to create a newTodoitem by typing in the “What’s next?” input and hitting enter. Uh oh, nothing happened!
+
+## Enable CORS
+
+If you check out your browser console, you’ll see some errors about a missing “Access-Control- Allow-Origin” header.
+These errors are due to cross-origin reference sharing (CORS) restrictions that prevent web applications from making XHR
+requests to other domains. These restrictions are a security feature browsers have put in place using what are known as
+pre-flight requests and API response headers. Pre-flight requests are OPTION HTTP requests that are executed before the
+actual XHR request. Your browser automatically injects this request and if the restrictions specified in the response
+headers are met by the request parameters, then the actual request will continue as expected. By
+default,theserestrictionspreventrequestsfromanyotherorigin;inourcase,ourserveratlocalhost is preventing XHR requests
+fromstackblitz.com. NestJS makes opening these CORS restrictions simple. In yourmain.tsfile, callapp.enableCors(); in
+thebootstrap()method. This will add headers to your controller route responses that enable cross-domain requests.
+
+```TypeScript
+// main.ts
+
+ import { NestFactory } from'@nestjs/core';
+ import { AppModule } from'./app.module';
+
+ async function bootstrap() {
+ const app= await NestFactory.create(AppModule);
+ app.enableCors();
+ await app.listen( 3000 );
+ }
+ bootstrap();
+```
+
+## Test the Full-Stack Application
+
+With CORS enabled, you should be able to create, edit, check-off, and remove items in the todo list. You can test your
+API by doing the following actions:
+
+1.Create a new todo item. 2.Double-click a todo item to change the label. 3.Check off a todo item. 4.Remove a todo item.
+5.Clear all completed todo items.
+
+## Summary.
+
+Thisexampleisagreatdemonstrationofbuildingloosely-coupledRESTAPIsanduserinterfaces.By building REST APIs with
+standardized route patterns and clearly indicating data transfer contracts, we are able to separate our concerns between
+back-end processing and front-end user interactions in a way that is maintainable and scalable. This pattern can be
+leveraged to create very stable and maintainable applications, from small
+applicationstolargeproducts.Creatingafull-stackTypeScriptapplicationwithNestJSandthefront- end framework of your choice
+is a recipe for success.
+
+Through this eBook, I hope to have demonstrated how the NestJS framework makes it easy to create server-side codebases
+that scale. Where do you go from here? I recommend you pre-order the NestJS Basics and NestJS Pro courses coming soon
+atUltimate Courses⁶, which will teach you all the fundamentals, how to get started with database management, how to
+build more complex REST APIs, and how to fully master the NestJS framework.
+
+```
+
+```

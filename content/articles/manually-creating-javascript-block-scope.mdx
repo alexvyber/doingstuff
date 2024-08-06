@@ -1,0 +1,66 @@
+import { ArticleLayout } from "@/layouts/article-layout"
+
+export const metadata = {
+  author: "Alex Vyber",
+  date: "2023-01-12",
+  title: "Manually creating JavaScript block scope",
+  description:
+    "I want to share a small tip regarding the block scope. Specifically when we want to create it on purpose.",
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+I want to share a small tip regarding the block scope. Specifically when we want to create it on purpose.
+
+Let's see in code:
+
+```TypeScript
+// scope.ts
+
+const func = (someFunc: () => { message: string }) => {
+  const message = "Some message..."
+
+  //❗  error: Cannot redeclare block-scoped variable 'message'.ts(2451
+  const { message } = someFunc()
+
+  return message
+}
+```
+
+`message` is a constant that is defined in the `func` function scope. We can’t destruct the operation argument from
+`someFunc` return because there is a naming clash.
+
+The possible quick fix for that might be to create an alias:
+
+```TypeScript
+// scope.ts
+
+const aliasFunc = (someFunc: () => { message: string }) => {
+  const message = "Some message..."
+
+  const { message: someMessage } = someFunc()
+  console.log("🚀 ~ ", someMessage)
+
+  return message
+}
+```
+
+Another way is to use block scope:
+
+```TypeScript
+// scope.ts
+
+const otherFunc = (someFunc: () => { message: string }) => {
+  const message = "Some message..."
+
+  {
+    const { message } = someFunc()
+    console.log("🚀 ~ ", message)
+  }
+
+  return message
+}
+```
+
+When I need to use variable almost immediately after declaration and don't expect to use it a lot, I prefer to use block
+scope. In all other situations I use alias.

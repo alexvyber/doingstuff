@@ -1,0 +1,70 @@
+import Image from "next/image"
+
+import { ArticleLayout } from "@/layouts/article-layout"
+
+import one from "./one.png"
+import two from "./two.png"
+
+export const metadata = {
+  author: "Alex Vyber",
+  date: "2023-02-03",
+  title: "How to Test Code in a Browser with Cypress",
+  description:
+    "I want to share a small tip regarding the block scope. Specifically when we want to create it on purpose.",
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+## Problem
+
+Most React projects include a testing library. The most common is probably @testing-library/react, which comes bundled
+with create-react-app, or Enzyme, which is used by Preact. But nothing quite beats testing code in a real browser, with
+all the additional compli‐ cations that entails. Traditionally, browser testing can be unstable and requires fre‐ quent
+maintenance as you need to upgrade browser drivers (such as ChromeDriver) every time you upgrade the browser. Add to
+that the issue of generating test data on a backend server, and browser-based testing can be complex to set up and
+manage.
+
+## Solution
+
+The Cypress testing framework avoids many of the downsides of traditional browser testing. It runs in a browser but
+avoids the need for an external web-driver tool. Instead, it communicates directly with a browser, like Chrome or
+Electron, over a network port and then injects JavaScript to run much of the test code. Let’s create an application
+create-react-app to see how it works: $ npx create-react-app --use-npm my-app Now let’s go into the app directory and
+install Cypress:
+
+$ cd my-app $ npm install cypress --save-dev Before we run Cypress, we need to configure it so that it knows how to find
+our appli‐ cation. We can do this by creating a cypress.json file in the application directory and
+
+telling it the uniform resource locator (URL) of our app:
+
+`{ "baseUrl": "http://localhost:3000/" }`
+
+Once we have started the main application: $ npm start we can then open Cypress: $ npx cypress open The first time you
+run Cypress, it will install all the dependencies it needs. We’ll now create a test in the cypress/integration directory
+called screenshot.js, which opens the home page and takes a screenshot:
+
+`describe('screenshot', () => { it('should be able to take a screenshot', () => { cy.visit('/'); cy.screenshot('frontpage'); }); }); `
+
+You’ll notice that we wrote the tests in Jest format. Once you save the test, it will appear in the main Cypress window,
+shown in
+
+If you double-click the test, Cypress will run it in a browser. The front page of the application will open, and the
+test will save a screenshot to cypress/screenshots/screen‐ shot.js/frontpage.png. Discussion Here are some example
+commands you can perform with Cypress: CommandDescription
+
+| Command                         | What it does                         |
+| ------------------------------- | :----------------------------------- |
+| `cy.contains('Fred')`           | Finds the element containing Fred    |
+| `cy.get('.Norman').click()`     | Clicks the element with class Norman |
+| `cy.get('input').type('Hi!')`   | Types "Hi!" into the input field     |
+| `cy.get('h1').scrollIntoView()` | Scrolls the <h1/> into view          |
+
+These are just some of the commands that interact with the web page. But Cypress has another trick up its sleeve.
+Cypress can also modify the code inside the browser to change the time (cy.clock()), the cookies (cy.setCookie()), the
+local storage (cy.clearLocalStorage()) and—most impressively—fake requests and responses to an API server. It does this
+by modifying the networking functions that are built into the browser so that this code:
+`cy.route("/api/server?\*", [{some: 'Data'}])` will intercept any requests to a server endpoint beginning /api/server?
+and return the JSON array `[{some: 'Data'}]`. Simulating network responses can completely change the way teams develop
+applica‐ tions because it decouples the frontend development from the backend. The browser tests can specify what data
+they need without having to create a real server and database. To learn more about Cypress, visit the documentation
+site. You can download the source for this recipe from the GitHub site.

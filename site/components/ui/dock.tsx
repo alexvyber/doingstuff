@@ -89,7 +89,7 @@ function Dock({ className, children }: DockProps) {
     >
       <motion.div
         ref={dockRef} // Reference to the dock element
-        // className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex items-end h-14 p-2 gap-3 bg-neutral-50 dark:bg-black bg-opacity-90 rounded-xl"
+        // className="flex absolute bottom-4 left-1/2 gap-3 items-end p-2 h-14 bg-opacity-90 rounded-xl transform -translate-x-1/2 dark:bg-black bg-neutral-50"
         className={cn(
           "absolute bottom-4 left-1/2 flex h-14 -translate-x-1/2 transform items-end gap-3 rounded-xl bg-opacity-90 p-2",
           "bg-neutral-50 p-2 no-underline shadow-sm transition-colors hover:bg-neutral-100 dark:bg-neutral-900 dark:hover:bg-neutral-800/80",

@@ -25,9 +25,9 @@ function Article({ article, slugPath, callToAction }: { article: any; slugPath: 
           {formatDate(article.date)}
         </Card.Eyebrow>
         <Card.Description>{article.description}</Card.Description>
-        <Card.Cta>{callToAction}</Card.Cta>
+        {/* <Card.Cta>{callToAction}</Card.Cta> */}
       </Card>
-      <Card.Eyebrow as="time" dateTime={article.date} className="mt-1 hidden md:block">
+      <Card.Eyebrow as="time" dateTime={article.date} className="mt-1 hidden text-[13px] font-light md:block">
         {formatDate(article.date)}
       </Card.Eyebrow>
     </article>

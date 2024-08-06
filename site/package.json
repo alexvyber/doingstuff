@@ -4,14 +4,14 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "build": "next build",
     "dev": "next dev",
     "dev:turbo": "next dev --turbo",
-    "build": "next build",
-    "start": "next start",
-    "pretty": "prettier --write './**/*.{ts,tsx,md,mdx,html,js,cjs,css}'",
-    "lint": "biome lint --write .",
     "format": "biome format --write .",
-    "lint:unsafe": "biome lint --write --unsafe ."
+    "lint": "biome lint --write .",
+    "lint:unsafe": "biome lint --write --unsafe .",
+    "pretty": "prettier --write './**/*.{ts,tsx,md,mdx,html,js,cjs,css}'",
+    "start": "next start"
   },
   "dependencies": {
     "@babel/core": "^7.25.2",
@@ -26,10 +26,10 @@
     "cvax": "^0.7.0",
     "framer-motion": "^11.3.21",
     "lucide-react": "^0.424.0",
-    "next": "14.2.5",
+    "next": "15.0.0-rc.0",
     "prism-themes": "^1.9.0",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
+    "react": "19.0.0-rc-187dd6a7-20240806",
+    "react-dom": "19.0.0-rc-187dd6a7-20240806",
     "rehype-code-titles": "^1.2.0",
     "rehype-prism-plus": "^2.0.0",
     "rehype-stringify": "^10.0.0",

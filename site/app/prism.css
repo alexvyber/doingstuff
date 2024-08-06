@@ -1,4 +1,4 @@
-@import "prism-themes/themes/prism-vs.min.css";
+@import "prism-themes/themes/prism-one-light.min.css";
 
 .token.tag,
 .token.selector,
@@ -32,7 +32,7 @@
 
 .token.class,
 .token.property {
-  color: theme("colors.red.500");
+  color: theme("colors.red.600");
 }
 
 .token.attr-value,
@@ -42,14 +42,14 @@
   color: theme("colors.lime.600");
 }
 
-.token.punctuation,
+/* .token.punctuation,
 .token.attr-equals {
   color: theme("colors.neutral.700");
-}
+} */
 
 .token.unit,
 .language-css .token.function {
-  color: theme("colors.sky.500");
+  color: theme("colors.sky.600");
 }
 
 .token.comment,
@@ -58,14 +58,14 @@
 }
 
 .token.operator {
-  color: theme("colors.cyan.600");
+  color: theme("colors.neutral.800");
 }
 
 .token.builtin {
   color: theme("colors.teal.600");
 }
 .token.punctuation {
-  color: theme("colors.blue.900");
+  color: theme("colors.teal.800");
 }
 
 pre {
@@ -131,7 +131,6 @@ pre[class*="language-"] code[class*="language-"] {
 }
 
 .code-line {
-  color: theme("colors.neutral.700");
   display: block;
   padding-left: 16px;
   padding-right: 16px;
@@ -142,28 +141,33 @@ pre[class*="language-"] code[class*="language-"] {
 }
 
 .code-line.inserted {
-  background-color: rgba(16, 185, 129, 0.2); /* Set inserted line (+) color */
+  margin-left: -13px;
+  border-left-width: 2px;
+  border-left-color: rgba(16, 185, 129); /* Set highlight accent border color */
+  background-color: rgba(16, 185, 129, 0.15); /* Set inserted line (+) color */
 }
 
 .code-line.deleted {
-  background-color: rgba(239, 68, 68, 0.2); /* Set deleted line (-) color */
+  margin-left: -13px;
+  border-left-width: 2px;
+  border-left-color: rgba(239, 68, 68); /* Set highlight accent border color */
+  background-color: rgba(239, 68, 68, 0.15); /* Set deleted line (-) color */
 }
 
 .highlight-line {
-  margin-left: -16px;
-  margin-right: -16px;
-  background-color: rgba(249, 251, 253, 0.1); /* Set highlight bg color */
-  border-left-width: 4px;
-  border-left-color: #f97316; /* Set highlight accent border color */
+  margin-left: -13px;
+  background-color: rgba(128, 128, 128, 0.1); /* Set highlight bg color */
+  border-left-width: 2px;
+  border-left-color: #898989; /* Set highlight accent border color */
 }
 
-.line-number::before {
+/* .line-number::before {
   display: inline-block;
   width: 1rem;
   text-align: right;
   margin-right: 16px;
   margin-left: -6px;
   font-size: 13px;
-  color: #bdbdbd; /* Line number color */
+  color: #bdbdbd; 
   content: attr(line);
-}
+} */

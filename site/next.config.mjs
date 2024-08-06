@@ -8,7 +8,7 @@ import rehypeCodeTitles from "rehype-code-titles"
 const withMDX = mdx({
   extension: /\.(md|mdx)$/,
   options: {
-    rehypePlugins: [rehypeCodeTitles, [rehypePrism, { showLineNumbers: true }], rehypeHtml],
+    rehypePlugins: [rehypeCodeTitles, rehypePrism, rehypeHtml],
     remarkPlugins: [remarkSlugs, remarkGfm],
   },
 })

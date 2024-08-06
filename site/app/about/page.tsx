@@ -41,11 +41,11 @@ export default function Home() {
       <div className="relative h-full min-h-screen w-full p-3 sm:p-4 md:p-6 lg:px-16 lg:py-12">
         <BgGrid />
 
-        {/* <div className="absolute left-28 top-28 h-48 w-48 rotate-[-10deg] transform rounded-lg bg-neutral-100 shadow-2xl dark:bg-neutral-800" /> */}
-        {/* <div className="absolute left-56 top-36 h-48 w-48 rotate-[8deg] transform rounded-lg bg-neutral-50 shadow-2xl dark:bg-neutral-900" /> */}
+        {/* <div className="absolute top-28 left-28 w-48 h-48 rounded-lg shadow-2xl transform rotate-[-10deg] bg-neutral-100 dark:bg-neutral-800" /> */}
+        {/* <div className="absolute top-36 left-56 w-48 h-48 rounded-lg shadow-2xl transform rotate-[8deg] bg-neutral-50 dark:bg-neutral-900" /> */}
 
-        {/* <div className="absolute right-48 top-36 h-64 w-48 rotate-[8deg] transform rounded-lg bg-neutral-100 shadow-2xl dark:bg-neutral-700" /> */}
-        {/* <div className="absolute right-28 top-28 h-24 w-24 rotate-[10deg] transform rounded-full bg-white shadow-2xl dark:bg-neutral-800" /> */}
+        {/* <div className="absolute top-36 right-48 w-48 h-64 rounded-lg shadow-2xl transform rotate-[8deg] bg-neutral-100 dark:bg-neutral-700" /> */}
+        {/* <div className="absolute top-28 right-28 w-24 h-24 bg-white rounded-full shadow-2xl transform rotate-[10deg] dark:bg-neutral-800" /> */}
 
         <div className="absolute inset-0 mx-auto flex w-full max-w-4xl items-center justify-center px-10">
           <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">

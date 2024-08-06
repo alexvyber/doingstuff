@@ -95,7 +95,7 @@ function CardEyebrow({
     <Component
       className={cx(
         className,
-        "relative z-10 order-first mb-3 flex items-center text-sm text-neutral-500 dark:text-neutral-500",
+        "relative z-10 order-first mb-3 flex items-center text-sm text-neutral-400 dark:text-neutral-500",
         decorate && "pl-3.5"
       )}
       {...props}

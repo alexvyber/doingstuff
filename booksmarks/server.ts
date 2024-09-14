@@ -11,13 +11,13 @@ const bookmarks = {
   delete: db.prepare("DELETE FROM bookmarks WHERE id = (?)"),
 }
 
-router.on("GET", "/", (req, res, params) => {
-  res.end('{"message":"hello world"}')
-})
+// router.on("GET", "/", (req, res, params) => {
+//   res.end('{"message":"hello world"}')
+// })
 
-router.on("GET", "/bookmarks", (req, res, params) => {
-  res.end(JSON.stringify({ data: bookmarks.all.all() }))
-})
+// router.on("GET", "/bookmarks", (req, res, params) => {
+//   res.end(JSON.stringify({ data: bookmarks.all.all() }))
+// })
 
 router.on("POST", "/bookmarks", (req, res, params) => {
   try {
@@ -44,14 +44,14 @@ router.on("POST", "/bookmarks", (req, res, params) => {
   }
 })
 
-router.on("DELETE", "/bookmarks/:id", (req, res, params) => {
-  try {
-    bookmarks.delete.run(params.id)
-    res.end("ok ")
-  } catch (error) {
-    res.end(JSON.stringify(error))
-  }
-})
+// router.on("DELETE", "/bookmarks/:id", (req, res, params) => {
+//   try {
+//     bookmarks.delete.run(params.id)
+//     res.end("ok ")
+//   } catch (error) {
+//     res.end(JSON.stringify(error))
+//   }
+// })
 
 const hostname = "127.0.0.1"
 const port = Number(process.env.PORT) ?? 3000

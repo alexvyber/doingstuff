@@ -15,9 +15,9 @@ const bookmarks = {
 //   res.end('{"message":"hello world"}')
 // })
 
-// router.on("GET", "/bookmarks", (req, res, params) => {
-//   res.end(JSON.stringify({ data: bookmarks.all.all() }))
-// })
+router.on("GET", "/bookmarks", (req, res, params) => {
+  res.end(JSON.stringify({ data: bookmarks.all.all() }))
+})
 
 router.on("POST", "/bookmarks", (req, res, params) => {
   try {
